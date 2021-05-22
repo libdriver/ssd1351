@@ -97,8 +97,15 @@ return 0;
 
 #### example advance
 
+Image extraction format and color format is RGB565.
+
+<div align=center>
+<img src="/doc/image/image_format.png"/>
+</div>
+
 ```C
 uint8_t res;
+uint16_t image[16384];
 
 res = ssd1351_advance_init();
 if (res)
@@ -157,6 +164,16 @@ if (res)
     return 1;
 }
 res = ssd1351_advance_enable_scroll();
+if (res)
+{
+    ssd1351_advance_deinit();
+
+    return 1;
+}
+
+...
+
+res = ssd1351_advance_draw_pictrue_16bits(0, 0, 0, 0, image);
 if (res)
 {
     ssd1351_advance_deinit();

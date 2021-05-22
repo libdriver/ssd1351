@@ -264,7 +264,7 @@ uint8_t ssd1351(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1351_interface_debug_print("ssd1351: display on failed.\n");
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
@@ -278,7 +278,7 @@ uint8_t ssd1351(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1351_interface_debug_print("ssd1351: display off failed.\n");
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
@@ -292,7 +292,7 @@ uint8_t ssd1351(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1351_interface_debug_print("ssd1351: clear screen failed.\n");
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
@@ -404,7 +404,7 @@ uint8_t ssd1351(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1351_interface_debug_print("ssd1351: clear screen failed.\n");
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
@@ -412,7 +412,7 @@ uint8_t ssd1351(uint8_t argc, char **argv)
                     if (res)
                     {
                         ssd1351_interface_debug_print("ssd1351: show string failed.\n");
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
@@ -479,7 +479,7 @@ uint8_t ssd1351(uint8_t argc, char **argv)
                     res = ssd1351_advance_write_point(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]));
                     if (res)
                     {
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
@@ -542,14 +542,14 @@ uint8_t ssd1351(uint8_t argc, char **argv)
                     res = ssd1351_advance_set_scroll(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), mode);
                     if (res)
                     {
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
                     res = ssd1351_advance_enable_scroll();
                     if (res)
                     {
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
@@ -612,7 +612,7 @@ uint8_t ssd1351(uint8_t argc, char **argv)
                     res = ssd1351_advance_rect(atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), atoi(argv[7]), atoi(argv[8]));
                     if (res)
                     {
-                        ssd1351_basic_deinit();
+                        ssd1351_advance_deinit();
                         
                         return 1;
                     }
