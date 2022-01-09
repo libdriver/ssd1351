@@ -1,10 +1,12 @@
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+
 <div align=center>
 <img src="/doc/image/logo.png"/>
 </div>
 
 ## LibDriver SSD1351
 
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/ssd1351/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 SSD1351是一个CMOS OLED/PLED驱动器，具有384个段和128个公共输出，支持高达128RGB x 128点阵显示。该芯片是为普通阴极型OLED/PLED设计的面板。SSD1351具有嵌入式图形显示数据RAM（GDDRAM）。它支持8、16、18位8080/6800并行接口，串行外设接口。它有256级对比度和262K色控件，在OLED面板上提供生动的彩色显示。
 

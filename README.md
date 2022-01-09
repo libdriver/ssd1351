@@ -1,10 +1,12 @@
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+
 <div align=center>
 <img src="/doc/image/logo.png"/>
 </div>
 
 ## LibDriver SSD1351
 
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/ssd1351/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 The SSD1351 is a CMOS OLED/PLED driver with 384 segments and 128 commons output, supporting up to 128RGB x 128 dot matrix display. This chip is designed for Common Cathode type OLED/PLED panel.The SSD1351 has embedded Graphic Display Data RAM (GDDRAM). It supports with 8, 16, 18 bits 8080 / 6800 parallel interface, Serial Peripheral Interface. It has 256-step contrast and 262K color control, giving vivid color display on OLED panels.
 
