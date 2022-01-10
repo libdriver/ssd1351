@@ -59,9 +59,11 @@ extern "C"{
  */
 
 /**
- * @brief ssd1351 atuo color convert definition
+ * @brief ssd1351 auto color convert definition
  */
-#define SSD1351_AUTO_COLOR_CONVERT  0
+#ifndef SSD1351_AUTO_COLOR_CONVERT
+    #define SSD1351_AUTO_COLOR_CONVERT  0        /**< not auto convert */
+#endif
 
 /**
  * @brief ssd1351 color depth enumeration definition
