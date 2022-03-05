@@ -26,6 +26,6 @@ var searchData=
   ['driver_5fssd1351_5flink_5fspi_5fdeinit_30',['DRIVER_SSD1351_LINK_SPI_DEINIT',['../group__ssd1351__link__driver.html#gab0f11e190e67305fa22575979c90cfd8',1,'driver_ssd1351.h']]],
   ['driver_5fssd1351_5flink_5fspi_5finit_31',['DRIVER_SSD1351_LINK_SPI_INIT',['../group__ssd1351__link__driver.html#gab99485b806d5aef5fd72a1dd52b3c67c',1,'driver_ssd1351.h']]],
   ['driver_5fssd1351_5flink_5fspi_5fwrite_5fcommand_32',['DRIVER_SSD1351_LINK_SPI_WRITE_COMMAND',['../group__ssd1351__link__driver.html#gaa093f384d8b6b2f941f55972026f9a75',1,'driver_ssd1351.h']]],
-  ['driver_5fversion_33',['driver_version',['../structssd1351info__s.html#a41b0bd442708b70d252c50b92c75265a',1,'ssd1351info_s']]],
+  ['driver_5fversion_33',['driver_version',['../structssd1351__info__s.html#a41b0bd442708b70d252c50b92c75265a',1,'ssd1351_info_s']]],
   ['driver_5fversion_34',['DRIVER_VERSION',['../driver__ssd1351_8c.html#ae578001fe043b4cca7a0edd801cfe9c4',1,'driver_ssd1351.c']]]
 ];

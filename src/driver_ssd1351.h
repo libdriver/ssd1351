@@ -227,7 +227,7 @@ typedef struct ssd1351_handle_s
 /**
  * @brief ssd1351 information structure definition
  */
-typedef struct ssd1351info_s
+typedef struct ssd1351_info_s
 {
     char chip_name[32];                /**< chip name */
     char manufacturer_name[32];        /**< manufacturer name */

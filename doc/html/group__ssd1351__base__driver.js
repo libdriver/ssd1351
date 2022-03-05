@@ -16,20 +16,20 @@ var group__ssd1351__base__driver =
       [ "spi_init", "structssd1351__handle__s.html#a30df505f4bd8bc8754fc0a36cfbe46d6", null ],
       [ "spi_write_cmd", "structssd1351__handle__s.html#adac0200f9c9e205330090e0d34f605d5", null ]
     ] ],
-    [ "ssd1351info_s", "structssd1351info__s.html", [
-      [ "chip_name", "structssd1351info__s.html#af890958c72bd715cc6454a10dc846ae6", null ],
-      [ "driver_version", "structssd1351info__s.html#a41b0bd442708b70d252c50b92c75265a", null ],
-      [ "interface", "structssd1351info__s.html#aebaa6c28dd4f2c3dc27566fcb910fd28", null ],
-      [ "manufacturer_name", "structssd1351info__s.html#ad25285dbf810c90f8eaf3fcef6f2b2ea", null ],
-      [ "max_current_ma", "structssd1351info__s.html#a9db82802561bf22d799b03a345f1d1dc", null ],
-      [ "supply_voltage_max_v", "structssd1351info__s.html#a3d2b12bcac7a85ea8646bff9debe8660", null ],
-      [ "supply_voltage_min_v", "structssd1351info__s.html#ad8bde6ddadaf43d951e62f3befb9d35a", null ],
-      [ "temperature_max", "structssd1351info__s.html#a3366a5dce9b829e03c3d321c2b4df3f6", null ],
-      [ "temperature_min", "structssd1351info__s.html#a8f9dbe66ac0b66ebae0a36fcb4ba368e", null ]
+    [ "ssd1351_info_s", "structssd1351__info__s.html", [
+      [ "chip_name", "structssd1351__info__s.html#af890958c72bd715cc6454a10dc846ae6", null ],
+      [ "driver_version", "structssd1351__info__s.html#a41b0bd442708b70d252c50b92c75265a", null ],
+      [ "interface", "structssd1351__info__s.html#aebaa6c28dd4f2c3dc27566fcb910fd28", null ],
+      [ "manufacturer_name", "structssd1351__info__s.html#ad25285dbf810c90f8eaf3fcef6f2b2ea", null ],
+      [ "max_current_ma", "structssd1351__info__s.html#a9db82802561bf22d799b03a345f1d1dc", null ],
+      [ "supply_voltage_max_v", "structssd1351__info__s.html#a3d2b12bcac7a85ea8646bff9debe8660", null ],
+      [ "supply_voltage_min_v", "structssd1351__info__s.html#ad8bde6ddadaf43d951e62f3befb9d35a", null ],
+      [ "temperature_max", "structssd1351__info__s.html#a3366a5dce9b829e03c3d321c2b4df3f6", null ],
+      [ "temperature_min", "structssd1351__info__s.html#a8f9dbe66ac0b66ebae0a36fcb4ba368e", null ]
     ] ],
     [ "SSD1351_AUTO_COLOR_CONVERT", "group__ssd1351__base__driver.html#ga8d5b986f3b90b4fb013ba09c3669a828", null ],
     [ "ssd1351_handle_t", "group__ssd1351__base__driver.html#ga491ce6a6b28838eebfbaec720ad16a98", null ],
-    [ "ssd1351_info_t", "group__ssd1351__base__driver.html#gab5f1394a5d20d8fe1fc592721cd22c69", null ],
+    [ "ssd1351_info_t", "group__ssd1351__base__driver.html#gacaa048589326bfb03fe7b46fd9467a44", null ],
     [ "ssd1351_address_increment_t", "group__ssd1351__base__driver.html#gad767560dc6a0d76fb2d52847480c2f83", [
       [ "SSD1351_ADDRESS_INCREMENT_HORIZONTAL", "group__ssd1351__base__driver.html#ggad767560dc6a0d76fb2d52847480c2f83adaf976d9b43357055ce819afcd1c613b", null ],
       [ "SSD1351_ADDRESS_INCREMENT_VERTICAL", "group__ssd1351__base__driver.html#ggad767560dc6a0d76fb2d52847480c2f83a037bdd92476779592c7817a128e864c5", null ]

@@ -14,7 +14,7 @@ var driver__ssd1351_8h =
     [ "DRIVER_SSD1351_LINK_SPI_WRITE_COMMAND", "group__ssd1351__link__driver.html#gaa093f384d8b6b2f941f55972026f9a75", null ],
     [ "SSD1351_AUTO_COLOR_CONVERT", "group__ssd1351__base__driver.html#ga8d5b986f3b90b4fb013ba09c3669a828", null ],
     [ "ssd1351_handle_t", "group__ssd1351__base__driver.html#ga491ce6a6b28838eebfbaec720ad16a98", null ],
-    [ "ssd1351_info_t", "group__ssd1351__base__driver.html#gab5f1394a5d20d8fe1fc592721cd22c69", null ],
+    [ "ssd1351_info_t", "group__ssd1351__base__driver.html#gacaa048589326bfb03fe7b46fd9467a44", null ],
     [ "ssd1351_address_increment_t", "group__ssd1351__base__driver.html#gad767560dc6a0d76fb2d52847480c2f83", [
       [ "SSD1351_ADDRESS_INCREMENT_HORIZONTAL", "group__ssd1351__base__driver.html#ggad767560dc6a0d76fb2d52847480c2f83adaf976d9b43357055ce819afcd1c613b", null ],
       [ "SSD1351_ADDRESS_INCREMENT_VERTICAL", "group__ssd1351__base__driver.html#ggad767560dc6a0d76fb2d52847480c2f83a037bdd92476779592c7817a128e864c5", null ]
