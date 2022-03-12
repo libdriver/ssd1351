@@ -128,6 +128,8 @@ static uint8_t _ssd1351_write_byte(ssd1351_handle_t *handle, uint8_t data, uint8
  * @return    status code
  *            - 0 success
  *            - 1 set column address failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      start_address <= 127 && end_address <= 127 && start_address >= start_address
  */
 uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_address, uint8_t end_address)
@@ -183,6 +185,8 @@ uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_addre
  * @return    status code
  *            - 0 success
  *            - 1 set row address failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      start_address <= 127 && end_address <= 127 && start_address >= start_address
  */
 uint8_t ssd1351_set_row_address(ssd1351_handle_t *handle, uint8_t start_address, uint8_t end_address)
@@ -236,6 +240,8 @@ uint8_t ssd1351_set_row_address(ssd1351_handle_t *handle, uint8_t start_address,
  * @return    status code
  *            - 0 success
  *            - 1 write ram failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_write_ram(ssd1351_handle_t *handle)
@@ -265,6 +271,8 @@ uint8_t ssd1351_write_ram(ssd1351_handle_t *handle)
  * @return    status code
  *            - 0 success
  *            - 1 read ram failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_read_ram(ssd1351_handle_t *handle)
@@ -295,6 +303,8 @@ uint8_t ssd1351_read_ram(ssd1351_handle_t *handle)
  * @return    status code
  *            - 0 success
  *            - 1 set color depth failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_color_depth(ssd1351_handle_t *handle, ssd1351_color_depth_t color_depth)
@@ -333,6 +343,8 @@ uint8_t ssd1351_set_color_depth(ssd1351_handle_t *handle, ssd1351_color_depth_t 
  * @return    status code
  *            - 0 success
  *            - 1 set address increment failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_address_increment(ssd1351_handle_t *handle, ssd1351_address_increment_t increment)
@@ -371,6 +383,8 @@ uint8_t ssd1351_set_address_increment(ssd1351_handle_t *handle, ssd1351_address_
  * @return    status code
  *            - 0 success
  *            - 1 set seg0 map failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_seg0_map(ssd1351_handle_t *handle, ssd1351_seg0_mapped_t seg0_map)
@@ -409,6 +423,8 @@ uint8_t ssd1351_set_seg0_map(ssd1351_handle_t *handle, ssd1351_seg0_mapped_t seg
  * @return    status code
  *            - 0 success
  *            - 1 set color sequence failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_color_sequence(ssd1351_handle_t *handle, ssd1351_color_sequence_t color_sequence)
@@ -447,6 +463,8 @@ uint8_t ssd1351_set_color_sequence(ssd1351_handle_t *handle, ssd1351_color_seque
  * @return    status code
  *            - 0 success
  *            - 1 set scan mode failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_scan_mode(ssd1351_handle_t *handle, ssd1351_scan_mode_t mode)
@@ -485,6 +503,8 @@ uint8_t ssd1351_set_scan_mode(ssd1351_handle_t *handle, ssd1351_scan_mode_t mode
  * @return    status code
  *            - 0 success
  *            - 1 set com split odd even failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t enable)
@@ -523,6 +543,8 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
  * @return    status code
  *            - 0 success
  *            - 1 set display start line failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      line <= 127
  */
 uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t line)
@@ -565,6 +587,8 @@ uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t line)
  * @return    status code
  *            - 0 success
  *            - 1 set display offset failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      offset <= 127
  */
 uint8_t ssd1351_set_display_offset(ssd1351_handle_t *handle, uint8_t offset)
@@ -607,6 +631,8 @@ uint8_t ssd1351_set_display_offset(ssd1351_handle_t *handle, uint8_t offset)
  * @return    status code
  *            - 0 success
  *            - 1 set display mode failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_display_mode(ssd1351_handle_t *handle, ssd1351_display_mode_t mode)
@@ -637,6 +663,8 @@ uint8_t ssd1351_set_display_mode(ssd1351_handle_t *handle, ssd1351_display_mode_
  * @return    status code
  *            - 0 success
  *            - 1 set select vdd failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_select_vdd(ssd1351_handle_t *handle, ssd1351_select_vdd_t vdd)
@@ -675,6 +703,8 @@ uint8_t ssd1351_set_select_vdd(ssd1351_handle_t *handle, ssd1351_select_vdd_t vd
  * @return    status code
  *            - 0 success
  *            - 1 set parallel bits failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_parallel_bits(ssd1351_handle_t *handle, ssd1351_select_parallel_bits_t parallel_bits)
@@ -713,6 +743,8 @@ uint8_t ssd1351_set_parallel_bits(ssd1351_handle_t *handle, ssd1351_select_paral
  * @return    status code
  *            - 0 success
  *            - 1 set sleep mode failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_sleep_mode(ssd1351_handle_t *handle, ssd1351_bool_t enable)
@@ -764,6 +796,8 @@ uint8_t ssd1351_set_sleep_mode(ssd1351_handle_t *handle, ssd1351_bool_t enable)
  * @return    status code
  *            - 0 success
  *            - 1 set phase period failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      2 <= phase1_period <=15 && 3 <= phase1_period <= 15
  */
 uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period, uint8_t phase2_period)
@@ -825,6 +859,8 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
  * @return    status code
  *            - 0 success
  *            - 1 set front clock oscillator frequency failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      div < 11 && frequency <= 15
  */
 uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, uint8_t div, uint8_t frequency)
@@ -873,6 +909,8 @@ uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, u
  * @return    status code
  *            - 0 success
  *            - 1 set segment low voltage failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_segment_low_voltage(ssd1351_handle_t *handle, ssd1351_segment_low_voltage_t segment)
@@ -922,6 +960,8 @@ uint8_t ssd1351_set_segment_low_voltage(ssd1351_handle_t *handle, ssd1351_segmen
  * @return    status code
  *            - 0 success
  *            - 1 set gpio failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_gpio(ssd1351_handle_t *handle, ssd1351_gpio_pin_t gpio0, ssd1351_gpio_pin_t gpio1)
@@ -958,6 +998,8 @@ uint8_t ssd1351_set_gpio(ssd1351_handle_t *handle, ssd1351_gpio_pin_t gpio0, ssd
  * @return    status code
  *            - 0 success
  *            - 1 set second pre charge period failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_second_pre_charge_period(ssd1351_handle_t *handle, uint8_t period)
@@ -1000,6 +1042,8 @@ uint8_t ssd1351_set_second_pre_charge_period(ssd1351_handle_t *handle, uint8_t p
  * @return    status code
  *            - 0 success
  *            - 1 set gray scale pulse width failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_gray_scale_pulse_width(ssd1351_handle_t *handle, uint8_t gamma[63])
@@ -1040,6 +1084,8 @@ uint8_t ssd1351_set_gray_scale_pulse_width(ssd1351_handle_t *handle, uint8_t gam
  * @return    status code
  *            - 0 success
  *            - 1 set use built in linear lut failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_use_built_in_linear_lut(ssd1351_handle_t *handle)
@@ -1070,6 +1116,8 @@ uint8_t ssd1351_set_use_built_in_linear_lut(ssd1351_handle_t *handle)
  * @return    status code
  *            - 0 success
  *            - 1 set pre charge voltage failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      voltage_level <= 0x1F
  */
 uint8_t ssd1351_set_pre_charge_voltage(ssd1351_handle_t *handle, uint8_t voltage_level)
@@ -1112,6 +1160,8 @@ uint8_t ssd1351_set_pre_charge_voltage(ssd1351_handle_t *handle, uint8_t voltage
  * @return    status code
  *            - 0 success
  *            - 1 set vcomh voltage failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      voltage_level <= 0x07
  */
 uint8_t ssd1351_set_vcomh_voltage(ssd1351_handle_t *handle, uint8_t voltage_level)
@@ -1156,6 +1206,8 @@ uint8_t ssd1351_set_vcomh_voltage(ssd1351_handle_t *handle, uint8_t voltage_leve
  * @return    status code
  *            - 0 success
  *            - 1 set contrast failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_contrast(ssd1351_handle_t *handle, uint8_t a, uint8_t b, uint8_t c)
@@ -1204,6 +1256,8 @@ uint8_t ssd1351_set_contrast(ssd1351_handle_t *handle, uint8_t a, uint8_t b, uin
  * @return    status code
  *            - 0 success
  *            - 1 set master contrast current failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      current <= 0x0F
  */
 uint8_t ssd1351_set_master_contrast_current(ssd1351_handle_t *handle, uint8_t current)
@@ -1246,6 +1300,8 @@ uint8_t ssd1351_set_master_contrast_current(ssd1351_handle_t *handle, uint8_t cu
  * @return    status code
  *            - 0 success
  *            - 1 set mux ratio failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      15 <= ratio <= 127
  */
 uint8_t ssd1351_set_mux_ratio(ssd1351_handle_t *handle, uint8_t ratio)
@@ -1294,6 +1350,8 @@ uint8_t ssd1351_set_mux_ratio(ssd1351_handle_t *handle, uint8_t ratio)
  * @return    status code
  *            - 0 success
  *            - 1 set command failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_set_command(ssd1351_handle_t *handle, ssd1351_command_t command)
@@ -1333,6 +1391,8 @@ uint8_t ssd1351_set_command(ssd1351_handle_t *handle, ssd1351_command_t command)
  * @return    status code
  *            - 0 success
  *            - 1 set scroll failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      start_row <= 127 && start_row + row_len <= 128
  */
 uint8_t ssd1351_set_scroll(ssd1351_handle_t *handle, int8_t scroll, uint8_t start_row, uint8_t row_len, ssd1351_scroll_mode_t mode)
@@ -1410,6 +1470,8 @@ uint8_t ssd1351_set_scroll(ssd1351_handle_t *handle, int8_t scroll, uint8_t star
  * @return    status code
  *            - 0 success
  *            - 1 clear failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_clear(ssd1351_handle_t *handle)
@@ -1772,6 +1834,8 @@ static uint8_t _ssd1351_show_char(ssd1351_handle_t *handle, uint8_t x, uint8_t y
  * @return    status code
  *            - 0 success
  *            - 1 fill rect failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t color)
@@ -1979,6 +2043,8 @@ static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_
  * @return    status code
  *            - 0 success
  *            - 1 draw picture failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *color)
@@ -2340,6 +2406,8 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
  * @return    status code
  *            - 0 success
  *            - 1 draw picture failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *color)
@@ -2552,6 +2620,8 @@ static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t l
  * @return    status code
  *            - 0 success
  *            - 1 draw point failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      x <= 127 && y <= 127
  */
 uint8_t ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint32_t color)
@@ -2592,6 +2662,8 @@ uint8_t ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint3
  * @return    status code
  *            - 0 success
  *            - 1 draw point failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      x <= 127 && y <= 127
  */
 uint8_t ssd1351_write_string(ssd1351_handle_t *handle, uint8_t x, uint8_t y, char *str, uint16_t len, uint32_t color, ssd1351_font_t font)
@@ -2638,13 +2710,15 @@ uint8_t ssd1351_write_string(ssd1351_handle_t *handle, uint8_t x, uint8_t y, cha
  * @brief     fill the rect
  * @param[in] *handle points to a ssd1351 handle structure
  * @param[in] left is the left coordinate x
- * @param[in] top is the left coordinate y
+ * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
- * @param[in] bottom is the right coordinate y
+ * @param[in] bottom is the bottom coordinate y
  * @param[in] color is the display color
  * @return    status code
  *            - 0 success
  *            - 1 fill rect failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
  */
 uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t color)
@@ -2701,13 +2775,15 @@ uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, u
  * @brief     draw a picture
  * @param[in] *handle points to a ssd1351 handle structure
  * @param[in] left is the left coordinate x
- * @param[in] top is the left coordinate y
+ * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
- * @param[in] bottom is the right coordinate y
+ * @param[in] bottom is the bottom coordinate y
  * @param[in] *image points to a display image buffer
  * @return    status code
  *            - 0 success
  *            - 1 draw picture failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
  */
 uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *image)
@@ -2764,13 +2840,15 @@ uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top
  * @brief     draw a 16 bits picture
  * @param[in] *handle points to a ssd1351 handle structure
  * @param[in] left is the left coordinate x
- * @param[in] top is the left coordinate y
+ * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
- * @param[in] bottom is the right coordinate y
+ * @param[in] bottom is the bottom coordinate y
  * @param[in] *image points to a display image buffer
  * @return    status code
  *            - 0 success
  *            - 1 draw picture failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
  */
 uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *image)
@@ -2828,6 +2906,8 @@ uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint
  * @return status code
  *         - 0 success
  *         - 1 start moving failed
+ *         - 2 handle is NULL
+ *         - 3 handle is not initialized
  * @note   none
  */
 uint8_t ssd1351_start_moving(ssd1351_handle_t *handle)
@@ -2856,6 +2936,8 @@ uint8_t ssd1351_start_moving(ssd1351_handle_t *handle)
  * @return status code
  *         - 0 success
  *         - 1 stop moving failed
+ *         - 2 handle is NULL
+ *         - 3 handle is not initialized
  * @note   none
  */
 uint8_t ssd1351_stop_moving(ssd1351_handle_t *handle)
@@ -2886,6 +2968,8 @@ uint8_t ssd1351_stop_moving(ssd1351_handle_t *handle)
  * @return    status code
  *            - 0 success
  *            - 1 write command failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_write_cmd(ssd1351_handle_t *handle, uint8_t cmd)
@@ -2909,6 +2993,8 @@ uint8_t ssd1351_write_cmd(ssd1351_handle_t *handle, uint8_t cmd)
  * @return    status code
  *            - 0 success
  *            - 1 write data failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
  * @note      none
  */
 uint8_t ssd1351_write_data(ssd1351_handle_t *handle, uint8_t data)

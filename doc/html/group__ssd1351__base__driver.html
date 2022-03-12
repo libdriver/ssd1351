@@ -775,12 +775,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 clear failed </li>
+<li>1 clear failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01415">1415</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01477">1477</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -819,7 +821,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l03067">3067</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l03153">3153</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -878,21 +880,23 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a ssd1351 handle structure </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">left</td><td>is the left coordinate x </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>is the left coordinate y </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>is the top coordinate y </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">right</td><td>is the right coordinate x </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>is the right coordinate y </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>is the bottom coordinate y </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">*image</td><td>points to a display image buffer </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 draw picture failed </li>
+<li>1 draw picture failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>left &lt;= 127 &amp;&amp; right &lt;= 127 &amp;&amp; left &lt; right &amp;&amp; top &lt;= 127 &amp;&amp; bottom &lt;= 127 &amp;&amp; top &lt; bottom </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02713">2713</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02789">2789</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -951,21 +955,23 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a ssd1351 handle structure </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">left</td><td>is the left coordinate x </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>is the left coordinate y </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>is the top coordinate y </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">right</td><td>is the right coordinate x </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>is the right coordinate y </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>is the bottom coordinate y </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">*image</td><td>points to a display image buffer </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 draw picture failed </li>
+<li>1 draw picture failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>left &lt;= 127 &amp;&amp; right &lt;= 127 &amp;&amp; left &lt; right &amp;&amp; top &lt;= 127 &amp;&amp; bottom &lt;= 127 &amp;&amp; top &lt; bottom </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02776">2776</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02854">2854</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1019,12 +1025,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 draw point failed </li>
+<li>1 draw point failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>x &lt;= 127 &amp;&amp; y &lt;= 127 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02557">2557</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02627">2627</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1083,21 +1091,23 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to a ssd1351 handle structure </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">left</td><td>is the left coordinate x </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>is the left coordinate y </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">top</td><td>is the top coordinate y </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">right</td><td>is the right coordinate x </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>is the right coordinate y </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">bottom</td><td>is the bottom coordinate y </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">color</td><td>is the display color </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 fill rect failed </li>
+<li>1 fill rect failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>left &lt;= 127 &amp;&amp; right &lt;= 127 &amp;&amp; left &lt; right &amp;&amp; top &lt;= 127 &amp;&amp; bottom &lt;= 127 &amp;&amp; top &lt; bottom </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02650">2650</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02724">2724</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1131,7 +1141,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l03121">3121</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l03207">3207</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1169,7 +1179,7 @@ Functions</h2></td></tr>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02940">2940</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l03026">3026</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1198,12 +1208,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 read ram failed </li>
+<li>1 read ram failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00270">270</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00278">278</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1243,12 +1255,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set address increment failed </li>
+<li>1 set address increment failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00338">338</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00350">350</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1288,12 +1302,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set color depth failed </li>
+<li>1 set color depth failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00300">300</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00310">310</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1333,12 +1349,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set color sequence failed </li>
+<li>1 set color sequence failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00414">414</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00430">430</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1385,12 +1403,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set column address failed </li>
+<li>1 set column address failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start_address &lt;= 127 &amp;&amp; end_address &lt;= 127 &amp;&amp; start_address &gt;= start_address </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00133">133</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00135">135</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1430,12 +1450,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set com split odd even failed </li>
+<li>1 set com split odd even failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00490">490</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00510">510</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1475,12 +1497,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set command failed </li>
+<li>1 set command failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01299">1299</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01357">1357</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1534,12 +1558,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set contrast failed </li>
+<li>1 set contrast failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01161">1161</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01213">1213</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1579,12 +1605,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set display mode failed </li>
+<li>1 set display mode failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00612">612</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00638">638</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1624,12 +1652,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set display offset failed </li>
+<li>1 set display offset failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>offset &lt;= 127 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00570">570</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00594">594</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1669,12 +1699,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set display start line failed </li>
+<li>1 set display start line failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>line &lt;= 127 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00528">528</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00550">550</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1721,12 +1753,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set front clock oscillator frequency failed </li>
+<li>1 set front clock oscillator frequency failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>div &lt; 11 &amp;&amp; frequency &lt;= 15 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00830">830</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00866">866</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1773,12 +1807,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set gpio failed </li>
+<li>1 set gpio failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00927">927</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00967">967</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1818,12 +1854,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set gray scale pulse width failed </li>
+<li>1 set gray scale pulse width failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01005">1005</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01049">1049</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1863,12 +1901,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set master contrast current failed </li>
+<li>1 set master contrast current failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>current &lt;= 0x0F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01209">1209</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01263">1263</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1908,12 +1948,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set mux ratio failed </li>
+<li>1 set mux ratio failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>15 &lt;= ratio &lt;= 127 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01251">1251</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01307">1307</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -1953,12 +1995,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set parallel bits failed </li>
+<li>1 set parallel bits failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00680">680</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00710">710</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2005,12 +2049,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set phase period failed </li>
+<li>1 set phase period failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>2 &lt;= phase1_period &lt;=15 &amp;&amp; 3 &lt;= phase1_period &lt;= 15 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00769">769</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00803">803</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2050,12 +2096,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set pre charge voltage failed </li>
+<li>1 set pre charge voltage failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>voltage_level &lt;= 0x1F </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01075">1075</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01123">1123</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2102,12 +2150,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set row address failed </li>
+<li>1 set row address failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start_address &lt;= 127 &amp;&amp; end_address &lt;= 127 &amp;&amp; start_address &gt;= start_address </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00188">188</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00192">192</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2147,12 +2197,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set scan mode failed </li>
+<li>1 set scan mode failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00452">452</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00470">470</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2213,12 +2265,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set scroll failed </li>
+<li>1 set scroll failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>start_row &lt;= 127 &amp;&amp; start_row + row_len &lt;= 128 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01338">1338</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01398">1398</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2258,12 +2312,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set second pre charge period failed </li>
+<li>1 set second pre charge period failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00963">963</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01005">1005</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2303,12 +2359,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set seg0 map failed </li>
+<li>1 set seg0 map failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00376">376</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00390">390</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2348,12 +2406,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set segment low voltage failed </li>
+<li>1 set segment low voltage failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00878">878</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00916">916</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2393,12 +2453,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set select vdd failed </li>
+<li>1 set select vdd failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00642">642</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00670">670</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2438,12 +2500,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set sleep mode failed </li>
+<li>1 set sleep mode failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00718">718</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00750">750</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2472,12 +2536,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set use built in linear lut failed </li>
+<li>1 set use built in linear lut failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01045">1045</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01091">1091</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2517,12 +2583,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 set vcomh voltage failed </li>
+<li>1 set vcomh voltage failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>voltage_level &lt;= 0x07 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01117">1117</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l01167">1167</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2545,12 +2613,14 @@ Functions</h2></td></tr>
 <p>start the display moving </p>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 start moving failed </li>
+<li>1 start moving failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02833">2833</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02913">2913</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2573,12 +2643,14 @@ Functions</h2></td></tr>
 <p>stop the display moving </p>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 stop moving failed </li>
+<li>1 stop moving failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02861">2861</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02943">2943</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2607,12 +2679,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 write ram failed </li>
+<li>1 write ram failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>none </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00241">241</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l00247">247</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
@@ -2687,12 +2761,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status code<ul>
 <li>0 success</li>
-<li>1 draw point failed </li>
+<li>1 draw point failed</li>
+<li>2 handle is NULL</li>
+<li>3 handle is not initialized </li>
 </ul>
 </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>x &lt;= 127 &amp;&amp; y &lt;= 127 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02597">2597</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="driver__ssd1351_8c_source.html#l02669">2669</a> of file <a class="el" href="driver__ssd1351_8c_source.html">driver_ssd1351.c</a>.</p>
 
 </div>
 </div>
