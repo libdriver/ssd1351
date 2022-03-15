@@ -153,9 +153,9 @@ uint8_t ssd1351_advance_write_point(uint8_t x, uint8_t y, uint32_t color);
 /**
  * @brief     advance example fill a rectangle
  * @param[in] left is the left coordinate x
- * @param[in] top is the left coordinate y
+ * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
- * @param[in] bottom is the right coordinate y
+ * @param[in] bottom is the bottom coordinate y
  * @param[in] color is the display color
  * @return    status code
  *            - 0 success
@@ -167,9 +167,9 @@ uint8_t ssd1351_advance_rect(uint8_t left, uint8_t top, uint8_t right, uint8_t b
 /**
  * @brief     advance example draw a picture
  * @param[in] left is the left coordinate x
- * @param[in] top is the left coordinate y
+ * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
- * @param[in] bottom is the right coordinate y
+ * @param[in] bottom is the bottom coordinate y
  * @param[in] *img points to a image buffer
  * @return    status code
  *            - 0 success
@@ -181,9 +181,9 @@ uint8_t ssd1351_advance_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, u
 /**
  * @brief     advance example draw a 16 bits picture
  * @param[in] left is the left coordinate x
- * @param[in] top is the left coordinate y
+ * @param[in] top is the top coordinate y
  * @param[in] right is the right coordinate x
- * @param[in] bottom is the right coordinate y
+ * @param[in] bottom is the bottom coordinate y
  * @param[in] *img points to a image buffer
  * @return    status code
  *            - 0 success
