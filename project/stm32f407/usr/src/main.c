@@ -102,7 +102,7 @@ uint8_t ssd1351(uint8_t argc, char** argv)
         {
             /* show ssd1351 help */
 
-        help:
+            help:
 
             ssd1351_interface_debug_print("ssd1351 -i\n\tshow ssd1351 chip and driver information.\n");
             ssd1351_interface_debug_print("ssd1351 -h\n\tshow ssd1351 help.\n");
@@ -115,23 +115,23 @@ uint8_t ssd1351(uint8_t argc, char** argv)
             ssd1351_interface_debug_print("ssd1351 -c basic -displayoff\n\trun ssd1351 display off function.\n");
             ssd1351_interface_debug_print("ssd1351 -c basic -clear\n\trun ssd1351 clear screen function.\n");
             ssd1351_interface_debug_print("ssd1351 -c basic -writepoint <x> <y> <color>\n\trun ssd1351 write pont function."
-                "x and y mean coordinate in screen.color means the filled color.\n");
+                                          "x and y mean coordinate in screen.color means the filled color.\n");
             ssd1351_interface_debug_print("ssd1351 -c basic -rect <x1> <y1> <x2> <y2> <color>\n\trun ssd1351 draw rectangle function."
-                "x1 means x start.y1 means y start.x2 means x end.y2 means y end.color means the filled color.\n");
+                                          "x1 means x start.y1 means y start.x2 means x end.y2 means y end.color means the filled color.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -init\n\trun ssd1351 advance init function.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -deinit\n\trun ssd1351 advance deinit function.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -str <string>\n\trun ssd1351 show string function."
-                "string means the shown string.\n");
+                                          "string means the shown string.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -displayon\n\trun ssd1351 display on function.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -displayoff\n\trun ssd1351 display off function.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -clear\n\trun ssd1351 clear screen function.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -writepoint <x> <y> <color>\n\trun ssd1351 write pont function."
-                "x and y mean coordinate in screen.color means the filled color.\n");
+                                          "x and y mean coordinate in screen.color means the filled color.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -rect <x1> <y1> <x2> <y2> <color>\n\trun ssd1351 draw rectangle function."
-                "x1 means x start.y1 means y start.x2 means x end.y2 means y end.color means the filled color.\n");
+                                          "x1 means x start.y1 means y start.x2 means x end.y2 means y end.color means the filled color.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -disable_scroll\n\trun ssd1351 disable scroll function.\n");
             ssd1351_interface_debug_print("ssd1351 -c advance -scroll <scroll> <startrow> <rowlen> (TSET | NORMAL | SLOW | SLOWEST)\n\trun ssd1351 scroll function."
-                "scroll means the scroll number,if >0 left scroll and <0 right scroll.");
+                                          "scroll means the scroll number,if >0 left scroll and <0 right scroll.");
             ssd1351_interface_debug_print("startrow means the start row.rowlen means the row lenght and startrow + rowlen max is 128.\n");
 
             return 0;
