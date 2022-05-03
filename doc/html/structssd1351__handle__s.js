@@ -5,7 +5,7 @@ var structssd1351__handle__s =
     [ "cmd_data_gpio_write", "structssd1351__handle__s.html#ac57019b61cb5ce825b8b0bb4a2b6a008", null ],
     [ "conf_1", "structssd1351__handle__s.html#af2ef486d149c384a3cf717e7f50648e1", null ],
     [ "conf_2", "structssd1351__handle__s.html#a4320feb37b9592669f49e41670f15890", null ],
-    [ "debug_print", "structssd1351__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2", null ],
+    [ "debug_print", "structssd1351__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b", null ],
     [ "delay_ms", "structssd1351__handle__s.html#a406c9433252b7366de417b7a60915c81", null ],
     [ "inited", "structssd1351__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f", null ],
     [ "reset_gpio_deinit", "structssd1351__handle__s.html#a69c42ff05fc69e3f1621f3c0347a840b", null ],

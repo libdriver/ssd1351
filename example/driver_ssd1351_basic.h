@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SSD1351_BASIC_H_
-#define _DRIVER_SSD1351_BASIC_H_
+#ifndef DRIVER_SSD1351_BASIC_H
+#define DRIVER_SSD1351_BASIC_H
 
 #include "driver_ssd1351_interface.h"
 

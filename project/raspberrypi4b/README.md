@@ -129,9 +129,9 @@ ssd1351: finish display test.
 ```
 
 ```shell
-./ssd1351 -c basic -str 12345abcdEFGH!@#$<>?{}[];<>
+./ssd1351 -c basic -str 12345abcdEFGH 
 
-ssd1351: 12345abcdEFGH!@#$<>?{}[];<>.
+ssd1351: 12345abcdEFGH..
 ```
 
 ```shell
@@ -183,9 +183,9 @@ ssd1351: init success.
 ```
 
 ```shell
-./ssd1351 -c advance -str 12345abcdEFGH!@#$<>?{}[];<>
+./ssd1351 -c advance -str 12345abcdEFGH
 
-ssd1351: 12345abcdEFGH!@#$<>?{}[];<>.
+ssd1351: 12345abcdEFGH.
 ```
 
 ```shell
