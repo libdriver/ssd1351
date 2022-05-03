@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver SSD1351
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/ssd1351/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/ssd1351/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 The SSD1351 is a CMOS OLED/PLED driver with 384 segments and 128 commons output, supporting up to 128RGB x 128 dot matrix display. This chip is designed for Common Cathode type OLED/PLED panel.The SSD1351 has embedded Graphic Display Data RAM (GDDRAM). It supports with 8, 16, 18 bits 8080 / 6800 parallel interface, Serial Peripheral Interface. It has 256-step contrast and 262K color control, giving vivid color display on OLED panels.
 
-LibDriver SSD1351 is the full function driver of SSD1351 launched by LibDriver.It provides the functions of drawing single point, filling block, image display, etc.
+LibDriver SSD1351 is the full function driver of SSD1351 launched by LibDriver.It provides the functions of drawing single point, filling block, image display, etc. LibDriver is MISRA compliant.
 
 ### Table of Contents
 
@@ -54,7 +54,7 @@ Add /src, /interface and /example to your project.
 uint8_t res;
 
 res = ssd1351_basic_init();
-if (res)
+if (res != 0)
 {
     ssd1351_interface_debug_print("ssd1351: init failed.\n");
 
@@ -64,18 +64,18 @@ if (res)
 ...
 
 res = ssd1351_basic_clear();
-if (res)
+if (res != 0)
 {
     ssd1351_interface_debug_print("ssd1351: clear screen failed.\n");
-    ssd1351_basic_deinit();
+    (void)ssd1351_basic_deinit();
 
     return 1;
 }
 res = ssd1351_basic_string(0, 0, "123", 3, 0xFFFF, SSD1351_FONT_16);
-if (res)
+if (res != 0)
 {
     ssd1351_interface_debug_print("ssd1351: show string failed.\n");
-    ssd1351_basic_deinit();
+    (void)ssd1351_basic_deinit();
 
     return 1;
 }
@@ -83,16 +83,16 @@ if (res)
 ...
 
 res = ssd1351_basic_rect(0, 32, 32, 32, 0xFFFF);
-if (res)
+if (res != 0)
 {
-    ssd1351_basic_deinit();
+    (void)ssd1351_basic_deinit();
 
     return 1;
 }
 
 ...
 
-ssd1351_basic_deinit();
+(void)ssd1351_basic_deinit();
 
 return 0;
 ```
@@ -110,7 +110,7 @@ uint8_t res;
 uint16_t image[16384];
 
 res = ssd1351_advance_init();
-if (res)
+if (res != 0)
 {
     ssd1351_interface_debug_print("ssd1351: init failed.\n");
 
@@ -120,18 +120,18 @@ if (res)
 ...
 
 res = ssd1351_advance_clear();
-if (res)
+if (res != 0)
 {
     ssd1351_interface_debug_print("ssd1351: clear screen failed.\n");
-    ssd1351_advance_deinit();
+    (void)ssd1351_advance_deinit();
 
     return 1;
 }
 res = ssd1351_advance_string(0, 0, "123", 3, 0xFFFF, SSD1351_FONT_16);
-if (res)
+if (res != 0)
 {
     ssd1351_interface_debug_print("ssd1351: show string failed.\n");
-    ssd1351_advance_deinit();
+    (void)ssd1351_advance_deinit();
 
     return 1;
 }
@@ -139,9 +139,9 @@ if (res)
 ...
 
 res = ssd1351_advance_write_point(56, 56, 0xFF00);
-if (res)
+if (res != 0)
 {
-    ssd1351_advance_deinit();
+    (void)ssd1351_advance_deinit();
 
     return 1;
 }
@@ -149,9 +149,9 @@ if (res)
 ...
 
 res = ssd1351_advance_rect(0, 32, 32, 32, 0xFFFF);
-if (res)
+if (res != 0)
 {
-    ssd1351_advance_deinit();
+    (void)ssd1351_advance_deinit();
 
     return 1;
 }
@@ -159,16 +159,16 @@ if (res)
 ...
 
 res = ssd1351_advance_set_scroll(1, 0, 128, SSD1351_SCROLL_MODE_NORMAL);
-if (res)
+if (res != 0)
 {
-    ssd1351_advance_deinit();
+    (void)ssd1351_advance_deinit();
 
     return 1;
 }
 res = ssd1351_advance_enable_scroll();
-if (res)
+if (res != 0)
 {
-    ssd1351_advance_deinit();
+    (void)ssd1351_advance_deinit();
 
     return 1;
 }
@@ -176,16 +176,16 @@ if (res)
 ...
 
 res = ssd1351_advance_draw_pictrue_16bits(0, 0, 0, 0, image);
-if (res)
+if (res != 0)
 {
-    ssd1351_advance_deinit();
+    (void)ssd1351_advance_deinit();
 
     return 1;
 }
 
 ...
 
-ssd1351_advance_deinit();
+(void)ssd1351_advance_deinit();
 
 return 0;
 ```

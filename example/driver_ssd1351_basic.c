@@ -38,22 +38,22 @@
 #include "driver_ssd1351_basic.h"
 
 static ssd1351_handle_t gs_handle;        /**< ssd1351 handle */
-static const uint8_t gsc_gamma[64] = { 0x02, 0x03, 0x04, 0x05,
-                                       0x06, 0x07, 0x08, 0x09,
-                                       0x0A, 0x0B, 0x0C, 0x0D,
-                                       0x0E, 0x0F, 0x10, 0x11,
-                                       0x12, 0x13, 0x15, 0x17,
-                                       0x19, 0x1B, 0x1D, 0x1F,
-                                       0x21, 0x23, 0x25, 0x27,
-                                       0x2A, 0x2D, 0x30, 0x33,
-                                       0x36, 0x39, 0x3C, 0x3F,
-                                       0x42, 0x45, 0x48, 0x4C,
-                                       0x50, 0x54, 0x58, 0x5C,
-                                       0x60, 0x64, 0x68, 0x6C,
-                                       0x70, 0x74, 0x78, 0x7D,
-                                       0x82, 0x87, 0x8C, 0x91,
-                                       0x96, 0x9B, 0xA0, 0xA5,
-                                       0xAA, 0xAF, 0xB4 };
+static uint8_t gs_gamma[64] = { 0x02, 0x03, 0x04, 0x05,
+                                0x06, 0x07, 0x08, 0x09,
+                                0x0A, 0x0B, 0x0C, 0x0D,
+                                0x0E, 0x0F, 0x10, 0x11,
+                                0x12, 0x13, 0x15, 0x17,
+                                0x19, 0x1B, 0x1D, 0x1F,
+                                0x21, 0x23, 0x25, 0x27,
+                                0x2A, 0x2D, 0x30, 0x33,
+                                0x36, 0x39, 0x3C, 0x3F,
+                                0x42, 0x45, 0x48, 0x4C,
+                                0x50, 0x54, 0x58, 0x5C,
+                                0x60, 0x64, 0x68, 0x6C,
+                                0x70, 0x74, 0x78, 0x7D,
+                                0x82, 0x87, 0x8C, 0x91,
+                                0x96, 0x9B, 0xA0, 0xA5,
+                                0xAA, 0xAF, 0xB4, 0x00 };
 
 /**
  * @brief  basic example init
@@ -64,7 +64,7 @@ static const uint8_t gsc_gamma[64] = { 0x02, 0x03, 0x04, 0x05,
  */
 uint8_t ssd1351_basic_init(void)
 {
-    volatile uint8_t res;
+    uint8_t res;
 
     /* link functions */
     DRIVER_SSD1351_LINK_INIT(&gs_handle, ssd1351_handle_t);
@@ -82,7 +82,7 @@ uint8_t ssd1351_basic_init(void)
     
     /* ssd1351 init */
     res = ssd1351_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: ssd1351 init.\n");
         
@@ -91,260 +91,260 @@ uint8_t ssd1351_basic_init(void)
     
     /* unlock oled driver ic */
     res = ssd1351_set_command(&gs_handle, SSD1351_COMMAND_UNLOCK_OLED_DRIVER_IC);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set command failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* enable command */
     res = ssd1351_set_command(&gs_handle, SSD1351_COMMAND_A2_B1_B3_BB_BE_ACCESSIBLE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set command failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* enter sleep mode */
     res = ssd1351_set_sleep_mode(&gs_handle, SSD1351_BOOL_TRUE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set sleep mode failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default front clock oscillator frequency */
     res = ssd1351_set_front_clock_oscillator_frequency(&gs_handle, SSD1351_BASIC_DEFAULT_CLOCK_DIV, SSD1351_BASIC_DEFAULT_OSCILLATOR_FREQUENCY);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set front clock oscillator failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default mux ratio */
     res = ssd1351_set_mux_ratio(&gs_handle, SSD1351_BASIC_DEFAULT_MUX_RATIO);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set mux ratio failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default display offset */
     res = ssd1351_set_display_offset(&gs_handle, SSD1351_BASIC_DEFAULT_DISPLAY_OFFSET);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set display offset failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default display start line */
     res = ssd1351_set_display_start_line(&gs_handle, SSD1351_BASIC_DEFAULT_DISPLAY_START_LINE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set display start line failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default address increment */
     res = ssd1351_set_address_increment(&gs_handle, SSD1351_BASIC_DEFAULT_ADDRESS_INCREMENT);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set address increment failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default color depth */
     res = ssd1351_set_color_depth(&gs_handle, SSD1351_BASIC_DEFAULT_COLOR_DEPTH);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set color depth failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default seg0 map */
     res = ssd1351_set_seg0_map(&gs_handle, SSD1351_BASIC_DEFAULT_SEG0_MAP);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set seg0 map failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default color sequence */
     res =  ssd1351_set_color_sequence(&gs_handle, SSD1351_BASIC_DEFAULT_COLOR_SEQUENCE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set color sequence failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default scan mode */
     res = ssd1351_set_scan_mode(&gs_handle, SSD1351_BASIC_DEFAULT_SCAN_MODE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set scan mode failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default com split odd even */
     res = ssd1351_set_com_split_odd_even(&gs_handle, SSD1351_BASIC_DEFAULT_COM_SPLIT_ODD_EVEN);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set com split odd even failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default gpio */
     res = ssd1351_set_gpio(&gs_handle, SSD1351_BASIC_DEFAULT_GPIO0_MODE, SSD1351_BASIC_DEFAULT_GPIO1_MODE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set gpio failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default select vdd */
     res = ssd1351_set_select_vdd(&gs_handle, SSD1351_BASIC_DEFAULT_SELECT_VDD);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set select vdd failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default parallel bits */
     res = ssd1351_set_parallel_bits(&gs_handle, SSD1351_BASIC_DEFAULT_SELECT_PARALLEL);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set parallel bits failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default segment low voltage */
     res = ssd1351_set_segment_low_voltage(&gs_handle, SSD1351_BASIC_DEFAULT_SEGMENT_LOW_VOLTAGE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set segment low voltage failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default contrast */
     res = ssd1351_set_contrast(&gs_handle, SSD1351_BASIC_DEFAULT_CONTRAST_A, SSD1351_BASIC_DEFAULT_CONTRAST_B, SSD1351_BASIC_DEFAULT_CONTRAST_C);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set contrast failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default master contrast current */
     res = ssd1351_set_master_contrast_current(&gs_handle, SSD1351_BASIC_DEFAULT_MASTER_CONTRAST_CURRENT);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set master contrast failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default gray scale pulse width */
-    res = ssd1351_set_gray_scale_pulse_width(&gs_handle, (uint8_t *)gsc_gamma);
-    if (res)
+    res = ssd1351_set_gray_scale_pulse_width(&gs_handle, (uint8_t *)gs_gamma);
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set gray scale pulse width failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default phase period */
     res = ssd1351_set_phase_period(&gs_handle, SSD1351_BASIC_DEFAULT_PHASE1_PERIOD, SSD1351_BASIC_DEFAULT_PHASE2_PERIOD);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set phase period failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default pre charge voltage */
     res = ssd1351_set_pre_charge_voltage(&gs_handle, SSD1351_BASIC_DEFAULT_PRE_CHARGE_VOLTAGE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set pre charge voltage failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default vcomh voltage */
     res = ssd1351_set_vcomh_voltage(&gs_handle, SSD1351_BASIC_DEFAULT_VCOMH_VOLTAGE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set vcomh voltage failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default second pre charge period */
     res = ssd1351_set_second_pre_charge_period(&gs_handle, SSD1351_BASIC_DEFAULT_SECOND_PRE_CHARGE_PERIOD);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set second pre charge period failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set default display mode */
     res = ssd1351_set_display_mode(&gs_handle, SSD1351_DISPLAY_MODE_NORMAL);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set display mode failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
     
     /* exit sleep mode */
     res = ssd1351_set_sleep_mode(&gs_handle, SSD1351_BOOL_FALSE);
-    if (res)
+    if (res != 0)
     {
         ssd1351_interface_debug_print("ssd1351: set sleep mode failed.\n");
-        ssd1351_deinit(&gs_handle);
+        (void)ssd1351_deinit(&gs_handle);
         
         return 1;
     }
@@ -363,7 +363,7 @@ uint8_t ssd1351_basic_init(void)
 uint8_t ssd1351_basic_deinit(void)
 {
     /* ssd1351 deinit */
-    if (ssd1351_deinit(&gs_handle))
+    if (ssd1351_deinit(&gs_handle) != 0)
     {
         return 1;
     }
@@ -383,7 +383,7 @@ uint8_t ssd1351_basic_deinit(void)
 uint8_t ssd1351_basic_clear(void)
 {
     /* ssd1351 clear */
-    if (ssd1351_clear(&gs_handle))
+    if (ssd1351_clear(&gs_handle) != 0)
     {
         return 1;
     }
@@ -403,7 +403,7 @@ uint8_t ssd1351_basic_clear(void)
 uint8_t ssd1351_basic_display_on(void)
 {
     /* ssd1351 exit sleep mode */
-    if (ssd1351_set_sleep_mode(&gs_handle, SSD1351_BOOL_FALSE))
+    if (ssd1351_set_sleep_mode(&gs_handle, SSD1351_BOOL_FALSE) != 0)
     {
         return 1;
     }
@@ -423,7 +423,7 @@ uint8_t ssd1351_basic_display_on(void)
 uint8_t ssd1351_basic_display_off(void)
 {
     /* ssd1351 enter sleep mode */
-    if (ssd1351_set_sleep_mode(&gs_handle, SSD1351_BOOL_TRUE))
+    if (ssd1351_set_sleep_mode(&gs_handle, SSD1351_BOOL_TRUE) != 0)
     {
         return 1;
     }
@@ -449,7 +449,7 @@ uint8_t ssd1351_basic_display_off(void)
 uint8_t ssd1351_basic_string(uint8_t x, uint8_t y, char *str, uint16_t len, uint32_t color, ssd1351_font_t font)
 {
     /* write string */
-    if (ssd1351_write_string(&gs_handle, x, y, str, len, color, font))
+    if (ssd1351_write_string(&gs_handle, x, y, str, len, color, font) != 0)
     {
         return 1;
     }
@@ -472,7 +472,7 @@ uint8_t ssd1351_basic_string(uint8_t x, uint8_t y, char *str, uint16_t len, uint
 uint8_t ssd1351_basic_write_point(uint8_t x, uint8_t y, uint32_t color)
 {
     /* draw point */
-    if (ssd1351_draw_point(&gs_handle, x, y, color))
+    if (ssd1351_draw_point(&gs_handle, x, y, color) != 0)
     {
         return 1;
     }
@@ -497,7 +497,7 @@ uint8_t ssd1351_basic_write_point(uint8_t x, uint8_t y, uint32_t color)
 uint8_t ssd1351_basic_rect(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t color)
 {
     /* fill rect */
-    if (ssd1351_fill_rect(&gs_handle, left, top, right, bottom, color))
+    if (ssd1351_fill_rect(&gs_handle, left, top, right, bottom, color) != 0)
     {
         return 1;
     }
@@ -522,7 +522,7 @@ uint8_t ssd1351_basic_rect(uint8_t left, uint8_t top, uint8_t right, uint8_t bot
 uint8_t ssd1351_basic_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *img)
 {
     /* draw picture */
-    if (ssd1351_draw_picture(&gs_handle, left, top, right, bottom, img))
+    if (ssd1351_draw_picture(&gs_handle, left, top, right, bottom, img) != 0)
     {
         return 1;
     }
@@ -547,7 +547,7 @@ uint8_t ssd1351_basic_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, uin
 uint8_t ssd1351_basic_draw_pictrue_16bits(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *img)
 {
     /* draw picture in 16 bits */
-    if (ssd1351_draw_picture_16bits(&gs_handle, left, top, right, bottom, img))
+    if (ssd1351_draw_picture_16bits(&gs_handle, left, top, right, bottom, img) != 0)
     {
         return 1;
     }

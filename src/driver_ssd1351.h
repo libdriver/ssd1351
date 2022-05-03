@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SSD1351_H_
-#define _DRIVER_SSD1351_H_
+#ifndef DRIVER_SSD1351_H
+#define DRIVER_SSD1351_H
 
 #include <stdint.h>
 #include <stdio.h>
@@ -217,7 +217,7 @@ typedef struct ssd1351_handle_s
     uint8_t (*reset_gpio_init)(void);                            /**< point to a reset_gpio_init function address */
     uint8_t (*reset_gpio_deinit)(void);                          /**< point to a reset_gpio_deinit function address */
     uint8_t (*reset_gpio_write)(uint8_t value);                  /**< point to a reset_gpio_write function address */
-    uint16_t (*debug_print)(char *fmt, ...);                     /**< point to a debug_print function address */
+    void (*debug_print)(const char *const fmt, ...);             /**< point to a debug_print function address */
     void (*delay_ms)(uint32_t ms);                               /**< point to a delay_ms function address */
     uint8_t inited;                                              /**< inited flag */
     uint8_t conf_1;                                              /**< config 1 */
@@ -638,7 +638,7 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
 /**
  * @brief     set the display start line
  * @param[in] *handle points to a ssd1351 handle structure
- * @param[in] line is the start line
+ * @param[in] l is the start line
  * @return    status code
  *            - 0 success
  *            - 1 set display start line failed
@@ -646,7 +646,7 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
  *            - 3 handle is not initialized
  * @note      line <= 127
  */
-uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t line);
+uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t l);
 
 /**
  * @brief     set the display offset
@@ -730,7 +730,7 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
 /**
  * @brief     set the front clock oscillator frequency
  * @param[in] *handle points to a ssd1351 handle structure
- * @param[in] div is the clock div
+ * @param[in] d is the clock div
  * @param[in] frequency is the clock frequency
  * @return    status code
  *            - 0 success
@@ -739,7 +739,7 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
  *            - 3 handle is not initialized
  * @note      div < 11 && frequency <= 15
  */
-uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, uint8_t div, uint8_t frequency);
+uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, uint8_t d, uint8_t frequency);
 
 /**
  * @brief     set the segment low voltage

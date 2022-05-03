@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_SSD1351_DISPLAY_IMAGE_H_
-#define _DRIVER_SSD1351_DISPLAY_IMAGE_H_
+#ifndef DRIVER_SSD1351_DISPLAY_IMAGE_H
+#define DRIVER_SSD1351_DISPLAY_IMAGE_H
 
 #include <stdint.h>
 #include <stdio.h>
@@ -46,7 +46,7 @@
 extern "C"{
 #endif
 
-static const uint8_t gsc_image[32768] = 
+static uint8_t gs_image[32768] = 
 {
     0XAD, 0XDC, 0XEE, 0XE4, 0XCD, 0XE4, 0XAC, 0XDC, 0XAC, 0XDC, 0XAC, 0XDC, 0X8C, 0XDC, 0X6B, 0XDC, 
     0X8C, 0XDC, 0XCD, 0XE4, 0X2D, 0XE5, 0X6D, 0XED, 0X2C, 0XED, 0XEB, 0XEC, 0X4B, 0XD4, 0XE8, 0XA2, 

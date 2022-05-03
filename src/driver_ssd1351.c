@@ -100,17 +100,17 @@
  *            - 1 write failed
  * @note      none
  */
-static uint8_t _ssd1351_write_byte(ssd1351_handle_t *handle, uint8_t data, uint8_t cmd)
+static uint8_t a_ssd1351_write_byte(ssd1351_handle_t *handle, uint8_t data, uint8_t cmd)
 {
-    volatile uint8_t res;
+    uint8_t res;
     
     res = handle->cmd_data_gpio_write(cmd);        /* write gpio */
-    if (res)                                       /* check result */
+    if (res != 0)                                  /* check result */
     {
         return 1;                                  /* return error */
     }
     res = handle->spi_write_cmd(&data, 1);         /* write data command */
-    if (res)                                       /* check result */
+    if (res != 0)                                  /* check result */
     {
         return 1;                                  /* return error */
     }
@@ -155,19 +155,19 @@ uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_addre
         return 1;                                                                        /* return error */
     }
 
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD))        /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD) != 0)  /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                         /* write command failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, start_address, SSD1351_DATA))                        /* set start address */
+    if (a_ssd1351_write_byte(handle, start_address, SSD1351_DATA) != 0)                  /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                   /* write start address failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, end_address, SSD1351_DATA))                          /* set end address */
+    if (a_ssd1351_write_byte(handle, end_address, SSD1351_DATA) != 0)                    /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                     /* write end address failed */
         
@@ -212,19 +212,19 @@ uint8_t ssd1351_set_row_address(ssd1351_handle_t *handle, uint8_t start_address,
         return 1;                                                                    /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD))       /* set row address */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD)!= 0)  /* set row address */
     {
         handle->debug_print("ssd1351: write command failed.\n");                     /* write command failed */
         
         return 1;                                                                    /* return error */
     }
-    if (_ssd1351_write_byte(handle, start_address, SSD1351_DATA))                    /* set start address */
+    if (a_ssd1351_write_byte(handle, start_address, SSD1351_DATA) != 0)              /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");               /* write start address failed */
         
         return 1;                                                                    /* return error */
     }
-    if (_ssd1351_write_byte(handle, end_address, SSD1351_DATA))                      /* set end address */
+    if (a_ssd1351_write_byte(handle, end_address, SSD1351_DATA) != 0)                /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                 /* write end address failed */
         
@@ -255,7 +255,7 @@ uint8_t ssd1351_write_ram(ssd1351_handle_t *handle)
         return 3;                                                               /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD))        /* set write ram */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD) != 0)  /* set write ram */
     {
         handle->debug_print("ssd1351: write ram failed.\n");                    /* write ram failed */
         
@@ -286,7 +286,7 @@ uint8_t ssd1351_read_ram(ssd1351_handle_t *handle)
         return 3;                                                              /* return error */
     }
   
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_READ_RAM, SSD1351_CMD))        /* set read ram */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_READ_RAM, SSD1351_CMD) != 0)  /* set read ram */
     {
         handle->debug_print("ssd1351: read command failed.\n");                /* return error */
         
@@ -320,13 +320,13 @@ uint8_t ssd1351_set_color_depth(ssd1351_handle_t *handle, ssd1351_color_depth_t 
     
     handle->conf_1 &= ~ (3 << 6);                                                           /* clear conf */
     handle->conf_1 |= color_depth << 6;                                                     /* set conf */
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD))        /* set color depth */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set color depth */
     {
         handle->debug_print("ssd1351: write color depth failed.\n");                        /* write color depth failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA))                          /* set conf */
+    if (a_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA) != 0)                    /* set conf */
     {
         handle->debug_print("ssd1351: write color depth failed.\n");                        /* write color depth failed */
         
@@ -360,13 +360,13 @@ uint8_t ssd1351_set_address_increment(ssd1351_handle_t *handle, ssd1351_address_
     
     handle->conf_1 &= ~ (1 << 0);                                                           /* clear conf */
     handle->conf_1 |= increment << 0;                                                       /* set conf */
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD))        /* set address increment */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set address increment */
     {
         handle->debug_print("ssd1351: write address increment failed.\n");                  /* write address increment failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA))                          /* set conf */
+    if (a_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA) != 0)                    /* set conf */
     {
         handle->debug_print("ssd1351: write address increment failed.\n");                  /* write address increment failed */
         
@@ -400,13 +400,13 @@ uint8_t ssd1351_set_seg0_map(ssd1351_handle_t *handle, ssd1351_seg0_mapped_t seg
     
     handle->conf_1 &= ~ (1 << 1);                                                           /* clear conf */
     handle->conf_1 |= seg0_map << 1;                                                        /* set conf */
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD))        /* set seg0 map */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set seg0 map */
     {
         handle->debug_print("ssd1351: wrire seg0 map failed.\n");                           /* write seg0 map failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA))                          /* set conf */
+    if (a_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA) != 0)                    /* set conf */
     {
         handle->debug_print("ssd1351: write seg0 map failed.\n");                           /* write seg0 map failed */
         
@@ -440,13 +440,13 @@ uint8_t ssd1351_set_color_sequence(ssd1351_handle_t *handle, ssd1351_color_seque
     
     handle->conf_1 &= ~ (1 << 2);                                                           /* clear conf */
     handle->conf_1 |= color_sequence << 2;                                                  /* set conf */
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD))        /* set color sequence */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set color sequence */
     {
         handle->debug_print("ssd1351: wrire color sequence failed.\n");                     /* write color sequence failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA))                          /* set conf */
+    if (a_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA) != 0)                    /* set conf */
     {
         handle->debug_print("ssd1351: write color sequence failed.\n");                     /* write color sequence failed */
         
@@ -480,13 +480,13 @@ uint8_t ssd1351_set_scan_mode(ssd1351_handle_t *handle, ssd1351_scan_mode_t mode
     
     handle->conf_1 &= ~ (1 << 4);                                                           /* clear conf */
     handle->conf_1 |= mode << 4;                                                            /* set conf */
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD))        /* set scan mode */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set scan mode */
     {
         handle->debug_print("ssd1351: wrire scan mode failed.\n");                          /* write scan mode failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA))                          /* set conf */
+    if (a_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA) != 0)                    /* set conf */
     {
         handle->debug_print("ssd1351: write scan mode failed.\n");                          /* write scan mode failed */
         
@@ -520,13 +520,13 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
     
     handle->conf_1 &= ~ (1 << 5);                                                           /* clear conf */
     handle->conf_1 |= enable << 5;                                                          /* set conf */
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD))        /* set com split odd even */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set com split odd even */
     {
         handle->debug_print("ssd1351: wrire com split odd even failed.\n");                 /* write com split odd even failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA))                          /* set conf */
+    if (a_ssd1351_write_byte(handle, handle->conf_1, SSD1351_DATA) != 0)                    /* set conf */
     {
         handle->debug_print("ssd1351: write com split odd even failed.\n");                 /* write com split odd even failed */
         
@@ -539,7 +539,7 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
 /**
  * @brief     set the display start line
  * @param[in] *handle points to a ssd1351 handle structure
- * @param[in] line is the start line
+ * @param[in] l is the start line
  * @return    status code
  *            - 0 success
  *            - 1 set display start line failed
@@ -547,7 +547,7 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
  *            - 3 handle is not initialized
  * @note      line <= 127
  */
-uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t line)
+uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t l)
 {
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -557,20 +557,20 @@ uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t line)
     {
         return 3;                                                                            /* return error */
     }
-    if (line > 127)                                                                          /* check line */
+    if (l > 127)                                                                             /* check line */
     {
         handle->debug_print("ssd1351: line is over 127.\n");                                 /* line is over 127 */
         
         return 1;                                                                            /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_DISPLAY_START_LINE, SSD1351_CMD))        /* set display start line */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_DISPLAY_START_LINE, SSD1351_CMD) != 0)  /* set display start line */
     {
         handle->debug_print("ssd1351: write start line failed.\n");                          /* write start line failed */
         
         return 1;                                                                            /* return error */
     }
-    if (_ssd1351_write_byte(handle, line, SSD1351_DATA))                                     /* set display start line */
+    if (a_ssd1351_write_byte(handle, l, SSD1351_DATA) != 0)                                  /* set display start line */
     {
         handle->debug_print("ssd1351: write data failed.\n");                                /* write data failed */
         
@@ -608,13 +608,13 @@ uint8_t ssd1351_set_display_offset(ssd1351_handle_t *handle, uint8_t offset)
         return 1;                                                                        /* return error */
     }
   
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_DISPLAY_OFFSET, SSD1351_CMD))        /* set display offset */ 
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_DISPLAY_OFFSET, SSD1351_CMD) != 0)  /* set display offset */ 
     {
         handle->debug_print("ssd1351: write display offset failed.\n");                  /* write display offset failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, offset, SSD1351_DATA))                               /* set display offset */
+    if (a_ssd1351_write_byte(handle, offset, SSD1351_DATA) != 0)                         /* set display offset */
     {
         handle->debug_print("ssd1351: write data failed.\n");                            /* write data failed */
         
@@ -646,7 +646,7 @@ uint8_t ssd1351_set_display_mode(ssd1351_handle_t *handle, ssd1351_display_mode_
         return 3;                                                            /* return error */
     }
 
-    if (_ssd1351_write_byte(handle, mode, SSD1351_CMD))                      /* set display mode */
+    if (a_ssd1351_write_byte(handle, mode, SSD1351_CMD) != 0)                /* set display mode */
     {
         handle->debug_print("ssd1351: write display mode failed.\n");        /* write display mode failed */
         
@@ -680,13 +680,13 @@ uint8_t ssd1351_set_select_vdd(ssd1351_handle_t *handle, ssd1351_select_vdd_t vd
 
     handle->conf_2 &= ~ (1 << 0);                                                        /* clear config */
     handle->conf_2 |= vdd << 0;                                                          /* set vdd */
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_FUNCTION_SELECTION, SSD1351_CMD))        /* set select vdd */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_FUNCTION_SELECTION, SSD1351_CMD) != 0)  /* set select vdd */
     {
         handle->debug_print("ssd1351: write function selection failed.\n");              /* write function selection failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, handle->conf_2, SSD1351_DATA))                       /* set select vdd */
+    if (a_ssd1351_write_byte(handle, handle->conf_2, SSD1351_DATA) != 0)                 /* set select vdd */
     {
         handle->debug_print("ssd1351: write function selection failed.\n");              /* write function selection failed */
         
@@ -720,13 +720,13 @@ uint8_t ssd1351_set_parallel_bits(ssd1351_handle_t *handle, ssd1351_select_paral
 
     handle->conf_2 &= ~ (3 << 6);                                                        /* clear config */
     handle->conf_2 |= parallel_bits << 6;                                                /* set bits */
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_FUNCTION_SELECTION, SSD1351_CMD))        /* set parallel bits */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_FUNCTION_SELECTION, SSD1351_CMD) != 0)  /* set parallel bits */
     {
         handle->debug_print("ssd1351: write parallel bits failed.\n");                   /* write parallel bits failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, handle->conf_2, SSD1351_DATA))                       /* set sparallel bits */
+    if (a_ssd1351_write_byte(handle, handle->conf_2, SSD1351_DATA) != 0)                 /* set sparallel bits */
     {
         handle->debug_print("ssd1351: write parallel bits failed.\n");                   /* write parallel bits failed */
         
@@ -760,7 +760,7 @@ uint8_t ssd1351_set_sleep_mode(ssd1351_handle_t *handle, ssd1351_bool_t enable)
     
     if (enable == SSD1351_BOOL_TRUE)                                                         /* if sleep mode on */
     {
-        if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_SLEEP_MODE_ON, SSD1351_CMD))         /* set sleep mode on */
+        if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_SLEEP_MODE_ON, SSD1351_CMD) != 0)   /* set sleep mode on */
         {
             handle->debug_print("ssd1351: set sleep mode on failed.\n");                     /* set sleep mode on failed */
             
@@ -771,7 +771,7 @@ uint8_t ssd1351_set_sleep_mode(ssd1351_handle_t *handle, ssd1351_bool_t enable)
     }
     else if (enable == SSD1351_BOOL_FALSE)                                                   /* if sleep mode off */
     {
-        if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_SLEEP_MODE_OFF, SSD1351_CMD))        /* set sleep mode off */ 
+        if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_SLEEP_MODE_OFF, SSD1351_CMD) != 0)  /* set sleep mode off */ 
         {
             handle->debug_print("ssd1351: set sleep mode off failed.\n");                    /* set sleep mode off failed */
             
@@ -835,13 +835,13 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
         return 1;                                                                                 /* return error */
     }
 
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_RESET_PRE_CHARGE_PERIOD, SSD1351_CMD))        /* set reset pre charge period */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_RESET_PRE_CHARGE_PERIOD, SSD1351_CMD) != 0)  /* set reset pre charge period */
     {
         handle->debug_print("ssd1351: write reset pre charge period failed.\n");                  /* write reset pre charge period failed */
         
         return 1;                                                                                 /* return error */
     }
-    if (_ssd1351_write_byte(handle, (phase2_period << 4) | phase1_period, SSD1351_DATA))          /* set phase period */
+    if (a_ssd1351_write_byte(handle, (phase2_period << 4) | phase1_period, SSD1351_DATA) != 0)    /* set phase period */
     {
         handle->debug_print("ssd1351: write reset pre charge period failed.\n");                  /* write reset pre charge period failed */
         
@@ -854,7 +854,7 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
 /**
  * @brief     set the front clock oscillator frequency
  * @param[in] *handle points to a ssd1351 handle structure
- * @param[in] div is the clock div
+ * @param[in] d is the clock div
  * @param[in] frequency is the clock frequency
  * @return    status code
  *            - 0 success
@@ -863,7 +863,7 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
  *            - 3 handle is not initialized
  * @note      div < 11 && frequency <= 15
  */
-uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, uint8_t div, uint8_t frequency)
+uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, uint8_t d, uint8_t frequency)
 {
     if (handle == NULL)                                                                            /* check handle */
     {
@@ -873,7 +873,7 @@ uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, u
     {
         return 3;                                                                                  /* return error */
     }
-    if (div >= 11)                                                                                 /* check div */
+    if (d >= 11)                                                                                   /* check div */
     {
         handle->debug_print("ssd1351: div is over 11.\n");                                         /* div is over 11 */
         
@@ -886,13 +886,13 @@ uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, u
         return 1;                                                                                  /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_FRONT_CLOCK_DIVIDER_OSC_FREQ, SSD1351_CMD))        /* set front clock divider osc freq */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_FRONT_CLOCK_DIVIDER_OSC_FREQ, SSD1351_CMD) != 0)  /* set front clock divider osc freq */
     {
         handle->debug_print("ssd1351: write front clock divider osc freq failed.\n");              /* write front clock divider osc freq failed */
         
         return 1;                                                                                  /* return error */
     }
-    if (_ssd1351_write_byte(handle, (frequency << 4) | div, SSD1351_DATA))                         /* set front clock divider osc freq */
+    if (a_ssd1351_write_byte(handle, (frequency << 4) | d, SSD1351_DATA) != 0)                     /* set front clock divider osc freq */
     {
         handle->debug_print("ssd1351: write front clock divider osc freq failed.\n");              /* write front clock divider osc freq failed */
         
@@ -924,25 +924,25 @@ uint8_t ssd1351_set_segment_low_voltage(ssd1351_handle_t *handle, ssd1351_segmen
         return 3;                                                                             /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_SEGMENT_LOW_VOLTAGE, SSD1351_CMD))        /* set segment low voltage */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_SEGMENT_LOW_VOLTAGE, SSD1351_CMD) != 0)  /* set segment low voltage */
     {
         handle->debug_print("ssd1351: write segment low voltage failed.\n");                  /* write segment low voltage failed */
         
         return 1;                                                                             /* return error */
     }
-    if (_ssd1351_write_byte(handle, 0xA0|segment, SSD1351_DATA))                              /* set segment low voltage */
+    if (a_ssd1351_write_byte(handle, (uint8_t)(0xA0 | segment), SSD1351_DATA) != 0)           /* set segment low voltage */
     {
         handle->debug_print("ssd1351: write segment low voltage failed.\n");                  /* write segment low voltage failed */
         
         return 1;                                                                             /* return error */
     }
-    if (_ssd1351_write_byte(handle, 0xB5, SSD1351_DATA))                                      /* set segment low voltage */
+    if (a_ssd1351_write_byte(handle, 0xB5, SSD1351_DATA) != 0)                                /* set segment low voltage */
     {
         handle->debug_print("ssd1351: write segment low voltage failed.\n");                  /* write segment low voltage failed */
         
         return 1;                                                                             /* return error */
     }
-    if (_ssd1351_write_byte(handle, 0x55, SSD1351_DATA))                                      /* set segment low voltage */
+    if (a_ssd1351_write_byte(handle, 0x55, SSD1351_DATA) != 0)                                /* set segment low voltage */
     {
         handle->debug_print("ssd1351: write segment low voltage failed.\n");                  /* write segment low voltage failed */
         
@@ -975,13 +975,15 @@ uint8_t ssd1351_set_gpio(ssd1351_handle_t *handle, ssd1351_gpio_pin_t gpio0, ssd
         return 3;                                                              /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_GPIO, SSD1351_CMD))        /* set gpio */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_GPIO, SSD1351_CMD) != 0)  /* set gpio */
     {
         handle->debug_print("ssd1351: write gpio failed.\n");                  /* write gpio failed */
         
         return 1;                                                              /* return error */
     }
-    if (_ssd1351_write_byte(handle, (gpio1<<2)|gpio0, SSD1351_DATA))           /* set gpio */
+    if (a_ssd1351_write_byte(handle, 
+                            (uint8_t)((gpio1 << 2) | gpio0),
+                             SSD1351_DATA) != 0)                               /* set gpio */
     {
         handle->debug_print("ssd1351: write gpio failed.\n");                  /* write gpio failed */
         
@@ -1019,13 +1021,13 @@ uint8_t ssd1351_set_second_pre_charge_period(ssd1351_handle_t *handle, uint8_t p
         return 1;                                                                                  /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_SECOND_PRE_CHARGE_PERIOD, SSD1351_CMD))        /* set second pre charge period */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_SECOND_PRE_CHARGE_PERIOD, SSD1351_CMD) != 0)  /* set second pre charge period */
     {
         handle->debug_print("ssd1351: write second pre charge period failed.\n");                  /* write second pre charge period failed */
         
         return 1;                                                                                  /* return error */
     }
-    if (_ssd1351_write_byte(handle, period, SSD1351_DATA))                                         /* set second pre charge period */
+    if (a_ssd1351_write_byte(handle, period, SSD1351_DATA) != 0)                                   /* set second pre charge period */
     {
         handle->debug_print("ssd1351: write second pre charge period failed.\n");                  /* write second pre charge period failed */
         
@@ -1048,7 +1050,7 @@ uint8_t ssd1351_set_second_pre_charge_period(ssd1351_handle_t *handle, uint8_t p
  */
 uint8_t ssd1351_set_gray_scale_pulse_width(ssd1351_handle_t *handle, uint8_t gamma[63])
 {
-    volatile uint8_t i;
+    uint8_t i;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -1059,7 +1061,7 @@ uint8_t ssd1351_set_gray_scale_pulse_width(ssd1351_handle_t *handle, uint8_t gam
         return 3;                                                                            /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_GRAY_SCALE_PULSE_WIDTH, SSD1351_CMD))        /* set gray scale pulse width */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_GRAY_SCALE_PULSE_WIDTH, SSD1351_CMD) != 0)  /* set gray scale pulse width */
     {
         handle->debug_print("ssd1351: write gray scale pulse width failed.\n");              /* write gray scale pulse width failed */
         
@@ -1067,7 +1069,7 @@ uint8_t ssd1351_set_gray_scale_pulse_width(ssd1351_handle_t *handle, uint8_t gam
     }
     for (i = 0; i < 63; i++)                                                                 /* 64 times */
     {
-        if (_ssd1351_write_byte(handle, gamma[i], SSD1351_DATA))                             /* set gamma */
+        if (a_ssd1351_write_byte(handle, gamma[i], SSD1351_DATA) != 0)                       /* set gamma */
         {
             handle->debug_print("ssd1351: write gamma failed.\n");                           /* write gamma failed */
             
@@ -1099,7 +1101,7 @@ uint8_t ssd1351_set_use_built_in_linear_lut(ssd1351_handle_t *handle)
         return 3;                                                                             /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_USE_BUILT_IN_LINEAR_LUT, SSD1351_CMD))        /* set use built in linear lut */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_USE_BUILT_IN_LINEAR_LUT, SSD1351_CMD) != 0)  /* set use built in linear lut */
     {
         handle->debug_print("ssd1351: use built in linear lut failed.\n");                    /* write use built in linear lut failed */
         
@@ -1137,13 +1139,13 @@ uint8_t ssd1351_set_pre_charge_voltage(ssd1351_handle_t *handle, uint8_t voltage
         return 1;                                                                            /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_PRE_CHARGE_VOLTAGE, SSD1351_CMD))        /* set pre charge voltage */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_PRE_CHARGE_VOLTAGE, SSD1351_CMD) != 0)  /* set pre charge voltage */
     {
         handle->debug_print("ssd1351: write pre charge voltage failed.\n");                  /* write pre charge voltage failed */
         
         return 1;                                                                            /* return error */
     }
-    if (_ssd1351_write_byte(handle, voltage_level, SSD1351_DATA))                            /* set pre charge voltage */
+    if (a_ssd1351_write_byte(handle, voltage_level, SSD1351_DATA) != 0)                      /* set pre charge voltage */
     {
         handle->debug_print("ssd1351: write pre charge voltage failed.\n");                  /* write pre charge voltage failed */
         
@@ -1181,13 +1183,13 @@ uint8_t ssd1351_set_vcomh_voltage(ssd1351_handle_t *handle, uint8_t voltage_leve
         return 1;                                                                       /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_VCOMH_VOLTAGE, SSD1351_CMD))        /* set vcomh voltage */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_VCOMH_VOLTAGE, SSD1351_CMD) != 0)  /* set vcomh voltage */
     {
         handle->debug_print("ssd1351: write vcomh voltage failed.\n");                  /* write vcomh voltage failed */
         
         return 1;                                                                       /* return error */
     }
-    if (_ssd1351_write_byte(handle, voltage_level, SSD1351_DATA))                       /* set vcomh voltage */
+    if (a_ssd1351_write_byte(handle, voltage_level, SSD1351_DATA) != 0)                 /* set vcomh voltage */
     {
         handle->debug_print("ssd1351: write vcomh voltage failed.\n");                  /* write vcomh voltage failed */
         
@@ -1221,25 +1223,25 @@ uint8_t ssd1351_set_contrast(ssd1351_handle_t *handle, uint8_t a, uint8_t b, uin
         return 3;                                                                  /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_CONTRAST, SSD1351_CMD))        /* set contrast */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_CONTRAST, SSD1351_CMD) != 0)  /* set contrast */
     {
         handle->debug_print("ssd1351: write contrast failed.\n");                  /* write contrast failed */
         
         return 1;                                                                  /* return error */
     }
-    if (_ssd1351_write_byte(handle, a, SSD1351_DATA))                              /* set a */
+    if (a_ssd1351_write_byte(handle, a, SSD1351_DATA) != 0)                        /* set a */
     {
         handle->debug_print("ssd1351: write a failed.\n");                         /* write a failed */
         
         return 1;                                                                  /* return error */
     }
-    if (_ssd1351_write_byte(handle, b, SSD1351_DATA))                              /* set b */
+    if (a_ssd1351_write_byte(handle, b, SSD1351_DATA) != 0)                        /* set b */
     {
         handle->debug_print("ssd1351: write b failed.\n");                         /* write b failed */
         
         return 1;                                                                  /* return error */
     }
-    if (_ssd1351_write_byte(handle, c, SSD1351_DATA))                              /* set c */
+    if (a_ssd1351_write_byte(handle, c, SSD1351_DATA) != 0)                        /* set c */
     {
         handle->debug_print("ssd1351: write c failed.\n");                         /* write c failed */
         
@@ -1277,13 +1279,13 @@ uint8_t ssd1351_set_master_contrast_current(ssd1351_handle_t *handle, uint8_t cu
         return 1;                                                                             /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_MASTER_CONTRAST_CONTROL, SSD1351_CMD))        /* set master contrast current */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_MASTER_CONTRAST_CONTROL, SSD1351_CMD) != 0)  /* set master contrast current */
     {
         handle->debug_print("ssd1351: write master contrast current failed.\n");              /* write master contrast current failed */
         
         return 1;                                                                             /* return error */
     }
-    if (_ssd1351_write_byte(handle, current, SSD1351_DATA))                                   /* set master contrast current */
+    if (a_ssd1351_write_byte(handle, current, SSD1351_DATA) != 0)                             /* set master contrast current */
     {
         handle->debug_print("ssd1351: write master contrast current failed.\n");              /* write master contrast current failed */
         
@@ -1327,13 +1329,13 @@ uint8_t ssd1351_set_mux_ratio(ssd1351_handle_t *handle, uint8_t ratio)
         return 1;                                                                             /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_MUX_RATIO, SSD1351_CMD))                  /* set mux ratio */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_MUX_RATIO, SSD1351_CMD) != 0)            /* set mux ratio */
     {
         handle->debug_print("ssd1351: write mux ratio failed.\n");                            /* write mux ratio failed */
         
         return 1;                                                                             /* return error */
     }
-    if (_ssd1351_write_byte(handle, ratio, SSD1351_DATA))                                     /* set mux ratio */
+    if (a_ssd1351_write_byte(handle, ratio, SSD1351_DATA) != 0)                               /* set mux ratio */
     {
         handle->debug_print("ssd1351: write mux ratio failed.\n");                            /* write mux ratio failed */
         
@@ -1365,13 +1367,13 @@ uint8_t ssd1351_set_command(ssd1351_handle_t *handle, ssd1351_command_t command)
         return 3;                                                                      /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_COMMAND_LOCK, SSD1351_CMD))        /* set command lock */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_COMMAND_LOCK, SSD1351_CMD) != 0)  /* set command lock */
     {
         handle->debug_print("ssd1351: write command lock failed.\n");                  /* write command lock failed */
         
         return 1;                                                                      /* return error */
     }
-    if (_ssd1351_write_byte(handle, command, SSD1351_DATA))                            /* set command lock */
+    if (a_ssd1351_write_byte(handle, command, SSD1351_DATA) != 0)                      /* set command lock */
     {
         handle->debug_print("ssd1351: write command lock failed.\n");                  /* write command lock failed */
         
@@ -1418,43 +1420,43 @@ uint8_t ssd1351_set_scroll(ssd1351_handle_t *handle, int8_t scroll, uint8_t star
         return 1;                                                                       /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_STOP_MOVING, SSD1351_CMD))              /* set stop moving */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_STOP_MOVING, SSD1351_CMD) != 0)        /* set stop moving */
     {
         handle->debug_print("ssd1351: write stop moving failed.\n");                    /* write stop moving failed */
         
         return 1;                                                                       /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_HORIZONTAL_SCROLL, SSD1351_CMD))        /* set horizontal scroll */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_HORIZONTAL_SCROLL, SSD1351_CMD) != 0)  /* set horizontal scroll */
     {
         handle->debug_print("ssd1351: write horizontal scroll failed.\n");              /* write horizontal scroll failed */
         
         return 1;                                                                       /* return error */
     }
-    if (_ssd1351_write_byte(handle, scroll, SSD1351_DATA))                              /* set scroll */
+    if (a_ssd1351_write_byte(handle, scroll, SSD1351_DATA) != 0)                        /* set scroll */
     {
         handle->debug_print("ssd1351: write scroll failed.\n");                         /* write scroll failed */
         
         return 1;                                                                       /* return error */
     }
-    if (_ssd1351_write_byte(handle, start_row, SSD1351_DATA))                           /* set start row */
+    if (a_ssd1351_write_byte(handle, start_row, SSD1351_DATA) != 0)                     /* set start row */
     {
         handle->debug_print("ssd1351: write start row failed.\n");                      /* write start row failed */
         
         return 1;                                                                       /* return error */
     }
-    if (_ssd1351_write_byte(handle, row_len, SSD1351_DATA))                             /* start row len */
+    if (a_ssd1351_write_byte(handle, row_len, SSD1351_DATA) != 0)                       /* start row len */
     {
         handle->debug_print("ssd1351: write row len failed.\n");                        /* write row len failed */
         
         return 1;                                                                       /* return error */
     }
-    if (_ssd1351_write_byte(handle, 0x00, SSD1351_DATA))                                /* set 0x00 */
+    if (a_ssd1351_write_byte(handle, 0x00, SSD1351_DATA) != 0)                          /* set 0x00 */
     {
         handle->debug_print("ssd1351: write data failed.\n");                           /* write data failed */
         
         return 1;                                                                       /* return error */
     }
-    if (_ssd1351_write_byte(handle, mode, SSD1351_DATA))                                /* set mode */
+    if (a_ssd1351_write_byte(handle, mode, SSD1351_DATA) != 0)                          /* set mode */
     {
         handle->debug_print("ssd1351: write mode failed.\n");                           /* write mode failed */
         
@@ -1476,7 +1478,7 @@ uint8_t ssd1351_set_scroll(ssd1351_handle_t *handle, int8_t scroll, uint8_t star
  */
 uint8_t ssd1351_clear(ssd1351_handle_t *handle)
 {
-    volatile uint8_t i, j;
+    uint8_t i, j;
     
     if (handle == NULL)                                                                     /* check handle */
     {
@@ -1487,43 +1489,43 @@ uint8_t ssd1351_clear(ssd1351_handle_t *handle)
         return 3;                                                                           /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD))              /* set row address */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD) != 0)        /* set row address */
     {
         handle->debug_print("ssd1351: write command failed.\n");                            /* write command failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, 0, SSD1351_DATA))                                       /* set start address */
+    if (a_ssd1351_write_byte(handle, 0, SSD1351_DATA) != 0)                                 /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                      /* write start address failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, 127, SSD1351_DATA))                                     /* set end address */
+    if (a_ssd1351_write_byte(handle, 127, SSD1351_DATA) != 0)                               /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                        /* write end address failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD))           /* set column address */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD) != 0)     /* set column address */
     {
         handle->debug_print("ssd1351: write command failed.\n");                            /* write command failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, 0, SSD1351_DATA))                                       /* set start address */
+    if (a_ssd1351_write_byte(handle, 0, SSD1351_DATA) != 0)                                 /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                      /* write start address failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, 127, SSD1351_DATA))                                     /* set end address */
+    if (a_ssd1351_write_byte(handle, 127, SSD1351_DATA) != 0)                               /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                        /* write end address failed */
         
         return 1;                                                                           /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD))                    /* set write ram */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD) != 0)              /* set write ram */
     {
         handle->debug_print("ssd1351: write ram failed.\n");                                /* write ram failed */
         
@@ -1535,7 +1537,7 @@ uint8_t ssd1351_clear(ssd1351_handle_t *handle)
         {
             if ((handle->conf_1 & 0xC0) == 0)                                               /* if 256 */
             {
-                if (_ssd1351_write_byte(handle, 0x00, SSD1351_DATA))                        /* set data */
+                if (a_ssd1351_write_byte(handle, 0x00, SSD1351_DATA) != 0)                  /* set data */
                 {
                     handle->debug_print("ssd1351: write data failed.\n");                   /* write data failed */
                     
@@ -1544,13 +1546,13 @@ uint8_t ssd1351_clear(ssd1351_handle_t *handle)
             }
             else if ((handle->conf_1 & 0xC0) == 0x40)                                       /* if 65K */
             {
-                if (_ssd1351_write_byte(handle, 0x00, SSD1351_DATA))                        /* set data */
+                if (a_ssd1351_write_byte(handle, 0x00, SSD1351_DATA) != 0)                  /* set data */
                 {
                     handle->debug_print("ssd1351: write data failed.\n");                   /* write data failed */
                     
                     return 1;                                                               /* return error */
                 }
-                if (_ssd1351_write_byte(handle, 0x00, SSD1351_DATA))                        /* set data */
+                if (a_ssd1351_write_byte(handle, 0x00, SSD1351_DATA) != 0)                  /* set data */
                 {
                     handle->debug_print("ssd1351: write data failed.\n");                   /* write data failed */
                     
@@ -1559,19 +1561,19 @@ uint8_t ssd1351_clear(ssd1351_handle_t *handle)
             }
             else                                                                            /* if 262K */
             {
-                if (_ssd1351_write_byte(handle, 0x00, SSD1351_DATA))                        /* set data */
+                if (a_ssd1351_write_byte(handle, 0x00, SSD1351_DATA) != 0)                  /* set data */
                 {
                     handle->debug_print("ssd1351: write data failed.\n");                   /* write data failed */
                     
                     return 1;                                                               /* return error */
                 }
-                if (_ssd1351_write_byte(handle, 0x00, SSD1351_DATA))                        /* set data */
+                if (a_ssd1351_write_byte(handle, 0x00, SSD1351_DATA) != 0)                  /* set data */
                 {
                     handle->debug_print("ssd1351: write data failed.\n");                   /* write data failed */
                     
                     return 1;                                                               /* return error */
                 }
-                if (_ssd1351_write_byte(handle, 0x00, SSD1351_DATA))                        /* set data */
+                if (a_ssd1351_write_byte(handle, 0x00, SSD1351_DATA) != 0)                  /* set data */
                 {
                     handle->debug_print("ssd1351: write data failed.\n");                   /* write data failed */
                     
@@ -1595,45 +1597,45 @@ uint8_t ssd1351_clear(ssd1351_handle_t *handle)
  *            - 1 draw point failed
  * @note      none
  */
-static uint8_t _ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint32_t color)
+static uint8_t a_ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint32_t color)
 {
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD))        /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD) != 0)  /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                         /* write command failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, x, SSD1351_DATA))                                    /* set start address */
+    if (a_ssd1351_write_byte(handle, x, SSD1351_DATA) != 0)                              /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                   /* write start address failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, x, SSD1351_DATA))                                    /* set end address */
+    if (a_ssd1351_write_byte(handle, x, SSD1351_DATA) != 0)                              /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                     /* write end address failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD))           /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD) != 0)     /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                         /* write command failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, y, SSD1351_DATA))                                    /* set start address */
+    if (a_ssd1351_write_byte(handle, y, SSD1351_DATA) != 0)                              /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                   /* write start address failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, y, SSD1351_DATA))                                    /* set end address */
+    if (a_ssd1351_write_byte(handle, y, SSD1351_DATA) != 0)                              /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                     /* write end address failed */
         
         return 1;                                                                        /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD))                 /* set write ram */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD) != 0)           /* set write ram */
     {
         handle->debug_print("ssd1351: write ram failed.\n");                             /* write ram failed */
         
@@ -1641,7 +1643,7 @@ static uint8_t _ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t 
     }
     if ((handle->conf_1 & 0xC0) == 0)                                                    /* if 256 */
     {
-        if (_ssd1351_write_byte(handle, color & 0xFF, SSD1351_DATA))                     /* set data */
+        if (a_ssd1351_write_byte(handle, color & 0xFF, SSD1351_DATA) != 0)               /* set data */
         {
             handle->debug_print("ssd1351: write data failed.\n");                        /* write data failed */
             
@@ -1652,16 +1654,16 @@ static uint8_t _ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t 
     }
     else if ((handle->conf_1 & 0xC0) == 0x40)                                            /* if 65K */
     {
-        if (handle->conf_1 & 0x04)                                                       /* CBA */
+        if ((handle->conf_1 & 0x04) != 0)                                                /* CBA */
         {
-            color &= 0x00FFFF;
-            if (_ssd1351_write_byte(handle, (color>>8)&0xFF, SSD1351_DATA))              /* set 1st */
+            color &= 0x00FFFFU;
+            if (a_ssd1351_write_byte(handle, (color>>8)&0xFF, SSD1351_DATA) != 0)        /* set 1st */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            if (_ssd1351_write_byte(handle, (color>>0)&0xFF, SSD1351_DATA))              /* set 2nd */
+            if (a_ssd1351_write_byte(handle, (color>>0)&0xFF, SSD1351_DATA) != 0)        /* set 2nd */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
@@ -1672,17 +1674,17 @@ static uint8_t _ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t 
         }
         else                                                                             /* ABC */
         {
-            color &= 0x00FFFF;                                                           /* get color */
-            #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto color convert */
+            color &= 0x00FFFFU;                                                          /* get color */
+        #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                            /* if auto color convert */
             color = ((color&0xF800)>>11) | (color&0x07E0) | ((color&0x001F)<<11);        /* blue green red */
-            #endif
-            if (_ssd1351_write_byte(handle, (color>>8)&0xFF, SSD1351_DATA))              /* set 1st */
+        #endif
+            if (a_ssd1351_write_byte(handle, (color>>8)&0xFF, SSD1351_DATA) != 0)        /* set 1st */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            if (_ssd1351_write_byte(handle, (color>>0)&0xFF, SSD1351_DATA))              /* set 2nd */
+            if (a_ssd1351_write_byte(handle, (color>>0)&0xFF, SSD1351_DATA) != 0)        /* set 2nd */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
@@ -1694,21 +1696,21 @@ static uint8_t _ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t 
     }
     else
     {
-        if (handle->conf_1 & 0x04)                                                       /* CBA */
+        if ((handle->conf_1 & 0x04) != 0)                                                /* CBA */
         {
-            if (_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA))             /* set red */
+            if (a_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA) != 0)       /* set red */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            if (_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA))              /* set green */
+            if (a_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA) != 0)        /* set green */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            if (_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA))              /* set blue */
+            if (a_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA) != 0)        /* set blue */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
@@ -1719,45 +1721,45 @@ static uint8_t _ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t 
         }
         else                                                                             /* ABC */
         {
-            #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto color convert */
-            if (_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA))              /* set blue */
+        #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                            /* if auto color convert */
+            if (a_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA) != 0)        /* set blue */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            if (_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA))              /* set green */
+            if (a_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA) != 0)        /* set green */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            if (_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA))             /* set red */
+            if (a_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA) != 0)       /* set red */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            #else
-            if (_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA))             /* set blue */
+        #else
+            if (a_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA) != 0)       /* set blue */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            if (_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA))              /* set green */
+            if (a_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA) != 0)        /* set green */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
             }
-            if (_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA))              /* set red */
+            if (a_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA) != 0)        /* set red */
             {
                 handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                 
                 return 1;                                                                /* return error */
-            }            
-            #endif
+            }
+        #endif
             
             return 0;                                                                    /* success return 0 */
         }
@@ -1777,11 +1779,11 @@ static uint8_t _ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t 
  *            - 1 show char failed
  * @note      none
  */
-static uint8_t _ssd1351_show_char(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint8_t chr, uint8_t size, uint32_t color)
+static uint8_t a_ssd1351_show_char(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint8_t chr, uint8_t size, uint32_t color)
 {
-    volatile uint8_t temp, t, t1;
-    volatile uint8_t y0 = y;
-    volatile uint8_t csize = (size / 8 + ((size % 8) ? 1 : 0)) * (size / 2);        /* get size */
+    uint8_t temp, t, t1;
+    uint8_t y0 = y;
+    uint8_t csize = (size / 8 + ((size % 8) ? 1 : 0)) * (size / 2);        /* get size */
     
     chr = chr - ' ';                                                                /* get index */
     for (t = 0; t < csize; t++)                                                     /* write size */
@@ -1804,9 +1806,12 @@ static uint8_t _ssd1351_show_char(ssd1351_handle_t *handle, uint8_t x, uint8_t y
         }
         for (t1 = 0; t1 < 8; t1++)                                                  /* write one line */
         {
-            if (temp & 0x80)                                                        /* if 1 */
+            if ((temp & 0x80) != 0)                                                 /* if 1 */
             {
-                _ssd1351_draw_point(handle, x, y, color);                           /* draw point */
+                if (a_ssd1351_draw_point(handle, x, y, color) != 0)                 /* draw point */
+                {
+                    return 1;                                                       /* return error */
+                }
             }
             temp <<= 1;                                                             /* left shift 1 */
             y++;
@@ -1838,9 +1843,9 @@ static uint8_t _ssd1351_show_char(ssd1351_handle_t *handle, uint8_t x, uint8_t y
  *            - 3 handle is not initialized
  * @note      none
  */
-static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t color)
+static uint8_t a_ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t color)
 {
-    volatile uint8_t i, j;  
+    uint8_t i, j;  
     
     if (handle == NULL)                                                                          /* check handle */
     {
@@ -1850,43 +1855,43 @@ static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_
     {
         return 3;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD))                /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD) != 0)          /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                                 /* write command failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, left, SSD1351_DATA))                                         /* set start address */
+    if (a_ssd1351_write_byte(handle, left, SSD1351_DATA) != 0)                                   /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                           /* write start address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, right, SSD1351_DATA))                                        /* set end address */
+    if (a_ssd1351_write_byte(handle, right, SSD1351_DATA) != 0)                                  /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                             /* write end address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD))                   /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD) != 0)             /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                                 /* write command failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, top, SSD1351_DATA))                                          /* set start address */
+    if (a_ssd1351_write_byte(handle, top, SSD1351_DATA) != 0)                                    /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                           /* write start address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, bottom, SSD1351_DATA))                                       /* set end address */
+    if (a_ssd1351_write_byte(handle, bottom, SSD1351_DATA) != 0)                                 /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                             /* write end address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD))                         /* set write ram */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD) != 0)                   /* set write ram */
     {
         handle->debug_print("ssd1351: write ram failed.\n");                                     /* write ram failed */
         
@@ -1898,7 +1903,7 @@ static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_
         {
             for (j = 0; j < (bottom - top + 1); j++)                                             /* y */
             {
-                if (_ssd1351_write_byte(handle, color&0xFF, SSD1351_DATA))                       /* set data */
+                if (a_ssd1351_write_byte(handle, color&0xFF, SSD1351_DATA) != 0)                 /* set data */
                 {
                     handle->debug_print("ssd1351: write data failed.\n");                        /* write data failed */
                     
@@ -1916,16 +1921,16 @@ static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_
         {
             for (j = 0; j < (bottom - top + 1); j++)                                             /* y */
             {
-                if (handle->conf_1 & 0x04)                                                       /* CBA */
+                if ((handle->conf_1 & 0x04) != 0)                                                /* CBA */
                 {
-                    color &= 0x00FFFF;
-                    if (_ssd1351_write_byte(handle, (color>>8)&0xFF, SSD1351_DATA))              /* set 1st */
+                    color &= 0x00FFFFU;
+                    if (a_ssd1351_write_byte(handle, (color>>8)&0xFF, SSD1351_DATA) != 0)        /* set 1st */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    if (_ssd1351_write_byte(handle, (color>>0)&0xFF, SSD1351_DATA))              /* set 2nd */
+                    if (a_ssd1351_write_byte(handle, (color>>0)&0xFF, SSD1351_DATA) != 0)        /* set 2nd */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
@@ -1934,17 +1939,17 @@ static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_
                 }
                 else                                                                             /* ABC */
                 {
-                    color &= 0x00FFFF;                                                           /* get color */
-                    #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto color convert */
+                    color &= 0x00FFFFU;                                                          /* get color */
+                #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                            /* if auto color convert */
                     color = ((color&0xF800)>>11) | (color&0x07E0) | ((color&0x001F)<<11);        /* blue green red */
-                    #endif
-                    if (_ssd1351_write_byte(handle, (color>>8)&0xFF, SSD1351_DATA))              /* set 1st */
+                #endif
+                    if (a_ssd1351_write_byte(handle, (color>>8)&0xFF, SSD1351_DATA) != 0)        /* set 1st */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    if (_ssd1351_write_byte(handle, (color>>0)&0xFF, SSD1351_DATA))              /* set 2nd */
+                    if (a_ssd1351_write_byte(handle, (color>>0)&0xFF, SSD1351_DATA) != 0)        /* set 2nd */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
@@ -1962,21 +1967,21 @@ static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_
         {
             for (j = 0; j < (bottom - top + 1); j++)                                             /* y */
             {
-                if (handle->conf_1 & 0x04)                                                       /* CBA */
+                if ((handle->conf_1 & 0x04) != 0)                                                /* CBA */
                 {
-                    if (_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA))             /* set red */
+                    if (a_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA) != 0)       /* set red */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    if (_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA))              /* set green */
+                    if (a_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA) != 0)        /* set green */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    if (_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA))              /* set blue */
+                    if (a_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA) != 0)        /* set blue */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
@@ -1985,45 +1990,45 @@ static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_
                 }
                 else                                                                             /* ABC */
                 {
-                    #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto color convert */
-                    if (_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA))              /* set blue */
+                #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                            /* if auto color convert */
+                    if (a_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA) != 0)        /* set blue */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    if (_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA))              /* set green */
+                    if (a_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA) != 0)        /* set green */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    if (_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA))             /* set red */
+                    if (a_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA) != 0)       /* set red */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    #else
-                    if (_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA))             /* set blue */
+                #else
+                    if (a_ssd1351_write_byte(handle, (color>>16)&0x3F, SSD1351_DATA) != 0)       /* set blue */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    if (_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA))              /* set green */
+                    if (a_ssd1351_write_byte(handle, (color>>8)&0x3F, SSD1351_DATA) != 0)        /* set green */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
                     }
-                    if (_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA))              /* set red */
+                    if (a_ssd1351_write_byte(handle, (color>>0)&0x3F, SSD1351_DATA) != 0)        /* set red */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
                         return 1;                                                                /* return error */
-                    }                    
-                    #endif
+                    }
+                #endif
                 }
             }
         }
@@ -2047,10 +2052,10 @@ static uint8_t _ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_
  *            - 3 handle is not initialized
  * @note      none
  */
-static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *color)
+static uint8_t a_ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *color)
 {
-    volatile uint8_t i, j;  
-    volatile uint32_t p;
+    uint8_t i, j;  
+    uint32_t p;
     
     if (handle == NULL)                                                                          /* check handle */
     {
@@ -2060,58 +2065,58 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
     {
         return 3;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD))                /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD) != 0)          /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                                 /* write command failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, left, SSD1351_DATA))                                         /* set start address */
+    if (a_ssd1351_write_byte(handle, left, SSD1351_DATA) != 0)                                   /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                           /* write start address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, right, SSD1351_DATA))                                        /* set end address */
+    if (a_ssd1351_write_byte(handle, right, SSD1351_DATA) != 0)                                  /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                             /* write end address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD))                   /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD) != 0)             /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                                 /* write command failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, top, SSD1351_DATA))                                          /* set start address */
+    if (a_ssd1351_write_byte(handle, top, SSD1351_DATA) != 0)                                    /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                           /* write start address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, bottom, SSD1351_DATA))                                       /* set end address */
+    if (a_ssd1351_write_byte(handle, bottom, SSD1351_DATA) != 0)                                 /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                             /* write end address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD))                         /* set write ram */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD) != 0)                   /* set write ram */
     {
         handle->debug_print("ssd1351: write ram failed.\n");                                     /* write ram failed */
         
         return 1;                                                                                /* return error */
     }
-    if ((handle->conf_1&0xC0) == 0)                                                              /* if 256 */
+    if ((handle->conf_1 & 0xC0) == 0)                                                            /* if 256 */
     {
-        if (handle->conf_1 & 0x01)                                                               /* if vertical */
+        if ((handle->conf_1 & 0x01) != 0)                                                        /* if vertical */
         {
             p = 0;                                                                               /* set zero */
             for (j = 0; j < (bottom - top + 1); j++)                                             /* x */
             {
                 for (i = 0; i < (right - left + 1); i++)                                         /* y */
                 {
-                    if (_ssd1351_write_byte(handle, color[p]&0xFF, SSD1351_DATA))                /* set data */
+                    if (a_ssd1351_write_byte(handle, color[p]&0xFF, SSD1351_DATA) != 0)          /* set data */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
@@ -2128,7 +2133,7 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
             {
                 for (j = 0; j < (bottom - top + 1); j++)                                         /* y */
                 {
-                    if (_ssd1351_write_byte(handle, color[p]&0xFF, SSD1351_DATA))                /* set data */
+                    if (a_ssd1351_write_byte(handle, color[p]&0xFF, SSD1351_DATA) != 0)          /* set data */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
@@ -2143,23 +2148,23 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
     }
     else if ((handle->conf_1&0xC0) == 0x40)                                                      /* if 65K */
     {
-        if (handle->conf_1 & 0x01)                                                               /* if vertical */
+        if ((handle->conf_1 & 0x01) != 0)                                                        /* if vertical */
         {
             p = 0;
             for (j = 0; j < (bottom - top + 1); j++)                                             /* x */
             {
                 for (i = 0; i < (right - left + 1); i++)                                         /* y */
                 {
-                    if (handle->conf_1 & 0x04)                                                   /* CBA */
+                    if ((handle->conf_1 & 0x04) != 0)                                            /* CBA */
                     {
-                        color[p] &= 0x00FFFF;
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA))       /* set 1st */
+                        color[p] &= 0x00FFFFU;
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA) != 0) /* set 1st */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA))       /* set 2nd */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA) != 0) /* set 2nd */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2168,18 +2173,18 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
                     }
                     else                                                                         /* ABC */
                     {
-                        color[p] &= 0x00FFFF;                                                    /* get color */
-                        #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                    /* if auto convert */
+                        color[p] &= 0x00FFFFU;                                                   /* get color */
+                    #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto convert */
                         color[p] = ((color[p]&0xF800)>>11) | (color[p]&0x07E0) |                 /* convert color */
                                    ((color[p]&0x001F)<<11);                                      /* blue green red */
-                        #endif
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA))       /* set 1st */
+                    #endif
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA) != 0) /* set 1st */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA))       /* set 2nd */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA) != 0) /* set 2nd */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2197,16 +2202,16 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
             {
                 for (j = 0; j < (bottom - top + 1); j++)                                         /* y */
                 {
-                    if (handle->conf_1 & 0x04)                                                   /* CBA */
+                    if ((handle->conf_1 & 0x04) != 0)                                            /* CBA */
                     {
-                        color[p] &= 0x00FFFF;
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA))       /* set 1st */
+                        color[p] &= 0x00FFFFU;
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA) != 0) /* set 1st */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA))       /* set 2nd */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA) != 0) /* set 2nd */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2215,18 +2220,18 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
                     }
                     else                                                                         /* ABC */
                     {
-                        color[p] &= 0x00FFFF;                                                    /* get color */
-                        #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                    /* if auto convert */
+                        color[p] &= 0x00FFFFU;                                                   /* get color */
+                    #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto convert */
                         color[p] = ((color[p]&0xF800)>>11) | (color[p]&0x07E0) |                 /* convert color */
                                    ((color[p]&0x001F)<<11);                                      /* blue green red */
-                        #endif
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA))       /* set 1st */
+                    #endif
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA) != 0) /* set 1st */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA))       /* set 2nd */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA) != 0) /* set 2nd */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2242,28 +2247,28 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
     }
     else
     {
-        if (handle->conf_1 & 0x01)                                                               /* if vertical */
+        if ((handle->conf_1 & 0x01) != 0)                                                        /* if vertical */
         {
             p = 0;                                                                               /* set zero */
             for (j = 0; j < (bottom - top + 1); j++)                                             /* x */
             {
                 for (i = 0; i < (right - left + 1); i++)                                         /* y */
                 {
-                    if (handle->conf_1 & 0x04)                                                   /* CBA */
+                    if ((handle->conf_1 & 0x04) != 0)                                            /* CBA */
                     {
-                        if (_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA))      /* set red */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA) != 0)/* set red */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA))       /* set green */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA) != 0) /* set green */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA))       /* set blue */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA) != 0) /* set blue */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2272,45 +2277,45 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
                     }
                     else                                                                         /* ABC */
                     {
-                        #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                    /* if auto convert */
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA))       /* set blue */
+                    #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto convert */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA) != 0) /* set blue */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA))       /* set green */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA) != 0) /* set green */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA))      /* set red */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA) != 0)/* set red */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        #else
-                        if (_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA))      /* set blue */
+                    #else
+                        if (a_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA) != 0)/* set blue */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA))       /* set green */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA) != 0) /* set green */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA))       /* set red */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA) != 0) /* set red */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        #endif
+                    #endif
                     }
                     p++;                                                                         /* p++ */
                 }
@@ -2323,21 +2328,21 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
             {
                 for (j = 0; j < (bottom - top + 1); j++)                                         /* y */
                 {
-                    if (handle->conf_1 & 0x04)                                                   /* CBA */
+                    if ((handle->conf_1 & 0x04) != 0)                                            /* CBA */
                     {
-                        if (_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA))      /* set red */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA) != 0)/* set red */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA))       /* set green */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA) != 0) /* set green */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA))       /* set blue */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA) != 0) /* set blue */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2346,45 +2351,45 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
                     }
                     else                                                                         /* ABC */
                     {
-                        #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                    /* if auto convert */
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA))       /* set blue */
+                    #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto convert */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA) != 0) /* set blue */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA))       /* set green */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA) != 0) /* set green */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA))      /* set red */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA) != 0)/* set red */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        #else
-                        if (_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA))      /* set blue */
+                    #else
+                        if (a_ssd1351_write_byte(handle, (color[p]>>16)&0x3F, SSD1351_DATA) != 0)/* set blue */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA))       /* set green */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0x3F, SSD1351_DATA) != 0) /* set green */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA))       /* set red */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0x3F, SSD1351_DATA) != 0) /* set red */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        #endif
+                    #endif
                     }
                     p++;                                                                         /* p++ */
                 }
@@ -2410,10 +2415,10 @@ static uint8_t _ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uin
  *            - 3 handle is not initialized
  * @note      none
  */
-static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *color)
+static uint8_t a_ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *color)
 {
-    volatile uint8_t i, j;  
-    volatile uint32_t p;
+    uint8_t i, j;  
+    uint32_t p;
     
     if (handle == NULL)                                                                          /* check handle */
     {
@@ -2423,43 +2428,43 @@ static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t l
     {
         return 3;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD))                /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD) != 0)          /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                                 /* write command failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, left, SSD1351_DATA))                                         /* set start address */
+    if (a_ssd1351_write_byte(handle, left, SSD1351_DATA) != 0)                                   /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                           /* write start address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, right, SSD1351_DATA))                                        /* set end address */
+    if (a_ssd1351_write_byte(handle, right, SSD1351_DATA) != 0)                                  /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                             /* write end address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD))                   /* write column address command */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD) != 0)             /* write column address command */
     {
         handle->debug_print("ssd1351: write command failed.\n");                                 /* write command failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, top, SSD1351_DATA))                                          /* set start address */
+    if (a_ssd1351_write_byte(handle, top, SSD1351_DATA) != 0)                                    /* set start address */
     {
         handle->debug_print("ssd1351: write start address failed.\n");                           /* write start address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, bottom, SSD1351_DATA))                                       /* set end address */
+    if (a_ssd1351_write_byte(handle, bottom, SSD1351_DATA) != 0)                                 /* set end address */
     {
         handle->debug_print("ssd1351: write end address failed.\n");                             /* write end address failed */
         
         return 1;                                                                                /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD))                         /* set write ram */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_WRITE_RAM, SSD1351_CMD) != 0)                   /* set write ram */
     {
         handle->debug_print("ssd1351: write ram failed.\n");                                     /* write ram failed */
         
@@ -2467,14 +2472,14 @@ static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t l
     }
     if ((handle->conf_1&0xC0) == 0)                                                              /* if 256 */
     {
-        if (handle->conf_1 & 0x01)                                                               /* if vertical */
+        if ((handle->conf_1 & 0x01) != 0)                                                        /* if vertical */
         {
             p = 0;                                                                               /* set zero */
             for (j = 0; j < (bottom - top + 1); j++)                                             /* x */
             {
                 for (i = 0; i < (right - left + 1); i++)                                         /* y */
                 {
-                    if (_ssd1351_write_byte(handle, color[p]&0xFF, SSD1351_DATA))                /* set data */
+                    if (a_ssd1351_write_byte(handle, color[p]&0xFF, SSD1351_DATA) != 0)          /* set data */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
@@ -2491,7 +2496,7 @@ static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t l
             {
                 for (j = 0; j < (bottom - top + 1); j++)                                         /* y */
                 {
-                    if (_ssd1351_write_byte(handle, color[p]&0xFF, SSD1351_DATA))                /* set data */
+                    if (a_ssd1351_write_byte(handle, color[p]&0xFF, SSD1351_DATA) != 0)          /* set data */
                     {
                         handle->debug_print("ssd1351: write data failed.\n");                    /* write data failed */
                         
@@ -2506,23 +2511,23 @@ static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t l
     }
     else if ((handle->conf_1&0xC0) == 0x40)                                                      /* if 65K */
     {
-        if (handle->conf_1 & 0x01)                                                               /* if vertical */
+        if ((handle->conf_1 & 0x01) != 0)                                                        /* if vertical */
         {
             p = 0;
             for (j = 0; j < (bottom - top + 1); j++)                                             /* x */
             {
                 for (i = 0; i < (right - left + 1); i++)                                         /* y */
                 {
-                    if (handle->conf_1 & 0x04)                                                   /* CBA */
+                    if ((handle->conf_1 & 0x04) != 0)                                            /* CBA */
                     {
-                        color[p] &= 0x00FFFF;
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA))       /* set 1st */
+                        color[p] &= 0x00FFFFU;
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA) != 0) /* set 1st */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA))       /* set 2nd */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA) != 0) /* set 2nd */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2531,18 +2536,18 @@ static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t l
                     }
                     else                                                                         /* ABC */
                     {
-                        color[p] &= 0x00FFFF;                                                    /* get color */
-                        #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                    /* if auto convert */
+                        color[p] &= 0x00FFFFU;                                                   /* get color */
+                    #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto convert */
                         color[p] = ((color[p]&0xF800)>>11) | (color[p]&0x07E0) |                 /* convert color */
                                    ((color[p]&0x001F)<<11);                                      /* blue green red */
-                        #endif
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA))       /* set 1st */
+                    #endif
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA) != 0) /* set 1st */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA))       /* set 2nd */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA) != 0) /* set 2nd */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2560,16 +2565,16 @@ static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t l
             {
                 for (j = 0; j < (bottom - top + 1); j++)                                         /* y */
                 {
-                    if (handle->conf_1 & 0x04)                                                   /* CBA */
+                    if ((handle->conf_1 & 0x04) != 0)                                            /* CBA */
                     {
-                        color[p] &= 0x00FFFF;                                                    /* get color */
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA))       /* set 1st */
+                        color[p] &= 0x00FFFFU;                                                   /* get color */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA) != 0) /* set 1st */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA))       /* set 2nd */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA) != 0) /* set 2nd */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2578,18 +2583,18 @@ static uint8_t _ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t l
                     }
                     else                                                                         /* ABC */
                     {
-                        color[p] &= 0x00FFFF;                                                    /* get color */
-                        #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                    /* if auto convert */
+                        color[p] &= 0x00FFFFU;                                                   /* get color */
+                    #if (SSD1351_AUTO_COLOR_CONVERT == 1)                                        /* if auto convert */
                         color[p] = ((color[p]&0xF800)>>11) | (color[p]&0x07E0) |                 /* convert color */
                                    ((color[p]&0x001F)<<11);                                      /* blue green red */
-                        #endif
-                        if (_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA))       /* set 1st */
+                    #endif
+                        if (a_ssd1351_write_byte(handle, (color[p]>>8)&0xFF, SSD1351_DATA) != 0) /* set 1st */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
                             return 1;                                                            /* return error */
                         }
-                        if (_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA))       /* set 2nd */
+                        if (a_ssd1351_write_byte(handle, (color[p]>>0)&0xFF, SSD1351_DATA) != 0) /* set 2nd */
                         {
                             handle->debug_print("ssd1351: write data failed.\n");                /* write data failed */
                             
@@ -2647,7 +2652,7 @@ uint8_t ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint3
         return 1;                                                /* return error */
     }
     
-    return _ssd1351_draw_point(handle, x, y, color);             /* draw point */
+    return a_ssd1351_draw_point(handle, x, y, color);            /* draw point */
 }
 
 /**
@@ -2683,22 +2688,22 @@ uint8_t ssd1351_write_string(ssd1351_handle_t *handle, uint8_t x, uint8_t y, cha
         
         return 1;                                                            /* return error */
     }
-    while (len && (*str <= '~') && (*str >= ' '))                            /* write all string */
+    while ((len != 0) && (*str <= '~') && (*str >= ' '))                     /* write all string */
     {       
         if (x > (127 - (font / 2)))                                          /* check x point */
         {
             x = 0;                                                           /* set x */
-            y += font;                                                       /* set next row */
+            y += (uint8_t)font;                                              /* set next row */
         }
         if (y > (127 - font))                                                /* check y pont */
         {
             y = x = 0;                                                       /* reset to 0 */
         }
-        if (_ssd1351_show_char(handle, x, y, *str, font, color))             /* show a char */
+        if (a_ssd1351_show_char(handle, x, y, *str, font, color) != 0)       /* show a char */
         {
             return 1;                                                        /* return error */
         }
-        x += font/2;                                                         /* x + font/2 */
+        x += (uint8_t)(font / 2);                                            /* x + font/2 */
         str++;                                                               /* str address++ */
         len--;                                                               /* str length-- */
     }
@@ -2768,7 +2773,7 @@ uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, u
         return 1;                                                              /* return error */
     }
     
-    return _ssd1351_fill_rect(handle, left, top, right, bottom, color);        /* fill rect */
+    return a_ssd1351_fill_rect(handle, left, top, right, bottom, color);       /* fill rect */
 }
 
 /**
@@ -2833,7 +2838,7 @@ uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top
         return 1;                                                              /* return error */
     }
     
-    return _ssd1351_draw_picture(handle, left, top, right, bottom, image);     /* draw picture */
+    return a_ssd1351_draw_picture(handle, left, top, right, bottom, image);    /* draw picture */
 }
 
 /**
@@ -2898,7 +2903,7 @@ uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint
         return 1;                                                                         /* return error */
     }
     
-    return _ssd1351_draw_picture_16_bits(handle, left, top, right, bottom, image);        /* draw picture */
+    return a_ssd1351_draw_picture_16_bits(handle, left, top, right, bottom, image);       /* draw picture */
 }
 
 /**
@@ -2921,7 +2926,7 @@ uint8_t ssd1351_start_moving(ssd1351_handle_t *handle)
         return 3;                                                                  /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_START_MOVING, SSD1351_CMD))        /* set start moving */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_START_MOVING, SSD1351_CMD) != 0)  /* set start moving */
     {
         handle->debug_print("ssd1351: write start moving failed.\n");              /* write start moving failed */
         
@@ -2951,7 +2956,7 @@ uint8_t ssd1351_stop_moving(ssd1351_handle_t *handle)
         return 3;                                                                 /* return error */
     }
     
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_STOP_MOVING, SSD1351_CMD))        /* set stop moving */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_STOP_MOVING, SSD1351_CMD) != 0)  /* set stop moving */
     {
         handle->debug_print("ssd1351: write stop moving failed.\n");              /* write stop moving failed */
         
@@ -2983,7 +2988,7 @@ uint8_t ssd1351_write_cmd(ssd1351_handle_t *handle, uint8_t cmd)
         return 3;                                                /* return error */
     }
     
-    return _ssd1351_write_byte(handle, cmd, SSD1351_CMD);        /* write command */
+    return a_ssd1351_write_byte(handle, cmd, SSD1351_CMD);       /* write command */
 }
 
 /**
@@ -3008,7 +3013,7 @@ uint8_t ssd1351_write_data(ssd1351_handle_t *handle, uint8_t data)
         return 3;                                                  /* return error */
     }
   
-    return _ssd1351_write_byte(handle, data, SSD1351_DATA);        /* write data */
+    return a_ssd1351_write_byte(handle, data, SSD1351_DATA);       /* write data */
 }
 
 /**
@@ -3094,41 +3099,41 @@ uint8_t ssd1351_init(ssd1351_handle_t *handle)
         return 3;                                                               /* return error */
     }
     
-    if (handle->cmd_data_gpio_init())                                           /* check cmd_data_gpio_init */
+    if (handle->cmd_data_gpio_init() != 0)                                      /* check cmd_data_gpio_init */
     {
         handle->debug_print("ssd1351: cmd data gpio init failed.\n");           /* cmd data gpio init failed */
         
         return 5;                                                               /* return error */
     }
-    if (handle->reset_gpio_init())                                              /* reset gpio init */
+    if (handle->reset_gpio_init() != 0)                                         /* reset gpio init */
     {
         handle->debug_print("ssd1351: reset gpio init failed.\n");              /* reset gpio init failed */
-        handle->cmd_data_gpio_deinit();                                         /* cmd_data_gpio_deinit */
+        (void)handle->cmd_data_gpio_deinit();                                   /* cmd_data_gpio_deinit */
         
         return 4;                                                               /* return error */
     }
-    if (handle->reset_gpio_write(0))                                            /* write 0 */
+    if (handle->reset_gpio_write(0) != 0)                                       /* write 0 */
     {
         handle->debug_print("ssd1351: reset gpio write failed.\n");             /* reset gpio write failed */
-        handle->cmd_data_gpio_deinit();                                         /* cmd_data_gpio_deinit */
-        handle->reset_gpio_deinit();                                            /* reset_gpio_deinit */
+        (void)handle->cmd_data_gpio_deinit();                                   /* cmd_data_gpio_deinit */
+        (void)handle->reset_gpio_deinit();                                      /* reset_gpio_deinit */
         
         return 4;                                                               /* return error */
     }
     handle->delay_ms(100);                                                      /* delay 100 ms */
-    if (handle->reset_gpio_write(1))                                            /* write 1 */
+    if (handle->reset_gpio_write(1) != 0)                                       /* write 1 */
     {
         handle->debug_print("ssd1351: reset gpio write failed.\n");             /* reset gpio write failed */
-        handle->cmd_data_gpio_deinit();                                         /* cmd_data_gpio_deinit */
-        handle->reset_gpio_deinit();                                            /* reset_gpio_deinit */
+        (void)handle->cmd_data_gpio_deinit();                                   /* cmd_data_gpio_deinit */
+        (void)handle->reset_gpio_deinit();                                      /* reset_gpio_deinit */
         
         return 4;                                                               /* return error */
     }
-    if (handle->spi_init())                                                     /* spi init */
+    if (handle->spi_init() != 0)                                                /* spi init */
     {
         handle->debug_print("ssd1351: spi init failed.\n");                     /* spi init failed */
-        handle->cmd_data_gpio_deinit();                                         /* cmd_data_gpio_deinit */
-        handle->reset_gpio_deinit();                                            /* reset_gpio_deinit */
+        (void)handle->cmd_data_gpio_deinit();                                   /* cmd_data_gpio_deinit */
+        (void)handle->reset_gpio_deinit();                                      /* reset_gpio_deinit */
         
         return 1;                                                               /* return error */
     }
@@ -3161,31 +3166,31 @@ uint8_t ssd1351_deinit(ssd1351_handle_t *handle)
         return 3;                                                                         /* return error */
     }
 
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_SLEEP_MODE_ON, SSD1351_CMD))          /* set sleep mode on */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_SLEEP_MODE_ON, SSD1351_CMD) != 0)    /* set sleep mode on */
     {
         handle->debug_print("ssd1351: write sleep mode on failed.\n");                    /* write sleep mode on failed */
         
         return 4;                                                                         /* return error */
     }
-    if (_ssd1351_write_byte(handle, SSD1351_CMD_SET_DISPLAY_ALL_OFF, SSD1351_CMD))        /* set display all off */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_DISPLAY_ALL_OFF, SSD1351_CMD) != 0)  /* set display all off */
     {
         handle->debug_print("ssd1351: write display all off failed.\n");                  /* write display all off failed */
         
         return 4;                                                                         /* return error */
     }
-    if (handle->reset_gpio_deinit())                                                      /* reset gpio deinit */
+    if (handle->reset_gpio_deinit() != 0)                                                 /* reset gpio deinit */
     {
         handle->debug_print("ssd1351: reset gpio deinit failed.\n");                      /* reset gpio deinit failed */
             
         return 5;                                                                         /* return error */
     }
-    if (handle->cmd_data_gpio_deinit())                                                   /* cmd data gpio deinit */
+    if (handle->cmd_data_gpio_deinit() != 0)                                              /* cmd data gpio deinit */
     {
         handle->debug_print("ssd1351: cmd data gpio deinit failed.\n");                   /* cmd data gpio deinit failed */
             
         return 6;                                                                         /* return error */
     }
-    if (handle->spi_deinit())                                                             /* spi deinit */
+    if (handle->spi_deinit() != 0)                                                        /* spi deinit */
     {
         handle->debug_print("ssd1351: spi deinit failed.\n");                             /* spi deinit failed */
         
