@@ -30,13 +30,13 @@ LibDriver SSD1351 ist der voll funktionsfähige Treiber von SSD1351, der von Lib
 
 /interface enthält die plattformunabhängige Vorlage LibDriver SSD1351 SPI.
 
-/test enthält den Testcode des LibDriver SSD1351-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen。
+/test enthält den Testcode des LibDriver SSD1351-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen.
 
 /example enthält LibDriver SSD1351-Beispielcode.
 
 /doc enthält das LibDriver SSD1351-Offlinedokument.
 
-/Datenblatt enthält SSD1351-Datenblatt。
+/Datenblatt enthält SSD1351-Datenblatt.
 
 /project enthält den allgemeinen Beispielcode für Linux- und MCU-Entwicklungsboards. Alle Projekte verwenden das Shell-Skript, um den Treiber zu debuggen, und die detaillierten Anweisungen finden Sie in der README.md jedes Projekts.
 
