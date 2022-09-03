@@ -130,6 +130,8 @@ static uint8_t a_ssd1351_write_byte(ssd1351_handle_t *handle, uint8_t data, uint
  *            - 1 set column address failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 address is invalid
+ *            - 5 start_address >= end_address
  * @note      start_address <= 127 && end_address <= 127 && start_address >= start_address
  */
 uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_address, uint8_t end_address)
@@ -146,13 +148,13 @@ uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_addre
     {
         handle->debug_print("ssd1351: address is invalid.\n");                           /* address is invalid */
         
-        return 1;                                                                        /* return error */
+        return 4;                                                                        /* return error */
     }
     if (start_address >= end_address)                                                    /* check range */
     {
         handle->debug_print("ssd1351: start_address >= end_address.\n");                 /* start_address <= end_address */
         
-        return 1;                                                                        /* return error */
+        return 5;                                                                        /* return error */
     }
 
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_COLUMN_ADDRESS, SSD1351_CMD) != 0)  /* write column address command */
@@ -187,6 +189,8 @@ uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_addre
  *            - 1 set row address failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 address is invalid
+ *            - 5 start_address >= end_address
  * @note      start_address <= 127 && end_address <= 127 && start_address >= start_address
  */
 uint8_t ssd1351_set_row_address(ssd1351_handle_t *handle, uint8_t start_address, uint8_t end_address)
@@ -203,13 +207,13 @@ uint8_t ssd1351_set_row_address(ssd1351_handle_t *handle, uint8_t start_address,
     {
         handle->debug_print("ssd1351: address is invalid.\n");                       /* address is invalid */
         
-        return 1;                                                                    /* return error */
+        return 4;                                                                    /* return error */
     }
     if (start_address >= end_address)                                                /* check range */
     {
         handle->debug_print("ssd1351: start_address >= end_address.\n");             /* start_address >= end_address */
         
-        return 1;                                                                    /* return error */
+        return 5;                                                                    /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_ROW_ADDRESS, SSD1351_CMD)!= 0)  /* set row address */
@@ -545,6 +549,7 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
  *            - 1 set display start line failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 line is over 127
  * @note      line <= 127
  */
 uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t l)
@@ -561,7 +566,7 @@ uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t l)
     {
         handle->debug_print("ssd1351: line is over 127.\n");                                 /* line is over 127 */
         
-        return 1;                                                                            /* return error */
+        return 4;                                                                            /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_DISPLAY_START_LINE, SSD1351_CMD) != 0)  /* set display start line */
@@ -589,6 +594,7 @@ uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t l)
  *            - 1 set display offset failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 offset is over 127
  * @note      offset <= 127
  */
 uint8_t ssd1351_set_display_offset(ssd1351_handle_t *handle, uint8_t offset)
@@ -605,7 +611,7 @@ uint8_t ssd1351_set_display_offset(ssd1351_handle_t *handle, uint8_t offset)
     {
         handle->debug_print("ssd1351: offset is over 127.\n");                           /* offset is over 127 */
         
-        return 1;                                                                        /* return error */
+        return 4;                                                                        /* return error */
     }
   
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_DISPLAY_OFFSET, SSD1351_CMD) != 0)  /* set display offset */ 
@@ -798,6 +804,10 @@ uint8_t ssd1351_set_sleep_mode(ssd1351_handle_t *handle, ssd1351_bool_t enable)
  *            - 1 set phase period failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 phase1_period is less than 2
+ *            - 5 phase1_period is over 15
+ *            - 6 phase2_period is less than 3
+ *            - 7 phase2_period is over 15
  * @note      2 <= phase1_period <=15 && 3 <= phase1_period <= 15
  */
 uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period, uint8_t phase2_period)
@@ -814,25 +824,25 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
     {
         handle->debug_print("ssd1351: phase1_period is less than 2.\n");                          /* phase1_period is less than 2 */
         
-        return 1;                                                                                 /* return error */
+        return 4;                                                                                 /* return error */
     }
     if (phase1_period > 15)                                                                       /* check phase1 */
     {
         handle->debug_print("ssd1351: phase1_period is over 15.\n");                              /* phase1_period is over 15 */
         
-        return 1;                                                                                 /* return error */
+        return 5;                                                                                 /* return error */
     }
     if (phase2_period < 3)                                                                        /* check phase2 */
     {
         handle->debug_print("ssd1351: phase2_period is less than 3.\n");                          /* phase2_period is less than 3 */
         
-        return 1;                                                                                 /* return error */
+        return 6;                                                                                 /* return error */
     }
     if (phase2_period > 15)                                                                       /* check phase2 */
     {
         handle->debug_print("ssd1351: phase2_period is over 15.\n");                              /* phase2_period is over 15 */
         
-        return 1;                                                                                 /* return error */
+        return 7;                                                                                 /* return error */
     }
 
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_RESET_PRE_CHARGE_PERIOD, SSD1351_CMD) != 0)  /* set reset pre charge period */
@@ -861,6 +871,8 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
  *            - 1 set front clock oscillator frequency failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 div is over 11
+ *            - 5 frequency is over 15
  * @note      div < 11 && frequency <= 15
  */
 uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, uint8_t d, uint8_t frequency)
@@ -877,13 +889,13 @@ uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, u
     {
         handle->debug_print("ssd1351: div is over 11.\n");                                         /* div is over 11 */
         
-        return 1;                                                                                  /* return error */
+        return 4;                                                                                  /* return error */
     }
     if (frequency > 15)                                                                            /* check frequency */
     {
         handle->debug_print("ssd1351: frequency is over 15.\n");                                   /* frequency is over 15 */
         
-        return 1;                                                                                  /* return error */
+        return 5;                                                                                  /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_FRONT_CLOCK_DIVIDER_OSC_FREQ, SSD1351_CMD) != 0)  /* set front clock divider osc freq */
@@ -1002,6 +1014,7 @@ uint8_t ssd1351_set_gpio(ssd1351_handle_t *handle, ssd1351_gpio_pin_t gpio0, ssd
  *            - 1 set second pre charge period failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 period is over 15
  * @note      none
  */
 uint8_t ssd1351_set_second_pre_charge_period(ssd1351_handle_t *handle, uint8_t period)
@@ -1018,7 +1031,7 @@ uint8_t ssd1351_set_second_pre_charge_period(ssd1351_handle_t *handle, uint8_t p
     {
         handle->debug_print("ssd1351: period is over 15.\n");                                      /* period is over 15 */
         
-        return 1;                                                                                  /* return error */
+        return 4;                                                                                  /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_SECOND_PRE_CHARGE_PERIOD, SSD1351_CMD) != 0)  /* set second pre charge period */
@@ -1120,6 +1133,7 @@ uint8_t ssd1351_set_use_built_in_linear_lut(ssd1351_handle_t *handle)
  *            - 1 set pre charge voltage failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 voltage level is over 0x1F
  * @note      voltage_level <= 0x1F
  */
 uint8_t ssd1351_set_pre_charge_voltage(ssd1351_handle_t *handle, uint8_t voltage_level)
@@ -1136,7 +1150,7 @@ uint8_t ssd1351_set_pre_charge_voltage(ssd1351_handle_t *handle, uint8_t voltage
     {
         handle->debug_print("ssd1351: voltage level is over 0x1F.\n");                       /* voltage level is over 0x1F */
         
-        return 1;                                                                            /* return error */
+        return 4;                                                                            /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_PRE_CHARGE_VOLTAGE, SSD1351_CMD) != 0)  /* set pre charge voltage */
@@ -1164,6 +1178,7 @@ uint8_t ssd1351_set_pre_charge_voltage(ssd1351_handle_t *handle, uint8_t voltage
  *            - 1 set vcomh voltage failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 voltage level is over 0x07
  * @note      voltage_level <= 0x07
  */
 uint8_t ssd1351_set_vcomh_voltage(ssd1351_handle_t *handle, uint8_t voltage_level)
@@ -1180,7 +1195,7 @@ uint8_t ssd1351_set_vcomh_voltage(ssd1351_handle_t *handle, uint8_t voltage_leve
     {
         handle->debug_print("ssd1351: voltage level is over 0x07.\n");                  /* voltage level is over 0x07 */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_VCOMH_VOLTAGE, SSD1351_CMD) != 0)  /* set vcomh voltage */
@@ -1260,6 +1275,7 @@ uint8_t ssd1351_set_contrast(ssd1351_handle_t *handle, uint8_t a, uint8_t b, uin
  *            - 1 set master contrast current failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 master contrast current is over 0x0F
  * @note      current <= 0x0F
  */
 uint8_t ssd1351_set_master_contrast_current(ssd1351_handle_t *handle, uint8_t current)
@@ -1276,7 +1292,7 @@ uint8_t ssd1351_set_master_contrast_current(ssd1351_handle_t *handle, uint8_t cu
     {
         handle->debug_print("ssd1351: master contrast current is over 0x0F.\n");              /* master contrast current is over 0x0F */
         
-        return 1;                                                                             /* return error */
+        return 4;                                                                             /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_MASTER_CONTRAST_CONTROL, SSD1351_CMD) != 0)  /* set master contrast current */
@@ -1304,6 +1320,8 @@ uint8_t ssd1351_set_master_contrast_current(ssd1351_handle_t *handle, uint8_t cu
  *            - 1 set mux ratio failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 ratio < 15
+ *            - 5 ratio > 127
  * @note      15 <= ratio <= 127
  */
 uint8_t ssd1351_set_mux_ratio(ssd1351_handle_t *handle, uint8_t ratio)
@@ -1320,13 +1338,13 @@ uint8_t ssd1351_set_mux_ratio(ssd1351_handle_t *handle, uint8_t ratio)
     {
         handle->debug_print("ssd1351: ratio < 15.\n");                                        /* ratio < 15 */
         
-        return 1;                                                                             /* return error */
+        return 4;                                                                             /* return error */
     }
     if (ratio > 127)                                                                          /* check ratio */
     {
         handle->debug_print("ssd1351: ratio > 127.\n");                                       /* ratio > 127 */
         
-        return 1;                                                                             /* return error */
+        return 5;                                                                             /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_MUX_RATIO, SSD1351_CMD) != 0)            /* set mux ratio */
@@ -1395,6 +1413,8 @@ uint8_t ssd1351_set_command(ssd1351_handle_t *handle, ssd1351_command_t command)
  *            - 1 set scroll failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 start row is over 127
+ *            - 5 start_row + row_len is over 128
  * @note      start_row <= 127 && start_row + row_len <= 128
  */
 uint8_t ssd1351_set_scroll(ssd1351_handle_t *handle, int8_t scroll, uint8_t start_row, uint8_t row_len, ssd1351_scroll_mode_t mode)
@@ -1411,13 +1431,13 @@ uint8_t ssd1351_set_scroll(ssd1351_handle_t *handle, int8_t scroll, uint8_t star
     {
         handle->debug_print("ssd1351: start row is over 127.\n");                       /* start row is over 127 */
         
-        return 1;                                                                       /* return error */
+        return 4;                                                                       /* return error */
     }
     if ((start_row + row_len) > 128)                                                    /* check row len */
     {
-        handle->debug_print("ssd1351: start_row+row_len is over 128.\n");               /* start_row + row_len is over 128 */
+        handle->debug_print("ssd1351: start_row + row_len is over 128.\n");             /* start_row + row_len is over 128 */
         
-        return 1;                                                                       /* return error */
+        return 5;                                                                       /* return error */
     }
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_STOP_MOVING, SSD1351_CMD) != 0)        /* set stop moving */
@@ -2627,6 +2647,8 @@ static uint8_t a_ssd1351_draw_picture_16_bits(ssd1351_handle_t *handle, uint8_t 
  *            - 1 draw point failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 x is over 127
+ *            - 5 y is over 127
  * @note      x <= 127 && y <= 127
  */
 uint8_t ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint32_t color)
@@ -2643,13 +2665,13 @@ uint8_t ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint3
     {
         handle->debug_print("ssd1351: x is over 127.\n");        /* x is over 127 */
         
-        return 1;                                                /* return error */
+        return 4;                                                /* return error */
     }
     if (y > 127)                                                 /* check y */
     {
         handle->debug_print("ssd1351: y is over 127.\n");        /* y is over 127 */
         
-        return 1;                                                /* return error */
+        return 5;                                                /* return error */
     }
     
     return a_ssd1351_draw_point(handle, x, y, color);            /* draw point */
@@ -2669,6 +2691,7 @@ uint8_t ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint3
  *            - 1 draw point failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 x or y is invalid
  * @note      x <= 127 && y <= 127
  */
 uint8_t ssd1351_write_string(ssd1351_handle_t *handle, uint8_t x, uint8_t y, char *str, uint16_t len, uint32_t color, ssd1351_font_t font)
@@ -2681,13 +2704,13 @@ uint8_t ssd1351_write_string(ssd1351_handle_t *handle, uint8_t x, uint8_t y, cha
     {
         return 3;                                                            /* return error */
     }
-    
     if((x > 127) || (y > 127))                                               /* check x, y */
     {
         handle->debug_print("ssd1351: x or y is invalid.\n");                /* x or y is invalid */
         
-        return 1;                                                            /* return error */
+        return 4;                                                            /* return error */
     }
+    
     while ((len != 0) && (*str <= '~') && (*str >= ' '))                     /* write all string */
     {       
         if (x > (127 - (font / 2)))                                          /* check x point */
@@ -2724,6 +2747,12 @@ uint8_t ssd1351_write_string(ssd1351_handle_t *handle, uint8_t x, uint8_t y, cha
  *            - 1 fill rect failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 left is over 127
+ *            - 5 right is over 127
+ *            - 6 left >= right
+ *            - 7 top is over 127
+ *            - 8 bottom is over 127
+ *            - 9 top >= bottom
  * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
  */
 uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t color)
@@ -2740,37 +2769,37 @@ uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, u
     {
         handle->debug_print("ssd1351: left is over 127.\n");                   /* left is over 127 */
         
-        return 1;                                                              /* return error */
+        return 4;                                                              /* return error */
     }
     if (right > 127)                                                           /* check right */
     {
         handle->debug_print("ssd1351: right is over 127.\n");                  /* right is over 127 */
         
-        return 1;                                                              /* return error */
+        return 5;                                                              /* return error */
     }
     if (left >= right)                                                         /* check left and right */
     {
         handle->debug_print("ssd1351: left >= right.\n");                      /* left >= right */
         
-        return 1;                                                              /* return error */
+        return 6;                                                              /* return error */
     }
     if (top > 127)                                                             /* check top */
     {
         handle->debug_print("ssd1351: top is over 127.\n");                    /* top is over 127 */
         
-        return 1;                                                              /* return error */
+        return 7;                                                              /* return error */
     }
     if (bottom > 127)                                                          /* check bottom */
     {
         handle->debug_print("ssd1351: bottom is over 127.\n");                 /* bottom is over 127 */
         
-        return 1;                                                              /* return error */
+        return 8;                                                              /* return error */
     }
     if (top >= bottom)                                                         /* check top and bottom */
     {
         handle->debug_print("ssd1351: top >= bottom.\n");                      /* top >= bottom */
         
-        return 1;                                                              /* return error */
+        return 9;                                                              /* return error */
     }
     
     return a_ssd1351_fill_rect(handle, left, top, right, bottom, color);       /* fill rect */
@@ -2789,6 +2818,12 @@ uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, u
  *            - 1 draw picture failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 left is over 127
+ *            - 5 right is over 127
+ *            - 6 left >= right
+ *            - 7 top is over 127
+ *            - 8 bottom is over 127
+ *            - 9 top >= bottom
  * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
  */
 uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *image)
@@ -2805,37 +2840,37 @@ uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top
     {
         handle->debug_print("ssd1351: left is over 127.\n");                   /* left is over 127 */
         
-        return 1;                                                              /* return error */
+        return 4;                                                              /* return error */
     }
     if (right > 127)                                                           /* check right */
     {
         handle->debug_print("ssd1351: right is over 127.\n");                  /* right is over 127 */
         
-        return 1;                                                              /* return error  */
+        return 5;                                                              /* return error  */
     }
     if (left >= right)                                                         /* check left and right */
     {
         handle->debug_print("ssd1351: left >= right.\n");                      /* left >= right */
         
-        return 1;                                                              /* return error */
+        return 6;                                                              /* return error */
     }
     if (top > 127)                                                             /* check top */
     {
         handle->debug_print("ssd1351: top is over 127.\n");                    /* top is over 127 */
         
-        return 1;                                                              /* return error */
+        return 7;                                                              /* return error */
     }
     if (bottom > 127)                                                          /* check bottom */
     {
         handle->debug_print("ssd1351: bottom is over 127.\n");                 /* bottom is over 127 */
         
-        return 1;                                                              /* return error */
+        return 8;                                                              /* return error */
     }
     if (top >= bottom)                                                         /* check top and bottom */
     {
         handle->debug_print("ssd1351: top >= bottom.\n");                      /* top >= bottom */
         
-        return 1;                                                              /* return error */
+        return 9;                                                              /* return error */
     }
     
     return a_ssd1351_draw_picture(handle, left, top, right, bottom, image);    /* draw picture */
@@ -2854,6 +2889,12 @@ uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top
  *            - 1 draw picture failed
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
+ *            - 4 left is over 127
+ *            - 5 right is over 127
+ *            - 6 left >= right
+ *            - 7 top is over 127
+ *            - 8 bottom is over 127
+ *            - 9 top >= bottom
  * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
  */
 uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *image)
@@ -2870,37 +2911,37 @@ uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint
     {
         handle->debug_print("ssd1351: left is over 127.\n");                              /* left is over 127 */
         
-        return 1;                                                                         /* return error */
+        return 4;                                                                         /* return error */
     }
     if (right > 127)                                                                      /* check right */
     {
         handle->debug_print("ssd1351: right is over 127.\n");                             /* right is over 127 */
         
-        return 1;                                                                         /* return error */
+        return 5;                                                                         /* return error */
     }
     if (left >= right)                                                                    /* check left and right */
     {
         handle->debug_print("ssd1351: left >= right.\n");                                 /* left >= right */
         
-        return 1;                                                                         /* return error */
+        return 6;                                                                         /* return error */
     }
     if (top > 127)                                                                        /* check top */
     {
         handle->debug_print("ssd1351: top is over 127.\n");                               /* top is over 127 */
         
-        return 1;                                                                         /* return error */
+        return 7;                                                                         /* return error */
     }
     if (bottom > 127)                                                                     /* check bottom */
     {
         handle->debug_print("ssd1351: bottom is over 127.\n");                            /* bottom is over 127 */
         
-        return 1;                                                                         /* return error */
+        return 8;                                                                         /* return error */
     }
     if (top >= bottom)                                                                    /* check top and bottom */
     {
         handle->debug_print("ssd1351: top >= bottom.\n");                                 /* top >= bottom */
         
-        return 1;                                                                         /* return error */
+        return 9;                                                                         /* return error */
     }
     
     return a_ssd1351_draw_picture_16_bits(handle, left, top, right, bottom, image);       /* draw picture */
