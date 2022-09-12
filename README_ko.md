@@ -51,6 +51,8 @@ LibDriver SSD1351은 LibDriver에서 출시한 SSD1351의 전체 기능 드라�
 #### example basic
 
 ```C
+#include "driver_ssd1351_basic.h"
+
 uint8_t res;
 
 res = ssd1351_basic_init();
@@ -106,6 +108,8 @@ return 0;
 </div>
 
 ```c
+#include "driver_ssd1351_advance.h"
+
 uint8_t res;
 uint16_t image[16384];
 
