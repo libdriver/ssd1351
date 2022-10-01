@@ -1,6 +1,6 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
 chip name : STM32F407ZGT6.
 
@@ -12,23 +12,23 @@ spi pin: SCK/MISO/MOSI/CS PA5/PA6/PA7/PA4.
 
 gpio pin: command pin/ reset pin PA8/PB0.
 
-### 2. shell
+### 2. Shell
 
-#### 2.1 shell parameter
+#### 2.1 Shell Parameter
 
-baud rate: 115200
+baud rate: 115200.
 
-data bits : 8
+data bits : 8.
 
-stop bits: 1
+stop bits: 1.
 
-parity: none
+parity: none.
 
-flow control: none
+flow control: none.
 
-### 3. ssd1351
+### 3. SSD1351
 
-#### 3.1 command Instruction
+#### 3.1 Command Instruction
 
 ​          ssd1351 is a basic command which can test all ssd1351 driver function:
 
@@ -78,7 +78,7 @@ flow control: none
 
 ​           -c advance -scroll <scroll> <startrow> <rowlen> (TSET | NORMAL | SLOW | SLOWEST)        run ssd1351 scroll function. scroll means the scroll number,if >0 left scroll and <0 right scroll. startrow means the start row. rowlen means the row lenght and startrow+rowlen max is 128. 
 
-#### 3.2 command example
+#### 3.2 Command Example
 
 ```shell
 ssd1351 -i
