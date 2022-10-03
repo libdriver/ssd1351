@@ -51,6 +51,8 @@ Fügen Sie /src, /interface und /example zu Ihrem Projekt hinzu.
 #### example basic
 
 ```C
+#include "driver_ssd1351_basic.h"
+
 uint8_t res;
 
 res = ssd1351_basic_init();
@@ -106,6 +108,8 @@ Bildextraktionsformat und Farbformat ist RGB565.
 </div>
 
 ```c
+#include "driver_ssd1351_advance.h"
+
 uint8_t res;
 uint16_t image[16384];
 

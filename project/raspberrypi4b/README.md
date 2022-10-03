@@ -1,32 +1,94 @@
-### 1. chip
+### 1. Chip
 
-#### 1.1 chip info
+#### 1.1 Chip Info
 
-chip name : Raspberry Pi 4B
+chip name : Raspberry Pi 4B.
 
-spi pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8
+spi pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8.
 
-gpio pin: RESET/CMD_DATA GPIO27/GPIO17
+gpio pin: RESET/CMD_DATA GPIO27/GPIO17.
 
-### 2. install
+### 2. Install
 
-#### 2.1 install info
+#### 2.1 Dependencies
+
+Install the necessary dependencies.
 
 ```shell
-sudo apt-get install libgpiod-dev
+sudo apt-get install libgpiod-dev pkg-config cmake -y
+```
 
+#### 2.2 Makefile
+
+Build the project.
+
+```shell
 make
 ```
 
-#### 2.2 run server
+Install the project and this is optional.
 
 ```shell
-./ssd1351_server 
+sudo make install
 ```
 
-### 3. ssd1351
+Uninstall the project and this is optional.
 
-#### 3.1 command Instruction
+```shell
+sudo make uninstall
+```
+
+#### 2.3 CMake
+
+Build the project.
+
+```shell
+mkdir build && cd build 
+cmake .. 
+make
+```
+
+Install the project and this is optional.
+
+```shell
+sudo make install
+```
+
+Uninstall the project and this is optional.
+
+```shell
+sudo make uninstall
+```
+
+Test the project and this is optional.
+
+```shell
+# open another terminal
+./ssd1351_server 
+
+# use the CMake terminal
+make test
+```
+
+Find the compiled library in CMake. 
+
+```cmake
+find_package(ssd1351 REQUIRED)
+```
+#### 2.4 How to run
+
+```shell
+# open one terminal and run the server
+./ssd1351_server 
+```
+```shell
+# open another terminal and sent the command
+./ssd1351 xxx xxx xxx ...
+```
+
+### 3. SSD1351
+
+#### 3.1 Command Instruction
 
 ​          ssd1351 is a basic command which can test all ssd1351 driver function:
 
@@ -76,7 +138,7 @@ make
 
 ​           -c advance -scroll <scroll> <startrow> <rowlen> (TSET | NORMAL | SLOW | SLOWEST)        run ssd1351 scroll function. scroll means the scroll number,if >0 left scroll and <0 right scroll. startrow means the start row. rowlen means the row lenght and startrow+rowlen max is 128. 
 
-#### 3.2 command example
+#### 3.2 Command Example
 
 ```shell
 ./ssd1351 -i

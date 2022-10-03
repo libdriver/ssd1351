@@ -51,6 +51,8 @@ LibDriver SSD1351是LibDriver推出的SSD1351的全功能驱动，该驱动提�
 #### example basic
 
 ```C
+#include "driver_ssd1351_basic.h"
+
 uint8_t res;
 
 res = ssd1351_basic_init();
@@ -106,6 +108,8 @@ return 0;
 </div>
 
 ```C
+#include "driver_ssd1351_advance.h"
+
 uint8_t res;
 uint16_t image[16384];
 
