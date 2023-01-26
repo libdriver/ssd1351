@@ -1,7 +1,7 @@
 [English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
-<img src="/doc/image/logo.png"/>
+<img src="/doc/image/logo.svg" width="400" height="150"/>
 </div>
 
 ## LibDriver SSD1351
@@ -101,10 +101,10 @@ return 0;
 
 #### example advance
 
-画像抽出フォーマットとカラーフォーマットはRGB565です。
+画像抽出フォーマットは以下の通りで、カラーフォーマットはRGB565です。
 
 <div align=center>
-<img src="/doc/image/image_format.png"/>
+<img src="/doc/image/image_format.svg" width="220" height="220"/>
 </div>
 
 ```c
@@ -196,13 +196,13 @@ return 0;
 
 ### ドキュメント
 
-オンラインドキュメント: https://www.libdriver.com/docs/ssd1351/index.html
+オンラインドキュメント: [https://www.libdriver.com/docs/ssd1351/index.html](https://www.libdriver.com/docs/ssd1351/index.html)。
 
-オフラインドキュメント: /doc/html/index.html
+オフラインドキュメント: /doc/html/index.html。
 
 ### 貢献
 
-お問い合わせくださいlishifenging@outlook.com
+CONTRIBUTING.mdを参照してください。
 
 ### 著作権
 
@@ -218,4 +218,4 @@ MITライセンス（MIT）
 
 ### 連絡して
 
-お問い合わせくださいlishifenging@outlook.com
+お問い合わせくださいlishifenging@outlook.com。

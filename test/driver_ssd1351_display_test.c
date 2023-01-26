@@ -102,7 +102,7 @@ uint8_t ssd1351_display_test(void)
         ssd1351_interface_debug_print("ssd1351: chip is %s.\n", info.chip_name);
         ssd1351_interface_debug_print("ssd1351: manufacturer is %s.\n", info.manufacturer_name);
         ssd1351_interface_debug_print("ssd1351: interface is %s.\n", info.interface);
-        ssd1351_interface_debug_print("ssd1351: driver version is %d.%d.\n", info.driver_version/1000, (info.driver_version%1000)/100);
+        ssd1351_interface_debug_print("ssd1351: driver version is %d.%d.\n", info.driver_version / 1000, (info.driver_version % 1000) / 100);
         ssd1351_interface_debug_print("ssd1351: min supply voltage is %0.1fV.\n", info.supply_voltage_min_v);
         ssd1351_interface_debug_print("ssd1351: max supply voltage is %0.1fV.\n", info.supply_voltage_max_v);
         ssd1351_interface_debug_print("ssd1351: max current is %0.2fmA.\n", info.max_current_ma);

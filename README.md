@@ -1,7 +1,7 @@
 [English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
-<img src="/doc/image/logo.png"/>
+<img src="/doc/image/logo.svg" width="400" height="150"/>
 </div>
 
 ## LibDriver SSD1351
@@ -101,10 +101,10 @@ return 0;
 
 #### example advance
 
-Image extraction format and color format is RGB565.
+The image extraction format is as follows and color format is RGB565.
 
 <div align=center>
-<img src="/doc/image/image_format.png"/>
+<img src="/doc/image/image_format.svg" width="220" height="220"/>
 </div>
 
 ```C
@@ -196,13 +196,13 @@ return 0;
 
 ### Document
 
-Online documents: https://www.libdriver.com/docs/ssd1351/index.html
+Online documents: [https://www.libdriver.com/docs/ssd1351/index.html](https://www.libdriver.com/docs/ssd1351/index.html).
 
-Offline documents: /doc/html/index.html
+Offline documents: /doc/html/index.html.
 
 ### Contributing
 
-Please sent an e-mail to lishifenging@outlook.com
+Please refer to CONTRIBUTING.md.
 
 ### License
 
@@ -250,4 +250,4 @@ SOFTWARE.
 
 ### Contact Us
 
-Please sent an e-mail to lishifenging@outlook.com
+Please sent an e-mail to lishifenging@outlook.com.
