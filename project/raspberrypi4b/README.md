@@ -1,12 +1,12 @@
-### 1. Chip
+### 1. Board
 
-#### 1.1 Chip Info
+#### 1.1 Board Info
 
-chip name : Raspberry Pi 4B.
+Board Name: Raspberry Pi 4B.
 
-spi pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8.
+SPI Pin: SCLK/MOSI/MISO/CS GPIO11/GPIO10/GPIO9/GPIO8.
 
-gpio pin: RESET/CMD_DATA GPIO27/GPIO17.
+GPIO Pin: RESET/CMD_DATA GPIO27/GPIO17.
 
 ### 2. Install
 
@@ -75,7 +75,143 @@ Find the compiled library in CMake.
 ```cmake
 find_package(ssd1351 REQUIRED)
 ```
-#### 2.4 How to run
+### 3. SSD1351
+
+#### 3.1 Command Instruction
+
+1. Show ssd1351 chip and driver information.
+
+   ```shell
+   ssd1351 (-i | --information)
+   ```
+
+2. Show ssd1351  help.
+
+   ```shell
+   ssd1351 (-h | --help)
+   ```
+
+3. Show ssd1351  pin connections of the current board.
+
+   ```shell
+   ssd1351 (-p | --port)
+   ```
+
+4. Run ssd1351 display test.
+
+   ```shell
+   ssd1351 (-t display | --test=display)
+   ```
+
+5. Run ssd1351 basic init function.
+
+   ```shell
+   ssd1351 (-e basic-init | --example=basic-init)
+   ```
+
+6. Run ssd1351 basic deinit function.
+
+   ```shell
+   ssd1351 (-e basic-deinit | --example=basic-deinit)
+   ```
+
+7. Run ssd1351 show string function, string means the shown string. 
+
+   ```shell
+   ssd1351 (-e basic-str | --example=basic-str) [--str=<string>]
+   ```
+
+8. Run ssd1351 display on function.
+
+   ```shell
+   ssd1351 (-e basic-display-on | --example=basic-display-on)
+   ```
+
+9. Run ssd1351 display off function.
+
+   ```shell
+   ssd1351 (-e basic-display-off | --example=basic-display-off)
+   ```
+
+10. Run ssd1351 clear screen function.
+
+    ```shell
+    ssd1351 (-e basic-clear | --example=basic-clear)
+    ```
+
+11. Run ssd1351 write pont function, x0 is the x of the point and y0 is the y of the point, rgb565 means the filled color.
+
+    ```shell
+    ssd1351 (-e basic-point | --example=basic-point) --x0=<x0> --y0=<y0> [--color=<rgb565>]
+    ```
+
+12. Run ssd1351 draw rectangle function, x1 is the top left x of the rect, y1 is the top left y of the rect, x2 is the bottom right x of the rect and y2 is the bottom right y of the rect, rgb565 means the filled color.
+
+    ```shell
+    ssd1351 (-e basic-rect | --example=basic-rect) --x1=<x1> --y1=<y1> --x2=<x2> --y2=<y2> [--color=<rgb565>]
+    ```
+
+13. Run ssd1351 advance init function. 
+
+    ```shell
+    ssd1351 (-e advance-init | --example=advance-init)
+    ```
+
+14. Run ssd1351 advance deinit function. 
+
+    ```shell
+    ssd1351 (-e advance-deinit | --example=advance-deinit)
+    ```
+
+15. Run ssd1351 show string function, string means the shown string. 
+
+    ```shell
+    ssd1351 (-e advance-str | --example=advance-str) [--str=<string>]
+    ```
+
+16. Run ssd1351 display on function.
+
+    ```shell
+    ssd1351 (-e advance-display-on | --example=advance-display-on)
+    ```
+
+17. Run ssd1351 display off function.
+
+    ```shell
+    ssd1351 (-e advance-display-off | --example=advance-display-off)
+    ```
+
+18. Run ssd1351 clear screen function.
+
+    ```shell
+    ssd1351 (-e advance-clear | --example=advance-clear)
+    ```
+
+19. Run ssd1351 write pont function, x0 is the x of the point and y0 is the y of the point, rgb565 means the filled color.
+
+    ```shell
+    ssd1351 (-e advance-point | --example=advance-point) --x0=<x0> --y0=<y0> [--color=<rgb565>]
+    ```
+
+20. Run ssd1351 draw rectangle function, x1 is the top left x of the rect, y1 is the top left y of the rect, x2 is the bottom right x of the rect and y2 is the bottom right y of the rect, rgb565 means the filled color.
+
+    ```shell
+    ssd1351 (-e advance-rect | --example=advance-rect) --x1=<x1> --y1=<y1> --x2=<x2> --y2=<y2> [--color=<rgb565>]
+    ```
+
+21. Run ssd1351 disable scroll function.
+
+    ```shell
+    ssd1351 (-e advance-disable-scroll | --example=advance-disable-scroll)
+    ```
+
+22. Run ssd1351 scroll function, num means the scroll number, if > 0 means left scroll and < 0 means right scroll, srow means the start row, len means the row length and srow + len max is 128.
+
+    ```shell
+    ssd1351 (-e advance-scroll | --example=advance-scroll) [--scroll=<num>] [--start=<srow>] [--length=<len>] [--mode=<TEST | NORMAL | SLOW | SLOWEST>]
+    ```
+
+#### 3.2 How to run
 
 ```shell
 # open one terminal and run the server
@@ -86,59 +222,7 @@ find_package(ssd1351 REQUIRED)
 ./ssd1351 xxx xxx xxx ...
 ```
 
-### 3. SSD1351
-
-#### 3.1 Command Instruction
-
-​          ssd1351 is a basic command which can test all ssd1351 driver function:
-
-​           -i        show ssd1351 chip and driver information.
-
-​           -h       show ssd1351  help.
-
-​           -p       show ssd1351  pin connections of the current board.
-
-​           -t display        run ssd1351 display test. 
-
-​           -c (basic (-init | -deinit | -str <string> | -displayon | -displayoff | -clear | -writepoint <x> <y> <color> | -rect <x1> <y1> <x2> <y2> <color>) | advance (-init | -deinit | -str <string> | -displayon | -displayoff | -clear | -writepoint <x> <y> <color> | -rect <x1> <y1> <x2> <y2> <color> | -disable_scroll | -scroll <scroll> <startrow> <rowlen> (TSET | NORMAL | SLOW | SLOWEST)))
-
-​           -c basic -init        run ssd1351 basic init function. 
-
-​           -c basic -deinit        run ssd1351 basic deinit function. 
-
-​           -c basic -str <string>        run ssd1351 show string function. string means the shown string. 
-
-​           -c basic -displayon        run ssd1351 display on function. 
-
-​           -c basic -displayoff        run ssd1351 display off function. 
-
-​           -c basic -clear        run ssd1351 clear screen function. 
-
-​           -c basic -writepoint  <x> <y> <color>        run ssd1351 write pont function. x and y mean coordinate in screen. color means the filled color.
-
-​           -c basic -rect <x1> <y1> <x2> <y2> <color>        run ssd1351 draw rectangle function . x1 means x start. y1 means y start. x2 means x end. y2 means y end. color means the filled color.
-
-​           -c advance -init        run ssd1351 advance init function. 
-
-​           -c advance -deinit        run ssd1351 advance deinit function. 
-
-​           -c advance -str <string>        run ssd1351 show string function. string means the shown string. 
-
-​           -c advance -displayon        run ssd1351 display on function. 
-
-​           -c advance -displayoff        run ssd1351 display off function. 
-
-​           -c advance -clear        run ssd1351 clear screen function. 
-
-​           -c advance -writepoint  <x> <y> <color>        run ssd1351 write pont function. x and y mean coordinate in screen. color means the filled color.
-
-​           -c advance -rect <x1> <y1> <x2> <y2> <color>        run ssd1351 draw rectangle function . x1 means x start. y1 means y start. x2 means x end. y2 means y end. color means the filled color.
-
-​           -c advance -disable_scroll        run ssd1351 disable scroll function. 
-
-​           -c advance -scroll <scroll> <startrow> <rowlen> (TSET | NORMAL | SLOW | SLOWEST)        run ssd1351 scroll function. scroll means the scroll number,if >0 left scroll and <0 right scroll. startrow means the start row. rowlen means the row lenght and startrow+rowlen max is 128. 
-
-#### 3.2 Command Example
+#### 3.3 Command Example
 
 ```shell
 ./ssd1351 -i
@@ -191,109 +275,109 @@ ssd1351: finish display test.
 ```
 
 ```shell
-./ssd1351 -c basic -str 12345abcdEFGH 
-
-ssd1351: 12345abcdEFGH..
-```
-
-```shell
-./ssd1351 -c basic -init
-
-ssd1351: init success.
-```
-
-```shell
-./ssd1351 -c basic -displayoff
-
-ssd1351: display off.
-```
-
-```shell
-./ssd1351 -c basic -displayon
-
-ssd1351: display on.
-```
-
-```shell
-./ssd1351 -c basic -clear
-
-ssd1351: clear screen.
-```
-
-```shell
-./ssd1351 -c basic -deinit
-
-ssd1351: deinit ssd1351.
-```
-
-```shell
-./ssd1351 -c basic -writepoint 16 16 65535
-
-ssd1351: write point 16 16 65535.
-```
-
-```shell
-./ssd1351 -c basic -rect 0 0 72 72 31
-
-ssd1351: draw rect 0 0 72 72.
-```
-
-```shell
-./ssd1351 -c advance -init
-
-ssd1351: init success.
-```
-
-```shell
-./ssd1351 -c advance -str 12345abcdEFGH
+./ssd1351 -e basic-str --str=12345abcdEFGH
 
 ssd1351: 12345abcdEFGH.
 ```
 
 ```shell
-./ssd1351 -c advance -displayoff
+./ssd1351 -e basic-init
+
+ssd1351: init success.
+```
+
+```shell
+./ssd1351 -e basic-display-off
 
 ssd1351: display off.
 ```
 
 ```shell
-./ssd1351 -c advance -displayon
+./ssd1351 -e basic-display-on
 
 ssd1351: display on.
 ```
 
 ```shell
-./ssd1351 -c advance -clear
+./ssd1351 -e basic-clear
 
 ssd1351: clear screen.
 ```
 
 ```shell
-./ssd1351 -c advance -writepoint 16 16 65535
-
-ssd1351: write point 16 16 65535.
-```
-
-```shell
-./ssd1351 -c advance -rect 0 0 72 72 31
-
-ssd1351: draw rect 0 0 72 72.
-```
-
-```shell
-./ssd1351 -c advance -deinit
+./ssd1351 -e basic-deinit
 
 ssd1351: deinit ssd1351.
 ```
 
 ```shell
-./ssd1351 -c advance -disable_scroll
+./ssd1351 -e basic-point --x0=16 --y0=16 --color=65535
+
+ssd1351: write point 16 16 65535.
+```
+
+```shell
+./ssd1351 -e basic-rect --x1=0 --y1=0 --x2=72 --y2=72 --color=65535
+
+ssd1351: draw rect 0 0 72 72.
+```
+
+```shell
+./ssd1351 -e advance-init
+
+ssd1351: init success.
+```
+
+```shell
+./ssd1351 -e advance-str --str=12345abcdEFGH
+
+ssd1351: 12345abcdEFGH.
+```
+
+```shell
+./ssd1351 -e advance-display-off
+
+ssd1351: display off.
+```
+
+```shell
+./ssd1351 -e advance-display-on
+
+ssd1351: display on.
+```
+
+```shell
+./ssd1351 -e advance-clear
+
+ssd1351: clear screen.
+```
+
+```shell
+./ssd1351 -e advance-point --x0=16 --y0=16 --color=65535
+
+ssd1351: write point 16 16 65535.
+```
+
+```shell
+./ssd1351 -e advance-rect --x1=0 --y1=0 --x2=72 --y2=72 --color=65535
+
+ssd1351: draw rect 0 0 72 72.
+```
+
+```shell
+./ssd1351 -e advance-deinit
+
+ssd1351: deinit ssd1351.
+```
+
+```shell
+./ssd1351 -e advance-disable-scroll
 
 ssd1351: disable scroll.
 ```
 
 ```shell
-./ssd1351 -c advance -scroll 1 0 128 NORMAL
+./ssd1351 -e advance-scroll --scroll=1 --start=0 --length=128 --mode=NORMAL
 
 ssd1351: set scroll 1 0 128.
 ```
@@ -301,49 +385,53 @@ ssd1351: set scroll 1 0 128.
 ```shell
 ./ssd1351 -h
 
-ssd1351 -i
-	show ssd1351 chip and driver information.
-ssd1351 -h
-	show ssd1351 help.
-ssd1351 -p
-	show ssd1351 pin connections of the current board.
-ssd1351 -t display
-	run ssd1351 display test.
-ssd1351 -c basic -init
-	run ssd1351 basic init function.
-ssd1351 -c basic -deinit
-	run ssd1351 basic deinit function.
-ssd1351 -c basic -str <string>
-	run ssd1351 show string function.string means the shown string.
-ssd1351 -c basic -displayon
-	run ssd1351 display on function.
-ssd1351 -c basic -displayoff
-	run ssd1351 display off function.
-ssd1351 -c basic -clear
-	run ssd1351 clear screen function.
-ssd1351 -c basic -writepoint <x> <y> <color>
-	run ssd1351 write pont function.x and y mean coordinate in screen.color means the filled color.
-ssd1351 -c basic -rect <x1> <y1> <x2> <y2> <color>
-	run ssd1351 draw rectangle function.x1 means x start.y1 means y start.x2 means x end.y2 means y end.color means the filled color.
-ssd1351 -c advance -init
-	run ssd1351 advance init function.
-ssd1351 -c advance -deinit
-	run ssd1351 advance deinit function.
-ssd1351 -c advance -str <string>
-	run ssd1351 show string function.string means the shown string.
-ssd1351 -c advance -displayon
-	run ssd1351 display on function.
-ssd1351 -c advance -displayoff
-	run ssd1351 display off function.
-ssd1351 -c advance -clear
-	run ssd1351 clear screen function.
-ssd1351 -c advance -writepoint <x> <y> <color>
-	run ssd1351 write pont function.x and y mean coordinate in screen.color means the filled color.
-ssd1351 -c advance -rect <x1> <y1> <x2> <y2> <color>
-	run ssd1351 draw rectangle function.x1 means x start.y1 means y start.x2 means x end.y2 means y end.color means the filled color.
-ssd1351 -c advance -disable_scroll
-	run ssd1351 disable scroll function.
-ssd1351 -c advance -scroll <scroll> <startrow> <rowlen> (TSET | NORMAL | SLOW | SLOWEST)
-	run ssd1351 scroll function.scroll means the scroll number,if >0 left scroll and <0 right scroll.startrow means the start row.rowlen means the row lenght and startrow + rowlen max is 128.
+Usage:
+  ssd1351 (-i | --information)
+  ssd1351 (-h | --help)
+  ssd1351 (-p | --port)
+  ssd1351 (-t display | --test=display)
+  ssd1351 (-e basic-init | --example=basic-init)
+  ssd1351 (-e basic-deinit | --example=basic-deinit)
+  ssd1351 (-e basic-str | --example=basic-str) [--str=<string>]
+  ssd1351 (-e basic-display-on | --example=basic-display-on)
+  ssd1351 (-e basic-display-off | --example=basic-display-off)
+  ssd1351 (-e basic-clear | --example=basic-clear)
+  ssd1351 (-e basic-point | --example=basic-point) --x0=<x0> --y0=<y0> [--color=<rgb565>]
+  ssd1351 (-e basic-rect | --example=basic-rect) --x1=<x1> --y1=<y1> --x2=<x2> --y2=<y2> [--color=<rgb565>]
+  ssd1351 (-e advance-init | --example=advance-init)
+  ssd1351 (-e advance-deinit | --example=advance-deinit)
+  ssd1351 (-e advance-str | --example=advance-str) [--str=<string>]
+  ssd1351 (-e advance-display-on | --example=advance-display-on)
+  ssd1351 (-e advance-display-off | --example=advance-display-off)
+  ssd1351 (-e advance-clear | --example=advance-clear)
+  ssd1351 (-e advance-point | --example=advance-point) --x0=<x0> --y0=<y0> [--color=<rgb565>]
+  ssd1351 (-e advance-rect | --example=advance-rect) --x1=<x1> --y1=<y1> --x2=<x2> --y2=<y2> [--color=<rgb565>]
+  ssd1351 (-e advance-disable-scroll | --example=advance-disable-scroll)
+  ssd1351 (-e advance-scroll | --example=advance-scroll) [--scroll=<num>] [--start=<srow>] [--length=<len>]
+          [--mode=<TEST | NORMAL | SLOW | SLOWEST>]
+
+Options:
+     --color=<rgb565>     Set the chip color.([default: 65535])
+  -e <basic-init | basic-deinit | basic-str | basic-display-on | basic-display-off | basic-clear
+     | basic-point | basic-rect>, --example=<advance-init | advance-deinit | advance-str | advance-display-on
+     | advance-display-off | advance-clear | advance-point | advance-rect | advance-disable-scroll | advance-scroll>
+                          Run the driver example.
+  -h, --help              Show the help.
+  -i, --information       Show the chip information.
+      --mode=<TEST | NORMAL | SLOW | SLOWEST>
+                          Set the scrolling mode.([default: NORMAL])
+      --length=<len>      Set the scrolling row length and len + srow <= 128.([default: 128])
+  -p, --port              Display the pin connections of the current board.
+      --scroll            Set the scrolling number, if > 0 left scroll and < 0 right scroll.([default: 1])
+      --start=<srow>      Set the scrolling start row and len + srow <= 128.([default: 0])
+      --str=<string>      Set the display string.([default: libdriver])
+  -t <display>, --test=<display>
+                          Run the driver test.
+      --x0=<x0>           Set the x0 and it is the x of the point.
+      --x1=<x1>           Set the x1 and it is the top left x of the rect.
+      --x2=<x2>           Set the x2 and it is the bottom right x of the rect.
+      --y0=<y0>           Set the y0 and it is the y of the point.
+      --y1=<y1>           Set the y1 and it is the top left y of the rect.
+      --y2=<y2>           Set the y2 and it is the bottom right y of the rect.
 ```
 
