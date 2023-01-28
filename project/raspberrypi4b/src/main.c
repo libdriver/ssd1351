@@ -929,7 +929,7 @@ int main(void)
 {
     uint8_t res;
     
-    /* socket init*/
+    /* socket init */
     res = a_socket_init();
     if (res)
     {
