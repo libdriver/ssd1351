@@ -406,7 +406,7 @@ uint8_t ssd1351_set_seg0_map(ssd1351_handle_t *handle, ssd1351_seg0_mapped_t seg
     handle->conf_1 |= seg0_map << 1;                                                        /* set conf */
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set seg0 map */
     {
-        handle->debug_print("ssd1351: wrire seg0 map failed.\n");                           /* write seg0 map failed */
+        handle->debug_print("ssd1351: write seg0 map failed.\n");                           /* write seg0 map failed */
         
         return 1;                                                                           /* return error */
     }
@@ -446,7 +446,7 @@ uint8_t ssd1351_set_color_sequence(ssd1351_handle_t *handle, ssd1351_color_seque
     handle->conf_1 |= color_sequence << 2;                                                  /* set conf */
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set color sequence */
     {
-        handle->debug_print("ssd1351: wrire color sequence failed.\n");                     /* write color sequence failed */
+        handle->debug_print("ssd1351: write color sequence failed.\n");                     /* write color sequence failed */
         
         return 1;                                                                           /* return error */
     }
@@ -486,7 +486,7 @@ uint8_t ssd1351_set_scan_mode(ssd1351_handle_t *handle, ssd1351_scan_mode_t mode
     handle->conf_1 |= mode << 4;                                                            /* set conf */
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set scan mode */
     {
-        handle->debug_print("ssd1351: wrire scan mode failed.\n");                          /* write scan mode failed */
+        handle->debug_print("ssd1351: write scan mode failed.\n");                          /* write scan mode failed */
         
         return 1;                                                                           /* return error */
     }
@@ -526,7 +526,7 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
     handle->conf_1 |= enable << 5;                                                          /* set conf */
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_REMAP_COLOR_DEPTH, SSD1351_CMD) != 0)  /* set com split odd even */
     {
-        handle->debug_print("ssd1351: wrire com split odd even failed.\n");                 /* write com split odd even failed */
+        handle->debug_print("ssd1351: write com split odd even failed.\n");                 /* write com split odd even failed */
         
         return 1;                                                                           /* return error */
     }
@@ -732,7 +732,7 @@ uint8_t ssd1351_set_parallel_bits(ssd1351_handle_t *handle, ssd1351_select_paral
         
         return 1;                                                                        /* return error */
     }
-    if (a_ssd1351_write_byte(handle, handle->conf_2, SSD1351_DATA) != 0)                 /* set sparallel bits */
+    if (a_ssd1351_write_byte(handle, handle->conf_2, SSD1351_DATA) != 0)                 /* set parallel bits */
     {
         handle->debug_print("ssd1351: write parallel bits failed.\n");                   /* write parallel bits failed */
         
@@ -847,13 +847,13 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
 
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_RESET_PRE_CHARGE_PERIOD, SSD1351_CMD) != 0)  /* set reset pre charge period */
     {
-        handle->debug_print("ssd1351: write reset pre charge period failed.\n");                  /* write reset pre charge period failed */
+        handle->debug_print("ssd1351: write reset pre charge period failed.\n");                  /* write reset pre-charge period failed */
         
         return 1;                                                                                 /* return error */
     }
     if (a_ssd1351_write_byte(handle, (phase2_period << 4) | phase1_period, SSD1351_DATA) != 0)    /* set phase period */
     {
-        handle->debug_print("ssd1351: write reset pre charge period failed.\n");                  /* write reset pre charge period failed */
+        handle->debug_print("ssd1351: write reset pre charge period failed.\n");                  /* write reset pre-charge period failed */
         
         return 1;                                                                                 /* return error */
     }
@@ -1034,15 +1034,15 @@ uint8_t ssd1351_set_second_pre_charge_period(ssd1351_handle_t *handle, uint8_t p
         return 4;                                                                                  /* return error */
     }
     
-    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_SECOND_PRE_CHARGE_PERIOD, SSD1351_CMD) != 0)  /* set second pre charge period */
+    if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_SECOND_PRE_CHARGE_PERIOD, SSD1351_CMD) != 0)  /* set second pre-charge period */
     {
-        handle->debug_print("ssd1351: write second pre charge period failed.\n");                  /* write second pre charge period failed */
+        handle->debug_print("ssd1351: write second pre charge period failed.\n");                  /* write second pre-charge period failed */
         
         return 1;                                                                                  /* return error */
     }
-    if (a_ssd1351_write_byte(handle, period, SSD1351_DATA) != 0)                                   /* set second pre charge period */
+    if (a_ssd1351_write_byte(handle, period, SSD1351_DATA) != 0)                                   /* set second pre-charge period */
     {
-        handle->debug_print("ssd1351: write second pre charge period failed.\n");                  /* write second pre charge period failed */
+        handle->debug_print("ssd1351: write second pre charge period failed.\n");                  /* write second pre-charge period failed */
         
         return 1;                                                                                  /* return error */
     }
@@ -1155,13 +1155,13 @@ uint8_t ssd1351_set_pre_charge_voltage(ssd1351_handle_t *handle, uint8_t voltage
     
     if (a_ssd1351_write_byte(handle, SSD1351_CMD_SET_PRE_CHARGE_VOLTAGE, SSD1351_CMD) != 0)  /* set pre charge voltage */
     {
-        handle->debug_print("ssd1351: write pre charge voltage failed.\n");                  /* write pre charge voltage failed */
+        handle->debug_print("ssd1351: write pre charge voltage failed.\n");                  /* write pre-charge voltage failed */
         
         return 1;                                                                            /* return error */
     }
     if (a_ssd1351_write_byte(handle, voltage_level, SSD1351_DATA) != 0)                      /* set pre charge voltage */
     {
-        handle->debug_print("ssd1351: write pre charge voltage failed.\n");                  /* write pre charge voltage failed */
+        handle->debug_print("ssd1351: write pre charge voltage failed.\n");                  /* write pre-charge voltage failed */
         
         return 1;                                                                            /* return error */
     }
@@ -3266,7 +3266,7 @@ uint8_t ssd1351_info(ssd1351_info_t *info)
     info->max_current_ma = MAX_CURRENT;                             /* set maximum current */
     info->temperature_max = TEMPERATURE_MAX;                        /* set minimal temperature */
     info->temperature_min = TEMPERATURE_MIN;                        /* set maximum temperature */
-    info->driver_version = DRIVER_VERSION;                          /* set driver verison */
+    info->driver_version = DRIVER_VERSION;                          /* set driver version */
     
     return 0;                                                       /* success return 0 */
 }

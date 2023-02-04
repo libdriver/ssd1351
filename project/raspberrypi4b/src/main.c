@@ -91,7 +91,7 @@ uint8_t ssd1351(uint8_t argc, char** argv)
         {"y2", required_argument, NULL, 12},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     ssd1351_scroll_mode_t mode = SSD1351_SCROLL_MODE_NORMAL;
     uint32_t color = 65535;
     uint8_t length = 128;
@@ -830,7 +830,7 @@ static uint8_t a_socket_init(void)
     gs_listen_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (gs_listen_fd < 0) 
     {
-        ssd1351_interface_debug_print("ssd1351: cread socket failed.\n");
+        ssd1351_interface_debug_print("ssd1351: create socket failed.\n");
         
         return 1;
     }
@@ -845,7 +845,7 @@ static uint8_t a_socket_init(void)
     optval = 1;
     if (setsockopt(gs_listen_fd, SOL_SOCKET, SO_REUSEADDR, (char *)&optval, sizeof(optval)) < 0)
     {
-        ssd1351_interface_debug_print("ssd1351: cread socket failed.\n");
+        ssd1351_interface_debug_print("ssd1351: create socket failed.\n");
         (void)close(gs_listen_fd);
         
         return 1;
@@ -938,7 +938,7 @@ int main(void)
         return 1;
     }
 
-    /* shell init && register ssd1306 fuction */
+    /* shell init && register ssd1306 function */
     shell_init();
     shell_register("ssd1351", ssd1351);
     ssd1351_interface_debug_print("ssd1351: welcome to libdriver ssd1351.\n");
@@ -964,7 +964,7 @@ int main(void)
             }
             else if (res == 2)
             {
-                ssd1351_interface_debug_print("ssd1351: unknow command.\n");
+                ssd1351_interface_debug_print("ssd1351: unknown command.\n");
             }
             else if (res == 3)
             {
@@ -980,7 +980,7 @@ int main(void)
             }
             else
             {
-                ssd1351_interface_debug_print("ssd1351: unknow status code.\n");
+                ssd1351_interface_debug_print("ssd1351: unknown status code.\n");
             }
         }
     }
