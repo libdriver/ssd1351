@@ -22,7 +22,7 @@
  * SOFTWARE.
  *
  * @file      main.c
- * @brief     main souce file
+ * @brief     main source file
  * @version   2.0.0
  * @author    Shifeng Li
  * @date      2021-04-08
@@ -87,7 +87,7 @@ uint8_t ssd1351(uint8_t argc, char** argv)
         {"y2", required_argument, NULL, 12},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     ssd1351_scroll_mode_t mode = SSD1351_SCROLL_MODE_NORMAL;
     uint32_t color = 65535;
     uint8_t length = 128;
@@ -828,7 +828,7 @@ int main(void)
     /* uart init */
     uart_init(115200);
 
-    /* shell init && register ssd1351 fuction */
+    /* shell init && register ssd1351 function */
     shell_init();
     shell_register("ssd1351", ssd1351);
     uart_print("ssd1351: welcome to libdriver ssd1351.\n");
@@ -851,7 +851,7 @@ int main(void)
             }
             else if (res == 2)
             {
-                uart_print("ssd1351: unknow command.\n");
+                uart_print("ssd1351: unknown command.\n");
             }
             else if (res == 3)
             {
@@ -867,7 +867,7 @@ int main(void)
             }
             else
             {
-                uart_print("ssd1351: unknow status code.\n");
+                uart_print("ssd1351: unknown status code.\n");
             }
             uart_flush();
         }

@@ -519,7 +519,7 @@ uint8_t ssd1351_advance_rect(uint8_t left, uint8_t top, uint8_t right, uint8_t b
  *            - 1 draw picture failed
  * @note      none
  */
-uint8_t ssd1351_advance_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *img)
+uint8_t ssd1351_advance_draw_picture(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *img)
 {
     /* draw picture */
     if (ssd1351_draw_picture(&gs_handle, left, top, right, bottom, img) != 0)
@@ -544,7 +544,7 @@ uint8_t ssd1351_advance_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, u
  *            - 1 draw picture 16 bits failed
  * @note      none
  */
-uint8_t ssd1351_advance_draw_pictrue_16bits(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *img)
+uint8_t ssd1351_advance_draw_picture_16bits(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *img)
 {
     /* draw picture in 16 bits */
     if (ssd1351_draw_picture_16bits(&gs_handle, left, top, right, bottom, img) != 0)
@@ -559,7 +559,7 @@ uint8_t ssd1351_advance_draw_pictrue_16bits(uint8_t left, uint8_t top, uint8_t r
 
 /**
  * @brief     advance example set scroll
- * @param[in] scroll is the scoll number
+ * @param[in] scroll is the scroll number
  * @param[in] start_row is the start row
  * @param[in] row_len is the scrolling row length
  * @param[in] mode is the scroll mode

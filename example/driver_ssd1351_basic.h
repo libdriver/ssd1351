@@ -178,7 +178,7 @@ uint8_t ssd1351_basic_rect(uint8_t left, uint8_t top, uint8_t right, uint8_t bot
  *            - 1 draw picture failed
  * @note      none
  */
-uint8_t ssd1351_basic_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *img);
+uint8_t ssd1351_basic_draw_picture(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *img);
 
 /**
  * @brief     basic example draw a 16 bits picture
@@ -192,7 +192,7 @@ uint8_t ssd1351_basic_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, uin
  *            - 1 draw picture 16 bits failed
  * @note      none
  */
-uint8_t ssd1351_basic_draw_pictrue_16bits(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *img);
+uint8_t ssd1351_basic_draw_picture_16bits(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *img);
 
 /**
  * @}

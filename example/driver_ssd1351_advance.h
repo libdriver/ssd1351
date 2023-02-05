@@ -76,7 +76,7 @@ extern "C"{
 #define SSD1351_ADVANCE_DEFAULT_PHASE2_PERIOD                  0x03                                            /* set phase2 period 0x03 */
 #define SSD1351_ADVANCE_DEFAULT_PRE_CHARGE_VOLTAGE             0x17                                            /* set pre charge voltage 0x17 */
 #define SSD1351_ADVANCE_DEFAULT_VCOMH_VOLTAGE                  0x05                                            /* set vcomh voltage 0x05 */
-#define SSD1351_ADVANCE_DEFAULT_SECOND_PRE_CHARGE_PERIOD       0x01                                            /* set second pre charge period 0x001 */
+#define SSD1351_ADVANCE_DEFAULT_SECOND_PRE_CHARGE_PERIOD       0x01                                            /* set second pre-charge period 0x001 */
 
 /**
  * @brief  advance example init
@@ -176,7 +176,7 @@ uint8_t ssd1351_advance_rect(uint8_t left, uint8_t top, uint8_t right, uint8_t b
  *            - 1 draw picture failed
  * @note      none
  */
-uint8_t ssd1351_advance_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *img);
+uint8_t ssd1351_advance_draw_picture(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *img);
 
 /**
  * @brief     advance example draw a 16 bits picture
@@ -190,11 +190,11 @@ uint8_t ssd1351_advance_draw_pictrue(uint8_t left, uint8_t top, uint8_t right, u
  *            - 1 draw picture 16 bits failed
  * @note      none
  */
-uint8_t ssd1351_advance_draw_pictrue_16bits(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *img);
+uint8_t ssd1351_advance_draw_picture_16bits(uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *img);
 
 /**
  * @brief     advance example set scroll
- * @param[in] scroll is the scoll number
+ * @param[in] scroll is the scroll number
  * @param[in] start_row is the start row
  * @param[in] row_len is the scrolling row length
  * @param[in] mode is the scroll mode
