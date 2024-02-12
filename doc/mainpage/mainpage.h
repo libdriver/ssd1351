@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver SSD1351
- * @brief     libdriver ssd1351 is a full function driver of ssd1351 and it can run in both MCU and Linux platform.
+ * @brief     LibDriver SSD1351 is a full function driver of SSD1351 and it can run in both MCU and Linux platform.
  * @version   2.0.0
  * @author    Shifeng Li
  *
