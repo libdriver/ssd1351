@@ -8,7 +8,7 @@
 
 [![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/ssd1351/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
-SSD1351是一个CMOS OLED/PLED驱动器，具有384个段和128个公共输出，支持高达128RGB x 128点阵显示。该芯片是为普通阴极型OLED/PLED设计的面板。SSD1351具有嵌入式图形显示数据RAM（GDDRAM）。它支持8、16、18位8080/6800并行接口，串行外设接口。它有256级对比度和262K色控件，在OLED面板上提供生动的彩色显示。
+SSD1351是一个CMOS OLED/PLED驱动器，具有384个段和128个公共输出，支持高达128 x 128 RGB点阵显示。该芯片是为普通阴极型OLED/PLED设计的面板。SSD1351具有嵌入式图形显示数据RAM（GDDRAM）。它支持8、16、18位8080/6800并行接口和串行外设接口。它有256级对比度和262K色控件，在OLED面板上提供生动的彩色显示。
 
 LibDriver SSD1351是LibDriver推出的SSD1351的全功能驱动，该驱动提供绘制单点，填充块，图片显示等功能并且它符合MISRA标准。
 
