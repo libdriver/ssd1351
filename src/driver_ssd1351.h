@@ -253,96 +253,96 @@ typedef struct ssd1351_info_s
 
 /**
  * @brief     initialize ssd1351_handle_t structure
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] STRUCTURE is ssd1351_handle_t
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] STRUCTURE ssd1351_handle_t
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_INIT(HANDLE, STRUCTURE)                 memset(HANDLE, 0, sizeof(STRUCTURE))
 
 /**
  * @brief     link spi_init function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a spi_init function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a spi_init function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_SPI_INIT(HANDLE, FUC)                  (HANDLE)->spi_init = FUC
 
 /**
  * @brief     link spi_deinit function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a spi_deinit function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a spi_deinit function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_SPI_DEINIT(HANDLE, FUC)                (HANDLE)->spi_deinit = FUC
 
 /**
  * @brief     link spi_write_cmd function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a spi_write_cmd function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a spi_write_cmd function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_SPI_WRITE_COMMAND(HANDLE, FUC)         (HANDLE)->spi_write_cmd = FUC
 
 /**
  * @brief     link cmd_data_gpio_init function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a cmd_data_gpio_init function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a cmd_data_gpio_init function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_COMMAND_DATA_GPIO_INIT(HANDLE, FUC)    (HANDLE)->cmd_data_gpio_init = FUC
 
 /**
  * @brief     link cmd_data_gpio_deinit function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a cmd_data_gpio_deinit function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a cmd_data_gpio_deinit function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_COMMAND_DATA_GPIO_DEINIT(HANDLE, FUC)  (HANDLE)->cmd_data_gpio_deinit = FUC
 
 /**
  * @brief     link cmd_data_gpio_write function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a cmd_data_gpio_write function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a cmd_data_gpio_write function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_COMMAND_DATA_GPIO_WRITE(HANDLE, FUC)   (HANDLE)->cmd_data_gpio_write = FUC
 
 /**
  * @brief     link reset_gpio_init function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a reset_gpio_init function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a reset_gpio_init function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_RESET_GPIO_INIT(HANDLE, FUC)           (HANDLE)->reset_gpio_init = FUC
 
 /**
  * @brief     link reset_gpio_deinit function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a reset_gpio_deinit function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a reset_gpio_deinit function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_RESET_GPIO_DEINIT(HANDLE, FUC)         (HANDLE)->reset_gpio_deinit = FUC
 
 /**
  * @brief     link reset_gpio_write function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a reset_gpio_write function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a reset_gpio_write function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_RESET_GPIO_WRITE(HANDLE, FUC)          (HANDLE)->reset_gpio_write = FUC
 
 /**
  * @brief     link delay_ms function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a delay_ms function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a delay_ms function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_DELAY_MS(HANDLE, FUC)                  (HANDLE)->delay_ms = FUC
 
 /**
  * @brief     link debug_print function
- * @param[in] HANDLE points to an ssd1351 handle structure
- * @param[in] FUC points to a debug_print function address
+ * @param[in] HANDLE pointer to an ssd1351 handle structure
+ * @param[in] FUC pointer to a debug_print function address
  * @note      none
  */
 #define DRIVER_SSD1351_LINK_DEBUG_PRINT(HANDLE, FUC)               (HANDLE)->debug_print = FUC
@@ -360,7 +360,7 @@ typedef struct ssd1351_info_s
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to an ssd1351 info structure
+ * @param[out] *info pointer to an ssd1351 info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -370,7 +370,7 @@ uint8_t ssd1351_info(ssd1351_info_t *info);
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to an ssd1351 handle structure
+ * @param[in] *handle pointer to an ssd1351 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 spi initialization failed
@@ -384,7 +384,7 @@ uint8_t ssd1351_init(ssd1351_handle_t *handle);
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to an ssd1351 handle structure
+ * @param[in] *handle pointer to an ssd1351 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 spi deinit failed
@@ -399,7 +399,7 @@ uint8_t ssd1351_deinit(ssd1351_handle_t *handle);
 
 /**
  * @brief     clear the display
- * @param[in] *handle points to an ssd1351 handle structure
+ * @param[in] *handle pointer to an ssd1351 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 clear failed
@@ -411,10 +411,10 @@ uint8_t ssd1351_clear(ssd1351_handle_t *handle);
 
 /**
  * @brief     draw a point in the display
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] x is the coordinate x
- * @param[in] y is the coordinate y
- * @param[in] color is the point color
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] x coordinate x
+ * @param[in] y coordinate y
+ * @param[in] color point color
  * @return    status code
  *            - 0 success
  *            - 1 draw point failed
@@ -428,13 +428,13 @@ uint8_t ssd1351_draw_point(ssd1351_handle_t *handle, uint8_t x, uint8_t y, uint3
 
 /**
  * @brief     write a string in the display
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] x is the coordinate x
- * @param[in] y is the coordinate y
- * @param[in] *str points to a written string address
- * @param[in] len is the length of the string
- * @param[in] color is the display color
- * @param[in] font is the string font
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] x coordinate x
+ * @param[in] y coordinate y
+ * @param[in] *str pointer to a written string address
+ * @param[in] len length of the string
+ * @param[in] color display color
+ * @param[in] font string font
  * @return    status code
  *            - 0 success
  *            - 1 draw point failed
@@ -447,12 +447,12 @@ uint8_t ssd1351_write_string(ssd1351_handle_t *handle, uint8_t x, uint8_t y, cha
 
 /**
  * @brief     fill the rect
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] left is the left coordinate x
- * @param[in] top is the top coordinate y
- * @param[in] right is the right coordinate x
- * @param[in] bottom is the bottom coordinate y
- * @param[in] color is the display color
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] left left coordinate x
+ * @param[in] top top coordinate y
+ * @param[in] right right coordinate x
+ * @param[in] bottom bottom coordinate y
+ * @param[in] color display color
  * @return    status code
  *            - 0 success
  *            - 1 fill rect failed
@@ -470,12 +470,12 @@ uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, u
 
 /**
  * @brief     draw a picture
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] left is the left coordinate x
- * @param[in] top is the top coordinate y
- * @param[in] right is the right coordinate x
- * @param[in] bottom is the bottom coordinate y
- * @param[in] *image points to a display image buffer
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] left left coordinate x
+ * @param[in] top top coordinate y
+ * @param[in] right right coordinate x
+ * @param[in] bottom bottom coordinate y
+ * @param[in] *image pointer to a display image buffer
  * @return    status code
  *            - 0 success
  *            - 1 draw picture failed
@@ -493,12 +493,12 @@ uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top
 
 /**
  * @brief     draw a 16 bits picture
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] left is the left coordinate x
- * @param[in] top is the top coordinate y
- * @param[in] right is the right coordinate x
- * @param[in] bottom is the bottom coordinate y
- * @param[in] *image points to a display image buffer
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] left left coordinate x
+ * @param[in] top top coordinate y
+ * @param[in] right right coordinate x
+ * @param[in] bottom bottom coordinate y
+ * @param[in] *image pointer to a display image buffer
  * @return    status code
  *            - 0 success
  *            - 1 draw picture failed
@@ -516,9 +516,9 @@ uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint
 
 /**
  * @brief     set the display column address
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] start_address is the start address
- * @param[in] end_address is the end address
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] start_address start address
+ * @param[in] end_address end address
  * @return    status code
  *            - 0 success
  *            - 1 set column address failed
@@ -532,9 +532,9 @@ uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_addre
 
 /**
  * @brief     set the row address
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] start_address is the start address
- * @param[in] end_address is the end address
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] start_address start address
+ * @param[in] end_address end address
  * @return    status code
  *            - 0 success
  *            - 1 set row address failed
@@ -548,7 +548,7 @@ uint8_t ssd1351_set_row_address(ssd1351_handle_t *handle, uint8_t start_address,
 
 /**
  * @brief     sent the write ram command
- * @param[in] *handle points to an ssd1351 handle structure
+ * @param[in] *handle pointer to an ssd1351 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 write ram failed
@@ -560,7 +560,7 @@ uint8_t ssd1351_write_ram(ssd1351_handle_t *handle);
 
 /**
  * @brief     sent the read ram command
- * @param[in] *handle points to an ssd1351 handle structure
+ * @param[in] *handle pointer to an ssd1351 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 read ram failed
@@ -572,7 +572,7 @@ uint8_t ssd1351_read_ram(ssd1351_handle_t *handle);
 
 /**
  * @brief     sent the read ram command
- * @param[in] *handle points to an ssd1351 handle structure
+ * @param[in] *handle pointer to an ssd1351 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 read ram failed
@@ -584,8 +584,8 @@ uint8_t ssd1351_read_ram(ssd1351_handle_t *handle);
 
 /**
  * @brief     set the display color depth
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] color_depth is the color depth
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] color_depth color depth
  * @return    status code
  *            - 0 success
  *            - 1 set color depth failed
@@ -597,8 +597,8 @@ uint8_t ssd1351_set_color_depth(ssd1351_handle_t *handle, ssd1351_color_depth_t 
 
 /**
  * @brief     set the address increment
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] increment is the address increment param
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] increment address increment param
  * @return    status code
  *            - 0 success
  *            - 1 set address increment failed
@@ -610,8 +610,8 @@ uint8_t ssd1351_set_address_increment(ssd1351_handle_t *handle, ssd1351_address_
 
 /**
  * @brief     set the seg0 map
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] seg0_map is the seg0 map
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] seg0_map seg0 map
  * @return    status code
  *            - 0 success
  *            - 1 set seg0 map failed
@@ -623,8 +623,8 @@ uint8_t ssd1351_set_seg0_map(ssd1351_handle_t *handle, ssd1351_seg0_mapped_t seg
 
 /**
  * @brief     set the color sequence
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] color_sequence is the display color sequence
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] color_sequence display color sequence
  * @return    status code
  *            - 0 success
  *            - 1 set color sequence failed
@@ -636,8 +636,8 @@ uint8_t ssd1351_set_color_sequence(ssd1351_handle_t *handle, ssd1351_color_seque
 
 /**
  * @brief     set the scan mode
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] mode is the scan mode
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] mode scan mode
  * @return    status code
  *            - 0 success
  *            - 1 set scan mode failed
@@ -649,8 +649,8 @@ uint8_t ssd1351_set_scan_mode(ssd1351_handle_t *handle, ssd1351_scan_mode_t mode
 
 /**
  * @brief     set the com split odd or even
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set com split odd even failed
@@ -662,8 +662,8 @@ uint8_t ssd1351_set_com_split_odd_even(ssd1351_handle_t *handle, ssd1351_bool_t 
 
 /**
  * @brief     set the display start line
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] l is the start line
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] l start line
  * @return    status code
  *            - 0 success
  *            - 1 set display start line failed
@@ -676,8 +676,8 @@ uint8_t ssd1351_set_display_start_line(ssd1351_handle_t *handle, uint8_t l);
 
 /**
  * @brief     set the display offset
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] offset is the display offset
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] offset display offset
  * @return    status code
  *            - 0 success
  *            - 1 set display offset failed
@@ -690,8 +690,8 @@ uint8_t ssd1351_set_display_offset(ssd1351_handle_t *handle, uint8_t offset);
 
 /**
  * @brief     set the display mode
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] mode is the display mode
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] mode display mode
  * @return    status code
  *            - 0 success
  *            - 1 set display mode failed
@@ -703,8 +703,8 @@ uint8_t ssd1351_set_display_mode(ssd1351_handle_t *handle, ssd1351_display_mode_
 
 /**
  * @brief     set the select vdd
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] vdd is the chip vdd
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] vdd chip vdd
  * @return    status code
  *            - 0 success
  *            - 1 set select vdd failed
@@ -716,8 +716,8 @@ uint8_t ssd1351_set_select_vdd(ssd1351_handle_t *handle, ssd1351_select_vdd_t vd
 
 /**
  * @brief     set the interface parallel bits
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] parallel_bits is the interface parallel bits
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] parallel_bits interface parallel bits
  * @return    status code
  *            - 0 success
  *            - 1 set parallel bits failed
@@ -729,8 +729,8 @@ uint8_t ssd1351_set_parallel_bits(ssd1351_handle_t *handle, ssd1351_select_paral
 
 /**
  * @brief     set the sleep mode
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] enable is a bool value
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] enable bool value
  * @return    status code
  *            - 0 success
  *            - 1 set sleep mode failed
@@ -742,9 +742,9 @@ uint8_t ssd1351_set_sleep_mode(ssd1351_handle_t *handle, ssd1351_bool_t enable);
 
 /**
  * @brief     set the phase period
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] phase1_period is the phase 1 period
- * @param[in] phase2_period is the phase 2 period
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] phase1_period phase 1 period
+ * @param[in] phase2_period phase 2 period
  * @return    status code
  *            - 0 success
  *            - 1 set phase period failed
@@ -760,9 +760,9 @@ uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period
 
 /**
  * @brief     set the front clock oscillator frequency
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] d is the clock div
- * @param[in] frequency is the clock frequency
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] d clock div
+ * @param[in] frequency clock frequency
  * @return    status code
  *            - 0 success
  *            - 1 set front clock oscillator frequency failed
@@ -776,8 +776,8 @@ uint8_t ssd1351_set_front_clock_oscillator_frequency(ssd1351_handle_t *handle, u
 
 /**
  * @brief     set the segment low voltage
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] segment is the segment low voltage
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] segment segment low voltage
  * @return    status code
  *            - 0 success
  *            - 1 set segment low voltage failed
@@ -789,9 +789,9 @@ uint8_t ssd1351_set_segment_low_voltage(ssd1351_handle_t *handle, ssd1351_segmen
 
 /**
  * @brief     set the gpio pin
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] gpio0 is the gpio 0 pin
- * @param[in] gpio1 is the gpio 1 pin
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] gpio0 gpio 0 pin
+ * @param[in] gpio1 gpio 1 pin
  * @return    status code
  *            - 0 success
  *            - 1 set gpio failed
@@ -803,8 +803,8 @@ uint8_t ssd1351_set_gpio(ssd1351_handle_t *handle, ssd1351_gpio_pin_t gpio0, ssd
 
 /**
  * @brief     set the second pre charge period
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] period is the pre charge period
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] period pre charge period
  * @return    status code
  *            - 0 success
  *            - 1 set second pre charge period failed
@@ -817,8 +817,8 @@ uint8_t ssd1351_set_second_pre_charge_period(ssd1351_handle_t *handle, uint8_t p
 
 /**
  * @brief     set the gray scale pulse width
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] *gamma points to a gamma table buffer
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] *gamma pointer to a gamma table buffer
  * @return    status code
  *            - 0 success
  *            - 1 set gray scale pulse width failed
@@ -830,7 +830,7 @@ uint8_t ssd1351_set_gray_scale_pulse_width(ssd1351_handle_t *handle, uint8_t gam
 
 /**
  * @brief     use built in linear lut
- * @param[in] *handle points to an ssd1351 handle structure
+ * @param[in] *handle pointer to an ssd1351 handle structure
  * @return    status code
  *            - 0 success
  *            - 1 set use built in linear lut failed
@@ -842,8 +842,8 @@ uint8_t ssd1351_set_use_built_in_linear_lut(ssd1351_handle_t *handle);
 
 /**
  * @brief     set the pre charge voltage
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] voltage_level is the pre charge voltage level
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] voltage_level pre charge voltage level
  * @return    status code
  *            - 0 success
  *            - 1 set pre charge voltage failed
@@ -856,8 +856,8 @@ uint8_t ssd1351_set_pre_charge_voltage(ssd1351_handle_t *handle, uint8_t voltage
 
 /**
  * @brief     set the vcomh voltage
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] voltage_level is the vcomh voltage level
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] voltage_level vcomh voltage level
  * @return    status code
  *            - 0 success
  *            - 1 set vcomh voltage failed
@@ -870,10 +870,10 @@ uint8_t ssd1351_set_vcomh_voltage(ssd1351_handle_t *handle, uint8_t voltage_leve
 
 /**
  * @brief     set the display contrast
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] a is the contrast a
- * @param[in] b is the contrast b
- * @param[in] c is the contrast c
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] a contrast a
+ * @param[in] b contrast b
+ * @param[in] c contrast c
  * @return    status code
  *            - 0 success
  *            - 1 set contrast failed
@@ -885,8 +885,8 @@ uint8_t ssd1351_set_contrast(ssd1351_handle_t *handle, uint8_t a, uint8_t b, uin
 
 /**
  * @brief     set the master contrast current
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] current is the master contrast current
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] current master contrast current
  * @return    status code
  *            - 0 success
  *            - 1 set master contrast current failed
@@ -899,8 +899,8 @@ uint8_t ssd1351_set_master_contrast_current(ssd1351_handle_t *handle, uint8_t cu
 
 /**
  * @brief     set the mux ratio
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] ratio is the mux ratio
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] ratio mux ratio
  * @return    status code
  *            - 0 success
  *            - 1 set mux ratio failed
@@ -914,8 +914,8 @@ uint8_t ssd1351_set_mux_ratio(ssd1351_handle_t *handle, uint8_t ratio);
 
 /**
  * @brief     set the command
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] command is the send command
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] command sent command
  * @return    status code
  *            - 0 success
  *            - 1 set command failed
@@ -927,11 +927,11 @@ uint8_t ssd1351_set_command(ssd1351_handle_t *handle, ssd1351_command_t command)
 
 /**
  * @brief     set the scroll
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] scroll is the display scroll
- * @param[in] start_row is the scroll start row
- * @param[in] row_len is the scroll row len
- * @param[in] mode is the scroll mode
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] scroll display scroll
+ * @param[in] start_row scroll start row
+ * @param[in] row_len scroll row len
+ * @param[in] mode scroll mode
  * @return    status code
  *            - 0 success
  *            - 1 set scroll failed
@@ -944,24 +944,26 @@ uint8_t ssd1351_set_command(ssd1351_handle_t *handle, ssd1351_command_t command)
 uint8_t ssd1351_set_scroll(ssd1351_handle_t *handle, int8_t scroll, uint8_t start_row, uint8_t row_len, ssd1351_scroll_mode_t mode);
 
 /**
- * @brief  start the display moving
- * @return status code
- *         - 0 success
- *         - 1 start moving failed
- *         - 2 handle is NULL
- *         - 3 handle is not initialized
- * @note   none
+ * @brief     start the display moving
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @return    status code
+ *            - 0 success
+ *            - 1 start moving failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
+ * @note      none
  */
 uint8_t ssd1351_start_moving(ssd1351_handle_t *handle);
 
 /**
- * @brief  stop the display moving
- * @return status code
- *         - 0 success
- *         - 1 stop moving failed
- *         - 2 handle is NULL
- *         - 3 handle is not initialized
- * @note   none
+ * @brief      stop the display moving
+  * @param[in] *handle pointer to an ssd1351 handle structure
+ * @return     status code
+ *             - 0 success
+ *             - 1 stop moving failed
+ *             - 2 handle is NULL
+ *             - 3 handle is not initialized
+ * @note       none
  */
 uint8_t ssd1351_stop_moving(ssd1351_handle_t *handle);
 
@@ -978,8 +980,8 @@ uint8_t ssd1351_stop_moving(ssd1351_handle_t *handle);
 
 /**
  * @brief     write the command
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] cmd is the send command
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] cmd sent command
  * @return    status code
  *            - 0 success
  *            - 1 write command failed
@@ -991,8 +993,8 @@ uint8_t ssd1351_write_cmd(ssd1351_handle_t *handle, uint8_t cmd);
 
 /**
  * @brief     write the data
- * @param[in] *handle points to an ssd1351 handle structure
- * @param[in] data is the send data
+ * @param[in] *handle pointer to an ssd1351 handle structure
+ * @param[in] data sent data
  * @return    status code
  *            - 0 success
  *            - 1 write data failed
