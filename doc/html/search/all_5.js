@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['reset_5fgpio_5fdeinit_43',['reset_gpio_deinit',['../structssd1351__handle__s.html#a69c42ff05fc69e3f1621f3c0347a840b',1,'ssd1351_handle_s']]],
-  ['reset_5fgpio_5finit_44',['reset_gpio_init',['../structssd1351__handle__s.html#aa264e23f5c4ddd7a9bfa5cd9e387e013',1,'ssd1351_handle_s']]],
-  ['reset_5fgpio_5fwrite_45',['reset_gpio_write',['../structssd1351__handle__s.html#af0011f96a61e36716a376f2a427fdd27',1,'ssd1351_handle_s']]]
+  ['inited_0',['inited',['../structssd1351__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f',1,'ssd1351_handle_s']]],
+  ['interface_1',['interface',['../structssd1351__info__s.html#aebaa6c28dd4f2c3dc27566fcb910fd28',1,'ssd1351_info_s']]],
+  ['interface_20driver_20function_2',['ssd1351 interface driver function',['../group__ssd1351__interface__driver.html',1,'']]]
 ];
