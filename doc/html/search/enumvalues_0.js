@@ -35,9 +35,9 @@ var searchData=
   ['ssd1351_5fseg0_5faddress_5f127_32',['SSD1351_SEG0_ADDRESS_127',['../group__ssd1351__base__driver.html#gga2c46997399e93fbea42ea312f5876d2fafa24bffa635fb80522e639adf6fed0a3',1,'driver_ssd1351.h']]],
   ['ssd1351_5fsegment_5flow_5fvoltage_5fexternal_5fvsl_33',['SSD1351_SEGMENT_LOW_VOLTAGE_EXTERNAL_VSL',['../group__ssd1351__base__driver.html#gga6536070a695cafbc31465ddb7cd5d87fab48a3239e114b7dfa420e666f80a9b92',1,'driver_ssd1351.h']]],
   ['ssd1351_5fsegment_5flow_5fvoltage_5finternal_5fvsl_34',['SSD1351_SEGMENT_LOW_VOLTAGE_INTERNAL_VSL',['../group__ssd1351__base__driver.html#gga6536070a695cafbc31465ddb7cd5d87fa106f636025cdcc6b41cdea167d7de691',1,'driver_ssd1351.h']]],
-  ['ssd1351_5fselect_5fparallel_5f8_5fbit_35',['SSD1351_SELECT_PARALLEL_8_BIT',['../group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134a654924c24c49acd575da1f800d28abd2',1,'driver_ssd1351.h']]],
-  ['ssd1351_5fselect_5fparaller_5f16_5fbit_36',['SSD1351_SELECT_PARALLER_16_BIT',['../group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134a341880891ada9bb053b2ae28d7fd8976',1,'driver_ssd1351.h']]],
-  ['ssd1351_5fselect_5fparaller_5f18_5fbit_37',['SSD1351_SELECT_PARALLER_18_BIT',['../group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134aea0040443d670156bae52f6032a92a8e',1,'driver_ssd1351.h']]],
+  ['ssd1351_5fselect_5fparallel_5f16_5fbit_35',['SSD1351_SELECT_PARALLEL_16_BIT',['../group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134af0cdfeead6fafbd84180430876d9e230',1,'driver_ssd1351.h']]],
+  ['ssd1351_5fselect_5fparallel_5f18_5fbit_36',['SSD1351_SELECT_PARALLEL_18_BIT',['../group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134af67b89d1f6e9661c6202fd98536aff01',1,'driver_ssd1351.h']]],
+  ['ssd1351_5fselect_5fparallel_5f8_5fbit_37',['SSD1351_SELECT_PARALLEL_8_BIT',['../group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134a654924c24c49acd575da1f800d28abd2',1,'driver_ssd1351.h']]],
   ['ssd1351_5fselect_5fvdd_5fexternal_38',['SSD1351_SELECT_VDD_EXTERNAL',['../group__ssd1351__base__driver.html#gga1e8d53492dcdbb898cc5769f739c6035ae29d6a6f7f88a7f37cfd7c6276ab7474',1,'driver_ssd1351.h']]],
   ['ssd1351_5fselect_5fvdd_5finternal_39',['SSD1351_SELECT_VDD_INTERNAL',['../group__ssd1351__base__driver.html#gga1e8d53492dcdbb898cc5769f739c6035a7174b121683a31b6d25decd8c82570bb',1,'driver_ssd1351.h']]]
 ];

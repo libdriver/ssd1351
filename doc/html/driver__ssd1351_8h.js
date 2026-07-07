@@ -76,8 +76,8 @@ var driver__ssd1351_8h =
     ] ],
     [ "ssd1351_select_parallel_bits_t", "group__ssd1351__base__driver.html#gab8cb5bc4dbe5131d2fb2eb266817d134", [
       [ "SSD1351_SELECT_PARALLEL_8_BIT", "group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134a654924c24c49acd575da1f800d28abd2", null ],
-      [ "SSD1351_SELECT_PARALLER_16_BIT", "group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134a341880891ada9bb053b2ae28d7fd8976", null ],
-      [ "SSD1351_SELECT_PARALLER_18_BIT", "group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134aea0040443d670156bae52f6032a92a8e", null ]
+      [ "SSD1351_SELECT_PARALLEL_16_BIT", "group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134af0cdfeead6fafbd84180430876d9e230", null ],
+      [ "SSD1351_SELECT_PARALLEL_18_BIT", "group__ssd1351__base__driver.html#ggab8cb5bc4dbe5131d2fb2eb266817d134af67b89d1f6e9661c6202fd98536aff01", null ]
     ] ],
     [ "ssd1351_select_vdd_t", "group__ssd1351__base__driver.html#ga1e8d53492dcdbb898cc5769f739c6035", [
       [ "SSD1351_SELECT_VDD_EXTERNAL", "group__ssd1351__base__driver.html#gga1e8d53492dcdbb898cc5769f739c6035ae29d6a6f7f88a7f37cfd7c6276ab7474", null ],

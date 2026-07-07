@@ -131,8 +131,8 @@ static uint8_t a_ssd1351_write_byte(ssd1351_handle_t *handle, uint8_t data, uint
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  *            - 4 address is invalid
- *            - 5 start_address >= end_address
- * @note      start_address <= 127 && end_address <= 127 && start_address >= start_address
+ *            - 5 start_address > end_address
+ * @note      start_address <= 127 && end_address <= 127 && start_address <= end_address
  */
 uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_address, uint8_t end_address)
 {
@@ -150,9 +150,9 @@ uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_addre
         
         return 4;                                                                        /* return error */
     }
-    if (start_address >= end_address)                                                    /* check range */
+    if (start_address > end_address)                                                     /* check range */
     {
-        handle->debug_print("ssd1351: start_address >= end_address.\n");                 /* start_address <= end_address */
+        handle->debug_print("ssd1351: start_address > end_address.\n");                  /* start_address > end_address */
         
         return 5;                                                                        /* return error */
     }
@@ -190,8 +190,8 @@ uint8_t ssd1351_set_column_address(ssd1351_handle_t *handle, uint8_t start_addre
  *            - 2 handle is NULL
  *            - 3 handle is not initialized
  *            - 4 address is invalid
- *            - 5 start_address >= end_address
- * @note      start_address <= 127 && end_address <= 127 && start_address >= start_address
+ *            - 5 start_address > end_address
+ * @note      start_address <= 127 && end_address <= 127 && start_address <= end_address
  */
 uint8_t ssd1351_set_row_address(ssd1351_handle_t *handle, uint8_t start_address, uint8_t end_address)
 {
@@ -209,9 +209,9 @@ uint8_t ssd1351_set_row_address(ssd1351_handle_t *handle, uint8_t start_address,
         
         return 4;                                                                    /* return error */
     }
-    if (start_address >= end_address)                                                /* check range */
+    if (start_address > end_address)                                                 /* check range */
     {
-        handle->debug_print("ssd1351: start_address >= end_address.\n");             /* start_address >= end_address */
+        handle->debug_print("ssd1351: start_address > end_address.\n");              /* start_address > end_address */
         
         return 5;                                                                    /* return error */
     }
@@ -808,7 +808,7 @@ uint8_t ssd1351_set_sleep_mode(ssd1351_handle_t *handle, ssd1351_bool_t enable)
  *            - 5 phase1_period is over 15
  *            - 6 phase2_period is less than 3
  *            - 7 phase2_period is over 15
- * @note      2 <= phase1_period <=15 && 3 <= phase1_period <= 15
+ * @note      2 <= phase1_period <=15 && 3 <= phase2_period <= 15
  */
 uint8_t ssd1351_set_phase_period(ssd1351_handle_t *handle, uint8_t phase1_period, uint8_t phase2_period)
 {
@@ -2749,11 +2749,11 @@ uint8_t ssd1351_write_string(ssd1351_handle_t *handle, uint8_t x, uint8_t y, cha
  *            - 3 handle is not initialized
  *            - 4 left is over 127
  *            - 5 right is over 127
- *            - 6 left >= right
+ *            - 6 left > right
  *            - 7 top is over 127
  *            - 8 bottom is over 127
- *            - 9 top >= bottom
- * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
+ *            - 9 top > bottom
+ * @note      left <= 127 && right <= 127 && left <= right && top <= 127 && bottom <= 127 && top <= bottom
  */
 uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t color)
 {
@@ -2777,9 +2777,9 @@ uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, u
         
         return 5;                                                              /* return error */
     }
-    if (left >= right)                                                         /* check left and right */
+    if (left > right)                                                          /* check left and right */
     {
-        handle->debug_print("ssd1351: left >= right.\n");                      /* left >= right */
+        handle->debug_print("ssd1351: left > right.\n");                       /* left > right */
         
         return 6;                                                              /* return error */
     }
@@ -2795,9 +2795,9 @@ uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, u
         
         return 8;                                                              /* return error */
     }
-    if (top >= bottom)                                                         /* check top and bottom */
+    if (top > bottom)                                                          /* check top and bottom */
     {
-        handle->debug_print("ssd1351: top >= bottom.\n");                      /* top >= bottom */
+        handle->debug_print("ssd1351: top > bottom.\n");                       /* top > bottom */
         
         return 9;                                                              /* return error */
     }
@@ -2820,11 +2820,11 @@ uint8_t ssd1351_fill_rect(ssd1351_handle_t *handle, uint8_t left, uint8_t top, u
  *            - 3 handle is not initialized
  *            - 4 left is over 127
  *            - 5 right is over 127
- *            - 6 left >= right
+ *            - 6 left > right
  *            - 7 top is over 127
  *            - 8 bottom is over 127
- *            - 9 top >= bottom
- * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
+ *            - 9 top > bottom
+ * @note      left <= 127 && right <= 127 && left <= right && top <= 127 && bottom <= 127 && top <= bottom
  */
 uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint32_t *image)
 {
@@ -2848,9 +2848,9 @@ uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top
         
         return 5;                                                              /* return error  */
     }
-    if (left >= right)                                                         /* check left and right */
+    if (left > right)                                                          /* check left and right */
     {
-        handle->debug_print("ssd1351: left >= right.\n");                      /* left >= right */
+        handle->debug_print("ssd1351: left > right.\n");                       /* left > right */
         
         return 6;                                                              /* return error */
     }
@@ -2866,9 +2866,9 @@ uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top
         
         return 8;                                                              /* return error */
     }
-    if (top >= bottom)                                                         /* check top and bottom */
+    if (top > bottom)                                                          /* check top and bottom */
     {
-        handle->debug_print("ssd1351: top >= bottom.\n");                      /* top >= bottom */
+        handle->debug_print("ssd1351: top > bottom.\n");                       /* top > bottom */
         
         return 9;                                                              /* return error */
     }
@@ -2891,11 +2891,11 @@ uint8_t ssd1351_draw_picture(ssd1351_handle_t *handle, uint8_t left, uint8_t top
  *            - 3 handle is not initialized
  *            - 4 left is over 127
  *            - 5 right is over 127
- *            - 6 left >= right
+ *            - 6 left > right
  *            - 7 top is over 127
  *            - 8 bottom is over 127
- *            - 9 top >= bottom
- * @note      left <= 127 && right <= 127 && left < right && top <= 127 && bottom <= 127 && top < bottom
+ *            - 9 top > bottom
+ * @note      left <= 127 && right <= 127 && left <= right && top <= 127 && bottom <= 127 && top <= bottom
  */
 uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint8_t top, uint8_t right, uint8_t bottom, uint16_t *image)
 {
@@ -2919,9 +2919,9 @@ uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint
         
         return 5;                                                                         /* return error */
     }
-    if (left >= right)                                                                    /* check left and right */
+    if (left > right)                                                                     /* check left and right */
     {
-        handle->debug_print("ssd1351: left >= right.\n");                                 /* left >= right */
+        handle->debug_print("ssd1351: left > right.\n");                                  /* left > right */
         
         return 6;                                                                         /* return error */
     }
@@ -2937,9 +2937,9 @@ uint8_t ssd1351_draw_picture_16bits(ssd1351_handle_t *handle, uint8_t left, uint
         
         return 8;                                                                         /* return error */
     }
-    if (top >= bottom)                                                                    /* check top and bottom */
+    if (top > bottom)                                                                     /* check top and bottom */
     {
-        handle->debug_print("ssd1351: top >= bottom.\n");                                 /* top >= bottom */
+        handle->debug_print("ssd1351: top > bottom.\n");                                  /* top > bottom */
         
         return 9;                                                                         /* return error */
     }
